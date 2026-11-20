@@ -8,9 +8,9 @@
 <script>
   // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
   // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
-  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.subc = "grey"; })();
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girl"; document.documentElement.dataset.csky = "airship"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "normal"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "soft"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "fewbal"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
 </script>
-<meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta name="apple-itunes-app" content="app-id=6823674049">
 <meta name="theme-color" content="#030A24">
 <link rel="canonical" href="https://discoverargo.com/">
@@ -21,14 +21,14 @@
 <meta property="og:site_name" content="Argo">
 <meta property="og:url" content="https://discoverargo.com/">
 <meta property="og:title" content="Argo: Audio Tours Worldwide">
-<meta property="og:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta property="og:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta property="og:image" content="https://discoverargo.com/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Argo on three iPhones behind a paper skyline of world landmarks">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Argo: Audio Tours Worldwide">
-<meta name="twitter:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta name="twitter:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta name="twitter:image" content="https://discoverargo.com/og.jpg">
 <link rel="preload" href="assets/fonts/FrauncesVariable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/FrauncesItalicVariable.woff2" as="font" type="font/woff2" crossorigin>
@@ -349,19 +349,23 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
   .hear .eqs i:nth-child(2), .chip .eqs i:nth-child(2) { animation-delay: -300ms; }
   .hear .eqs i:nth-child(3), .chip .eqs i:nth-child(3) { animation-delay: -600ms; }
   @keyframes bar { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
-  .yw-balloon { animation: bob 7s ease-in-out 3; }
+  .yw-right { animation: bob 7s ease-in-out 3; }
   /* Reveals move into place from a visible resting state; nothing waits hidden for the observer. */
   .js .cities li { transition: transform 850ms cubic-bezier(0.34, 1.45, 0.64, 1) calc(var(--i) * 45ms); }
   .js .cities:not(.in) li { transform: translateY(28px) scale(0.94); }
-  .js #cities .die { transform: rotate(-2deg); transition: transform 800ms cubic-bezier(0.34, 1.7, 0.64, 1) 120ms; }
-  .js #cities:not(.in) .die { transform: scale(1.32) rotate(-10deg); }
+
   .js .bento .card { transition: transform 900ms cubic-bezier(0.34, 1.35, 0.64, 1) calc(var(--i) * 70ms); }
   .js .bento:not(.in) .card { transform: translateY(34px) scale(0.97); }
 }
 
 /* ---------- Listen your way: the app's own pieces as stickers on the sky, each running on its own clock ---------- */
 #yourway { overflow: hidden; }
-.yw-balloon { position: absolute; right: max(5%, calc(50% - 600px)); top: clamp(2.5rem, 6vw, 4.5rem); width: clamp(64px, 8vw, 112px); height: auto; filter: drop-shadow(0 12px 18px rgba(14, 22, 48, 0.25)); }
+/* Either side of the "Listen your way." heading, in the same height band: the paper headphones on the left and
+   the listener on a bench on the right, both white-rimmed stickers with the balloon sticker's soft shadow. */
+.yw-right { position: absolute; right: max(5%, calc(50% - 600px)); top: clamp(2.5rem, 6vw, 4.5rem); width: clamp(84px, 9.6vw, 136px); height: auto; filter: drop-shadow(0 12px 18px rgba(14, 22, 48, 0.25)); }
+.yw-left { position: absolute; left: max(5%, calc(50% - 600px)); top: clamp(2.5rem, 6vw, 4.5rem); width: clamp(70px, 7.6vw, 108px); height: auto; filter: drop-shadow(0 12px 18px rgba(14, 22, 48, 0.25)); }
+@media (max-width: 760px) { .yw-left, .yw-right { display: none; } }   /* the heading spans the phone's width */
+@media (prefers-reduced-motion: no-preference) { .yw-left { animation: bob 7s ease-in-out -3.5s 3; } }
 .yw-head { display: grid; justify-items: center; text-align: center; }
 .yw-head .body { text-align: center; }
 .bento { margin-top: clamp(2.75rem, 5vw, 4rem); display: grid; gap: clamp(2.75rem, 4.5vw, 3.5rem) clamp(1.5rem, 3vw, 2.75rem); grid-template-columns: minmax(0, 1fr); }
@@ -458,8 +462,9 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
 .hero .ctas { margin-top: 2rem; }
 .hero-art { --artw: min(1600px, 100vw); margin-bottom: calc(var(--artw) * -0.085); }
 @media (max-width: 760px) { .hero-art { --artw: 210vw; } }
-#cities { padding-top: calc(clamp(4.5rem, 9vw, 7.5rem) + min(1600px, 100vw) * 0.085); }
-@media (max-width: 760px) { #cities { padding-top: calc(3.5rem + 210vw * 0.085); } }
+/* --cpad: the sky between the hero strip's lower edge and the heading (the cities-sky pieces are placed from it too). */
+#cities { --cpad: clamp(2.25rem, 4.2vw, 3.5rem); padding-top: calc(var(--cpad) + min(1600px, 100vw) * 0.085); }
+@media (max-width: 760px) { #cities { --cpad: 2rem; padding-top: calc(var(--cpad) + 210vw * 0.085); } }
 
 /* ---------- Audit fixes ---------- */
 /* Art edges: a short feather on every side, so the labels inside the art stay whole. */
@@ -515,12 +520,6 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
 [data-edges="open"] #anyArt .on-sky { display: block; }
 
 /* Preview-only switcher for the edge variations. */
-.variants { position: fixed; z-index: 40; left: calc(12px + env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 3px; padding: 4px; border-radius: 99px; background: rgba(255, 255, 255, 0.96); color: var(--navy); font-size: 0.8rem; font-weight: 600; box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35); }
-.variants span { padding: 0 0.45rem 0 0.6rem; color: var(--navy-muted); }
-.variants button { border: 0; border-radius: 99px; padding: 0.42rem 0.75rem; background: transparent; color: var(--navy); font: inherit; cursor: pointer; }
-.variants button[aria-pressed="true"] { background: var(--navy); color: #FFFFFF; }
-.variants button, .variants span { white-space: nowrap; }
-@media (max-width: 640px) { .variants { left: 50%; translate: -50% 0; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); font-size: 0.75rem; } .variants button { padding: 0.4rem 0.6rem; } }
 @media (max-width: 899px) { [data-edges="open"] #anywhere .split { gap: 4.5rem; } }
 
 /* Faster first frame: the headline, buttons and phones are in place within about half a second. */
@@ -531,7 +530,6 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
   .hero-art .ph { animation-duration: 900ms; animation-delay: 80ms; }
   .hero-art .ph.m { animation-delay: 120ms; }
   .hero-art .ph.r { animation-delay: 180ms; }
-  .js #cities .die { transition-duration: 520ms; transition-delay: 0ms; }
   .js .bento .card { transition-duration: 600ms; transition-delay: calc(var(--i) * 40ms); }
   .hear:hover .wave i, .is-playing .hear .wave i { animation: bar 900ms ease-in-out infinite; }
   .hear .wave i:nth-child(2n) { animation-delay: -300ms; }
@@ -544,7 +542,6 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
 /* Subtitle under the headline: the display face, quieter. */
 /* Subtitle: the body face, as in the cities paragraph, in the light blue accent. */
 .hero .sub { width: 100%; max-width: 36rem; margin: 1.35rem auto 0; font-family: var(--body); font-weight: 400; font-size: clamp(1rem, 1.45vw, 1.15rem); line-height: 1.6; color: var(--thread); text-wrap: balance; }
-.variants .sep { width: 1px; height: 18px; margin: 0 0.3rem; padding: 0; background: rgba(14, 22, 48, 0.15); }
 
 /* From home: a small cut-paper scene under the copy (the armchair by the window, a teacup, binoculars). */
 .home-scene { position: relative; width: min(100%, 380px); aspect-ratio: 380 / 400; margin-top: 2.5rem; }
@@ -590,11 +587,14 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
    top of the page, and the footer sits on the same ground under it. */
 .closing { background: var(--sky); background-image: var(--dots-sky); background-size: 15px 15px; color: var(--navy); padding-top: clamp(1rem, 3vw, 2.5rem); overflow-x: clip; }
 .closing .hl, .closing .hl em { color: var(--navy); }
-.closing .appicon { filter: drop-shadow(0 12px 16px rgba(14, 22, 48, 0.22)); }
-.closing .scene { width: 100%; margin: clamp(2rem, 5vw, 3.5rem) 0 0; pointer-events: none; }   /* edge to edge at every width */
+.closing .appicon { filter: none; }   /* no shadow: it read as a dark frame on the sky */
+.closing .scene { width: min(1600px, 100%); margin: clamp(2rem, 5vw, 3.5rem) auto 0; pointer-events: none; }   /* edge to edge up to the hero strip's 1600px, centred beyond */
 .closing .scene img { display: block; width: 100%; height: auto; min-height: 0; object-fit: fill; -webkit-mask-image: none; mask-image: none; }
 @media (max-width: 760px) { .closing .scene { width: 210vw; max-width: none; margin-left: 50%; translate: -50% 0; } }
 .site-foot { background: var(--sky); background-image: var(--dots-sky); background-size: 15px 15px; padding-block: 0.4rem calc(0.9rem + env(safe-area-inset-bottom, 0px)); }
+/* The footer tucks 2px up over the closing (same sky) so Safari can't show a hairline of the page's night background where
+   the two meet off the pixel grid; the padding gives the 2px back, so nothing moves. */
+.site-foot { position: relative; margin-top: -2px; padding-top: calc(0.4rem + 2px); }
 .foot { color: var(--navy-muted); }
 .foot-brand { color: var(--navy); }
 .foot nav a { color: var(--navy-muted); }
@@ -609,8 +609,6 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
 .foot .mail { color: var(--navy-muted); }
 
 /* ---------- Closing art options ---------- */
-.variants label { padding: 0 0.3rem 0 0.4rem; color: var(--navy-muted); white-space: nowrap; }
-.variants select { font: inherit; color: var(--navy); background: rgba(14, 22, 48, 0.06); border: 0; border-radius: 99px; padding: 0.38rem 0.6rem; cursor: pointer; }
 .sc-balloon { position: relative; }
 .closing .scene img.drift { position: absolute; z-index: 2; left: 11%; top: -62%; width: 14%; height: auto; filter: drop-shadow(0 14px 18px rgba(14, 22, 48, 0.22)); }
 @media (max-width: 760px) { .closing .scene img.drift { left: 33%; top: -55%; width: 9%; } }
@@ -675,15 +673,219 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
    from the left at the same moment, and the hand-over at the end of each lap is invisible. */
 .balloon-lane img.twin { display: none; }
 @media (prefers-reduced-motion: no-preference) {
-  .balloon-lane.fly img { animation: fly 34s linear infinite, drift 9s ease-in-out infinite; }
-  .balloon-lane.fly img.twin { display: block; animation-name: flyTwin, drift; }
-  @keyframes fly { from { left: 0%; } to { left: 100%; } }
-  @keyframes flyTwin { from { left: -100%; } to { left: 0%; } }
+  .balloon-lane.fly img { animation: fly 34s linear -10s infinite, drift 9s ease-in-out infinite; }
+  /* In fully from the left, out fully at the right, about a second off screen, then round again. */
+  @keyframes fly { 0% { left: 0%; translate: -100% 0; } 97%, 100% { left: 100%; translate: 0 0; } }
 }
 
 /* The preview switcher scrolls sideways when it is wider than the screen. */
-.variants { max-width: calc(100vw - 24px); overflow-x: auto; scrollbar-width: none; }
-.variants::-webkit-scrollbar { display: none; }
+
+/* ---------- Hero sky: stars and balloons (options; behind the copy and the phones) ---------- */
+.hero { position: relative; }
+.hero-copy { position: relative; z-index: 1; }
+.stars { position: absolute; inset: 0; pointer-events: none; }
+.stars > div { display: none; }
+[data-stars="twinkle"] .st-twinkle, [data-stars="glint"] .st-glint, [data-stars="pin"] .st-pin, [data-stars="glowpin"] .st-glowpin, [data-stars="paper"] .st-paper { display: block; }
+.stars .w, .stars .p { position: absolute; display: block; }
+.stars .p { display: none; }
+@media (max-width: 760px) { .stars .w { display: none; } .stars .p { display: block; } }
+/* Soft glints: the four-point star in paper cream, small, no spin or pop. */
+.st-glint svg { color: #F7F3EA; opacity: 0.6; }
+.st-twinkle svg { color: #F7F3EA; opacity: 0.75; }
+/* Pinpoints: brighter and less regular than the dot grid; a few carry a halo. */
+.st-pin i { width: var(--s); height: var(--s); border-radius: 50%; background: #F7F3EA; opacity: 0.75; }
+.st-pin i.g { box-shadow: 0 0 6px 1px rgba(247, 243, 234, 0.45); }
+/* Glowing pinpoints: every star carries a warm halo; the twinkle brightens and swells it (opacity and scale only). */
+.st-glowpin i { width: var(--s); height: var(--s); border-radius: 50%; background: #FFF9EC; opacity: 0.8;
+  box-shadow: 0 0 calc(var(--s) * 4.5) calc(var(--s) * 1.3) rgba(255, 226, 176, 0.42), 0 0 calc(var(--s) * 1.4) calc(var(--s) * 0.35) rgba(255, 246, 225, 0.85); }
+/* Paper stars: cut-paper five-points with their own paper shadow. */
+.st-paper svg { opacity: 0.95; }
+@media (prefers-reduced-motion: no-preference) {
+  .st-glint svg { animation: glint var(--d) ease-in-out var(--dl) infinite; }
+  @keyframes glint { 0%, 100% { opacity: 0.6; } 35% { opacity: 0.2; } 70% { opacity: 0.95; } }
+  .st-pin i { animation: pin var(--d) ease-in-out var(--dl) infinite; }
+  .st-glowpin i { animation: glowpin var(--d) ease-in-out var(--dl) infinite; }
+  @keyframes glowpin { 0%, 100% { opacity: 0.8; scale: 1; } 40% { opacity: 0.35; scale: 0.8; } 75% { opacity: 1; scale: 1.2; } }
+  /* Twinkling glints: the pinpoints' rhythm, swelling as they brighten and shrinking as they dim. No spin. */
+  .st-twinkle svg { animation: twk var(--d) ease-in-out var(--dl) infinite; }
+  @keyframes twk { 0%, 100% { opacity: 0.75; scale: 0.9; } 40% { opacity: 0.25; scale: 0.7; } 75% { opacity: 1; scale: 1.1; } }
+  @keyframes pin { 0%, 100% { opacity: 0.75; } 40% { opacity: 0.25; } 75% { opacity: 1; } }
+  .st-paper svg { animation: sway var(--d) ease-in-out var(--dl) infinite alternate; }
+  @keyframes sway { from { rotate: -8deg; } to { rotate: 8deg; } }
+}
+
+/* ---------- Featured-city hover (options). Pointer devices only; the image moves, its baked shadow with it. ---------- */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .cities .dio img { transform-origin: 50% 88%; transition: translate 420ms cubic-bezier(0.34, 1.4, 0.64, 1), rotate 420ms cubic-bezier(0.34, 1.4, 0.64, 1), scale 420ms cubic-bezier(0.34, 1.4, 0.64, 1); }
+  [data-chover="lift"] .cities li:hover .dio img { translate: -50% -8px; }
+  [data-chover="tilt"] .cities li:hover .dio img { translate: -50% -4px; rotate: -3deg; scale: 1.04; }
+  [data-chover="hop"] .cities li:hover .dio img { animation: hop 620ms cubic-bezier(0.3, 0.7, 0.4, 1); }
+  @keyframes hop { 0% { translate: -50% 0; } 32% { translate: -50% -14px; } 64% { translate: -50% 0; } 80% { translate: -50% -4px; } 100% { translate: -50% 0; } }
+}
+
+/* ---------- The line under the featured cities (copy options) ---------- */
+.cities-more { margin: clamp(1.4rem, 2.6vw, 2rem) 0 0; text-align: center; font-family: var(--display); font-style: italic; font-weight: 700;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 72; font-size: clamp(1.25rem, 2.1vw, 1.55rem); line-height: 1.2; color: var(--navy); }
+.cities-more span:not(:only-child) { display: none; }   /* the preview carries every option; the site only its pick */
+[data-more="1"] .cities-more [data-m="1"], [data-more="2"] .cities-more [data-m="2"], [data-more="3"] .cities-more [data-m="3"] { display: inline; }
+[data-more="0"] .cities-more { display: none; }
+
+/* ---------- Floating pieces: lanes that cross a section, each with a twin one lane behind so one is always in view ---------- */
+.floaters { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.fl-lane { position: absolute; left: 0; right: 0; height: 0; }
+/* Each piece rides at the right-hand end of a track one lane plus one piece wide. Moving the track from -100% to 0 of its
+   own width carries the piece from just off the left edge to just off the right. Only the track's own size is used (no
+   container units), so every browser knows the whole path in advance and keeps the piece behind what is in front. */
+.fl-track { position: absolute; left: 0; top: 0; box-sizing: content-box; width: 100%; padding-right: var(--fw); height: 0; }
+.fl-track img { position: absolute; right: 0; top: 0; width: var(--fw); height: auto; }
+#cities > .wrap { position: relative; z-index: 1; }
+/* Hero: a small far balloon above the headline; the low lane passes behind the phones. */
+.fl-high { top: 0.6%; --fw: clamp(20px, 2.4vw, 34px); --t: 70s; }
+.fl-low { top: 37%; --fw: clamp(42px, 4.9vw, 78px); --t: 46s; }
+.fl-low.fl-logo { top: 47.5%; --fw: clamp(44px, 5vw, 78px); }
+[data-hsize="big"] .fl-low { top: 34%; --fw: clamp(54px, 6.4vw, 102px); --t: 50s; }
+/* Higher: the balloon's line moves up beside the subtitle and buttons (it still passes behind them). */
+[data-hpos="lift"] .fl-low { top: 33%; } [data-hpos="lift"][data-hsize="big"] .fl-low { top: 30%; }
+[data-hpos="high"] .fl-low { top: 29%; } [data-hpos="high"][data-hsize="big"] .fl-low { top: 26%; }
+/* Even higher: level with the headline's second line; behind the words where they meet, clear at the sides. */
+[data-hpos="top"] .fl-low { top: 18%; } [data-hpos="top"][data-hsize="big"] .fl-low { top: 15%; }
+/* Cities: between the landmark strip's lower edge and the heading. */
+/* Every piece is centred on one line, two thirds of the way from the strip's lower edge to the heading. */
+.fl-cities { top: calc(min(1600px, 100vw) * 0.085 + var(--cpad) * 0.66); --fw: clamp(64px, 7.4vw, 116px); --t: 36s; }
+.fl-cities img { translate: 0 -50%; }
+/* Behind the heading: the line runs through the middle of "Tour 1 million+ landmarks and cities.", under the words. */
+[data-cpos="behind"] .fl-cities { top: calc(min(1600px, 100vw) * 0.085 + var(--cpad) + clamp(2.6rem, 5vw, 4.5rem) + 0.75rem); }
+.fl-cities.fl-birds { --fw: clamp(72px, 8.2vw, 128px); --t: 28s; }
+.fl-cities.fl-airship, .fl-cities.fl-deck { --fw: clamp(84px, 9.6vw, 150px); --t: 58s; }
+.fl-cities.fl-biplane { --fw: clamp(76px, 8.6vw, 134px); --t: 24s; }
+@media (max-width: 760px) {
+  .fl-high { top: 0.4%; } .fl-low { top: 50%; --fw: 40px; } [data-hsize="big"] .fl-low { top: 48.5%; --fw: 50px; } [data-hpos="lift"] .fl-low { top: 48%; } [data-hpos="lift"][data-hsize="big"] .fl-low { top: 46.5%; } [data-hpos="high"] .fl-low { top: 46%; } [data-hpos="high"][data-hsize="big"] .fl-low { top: 44.5%; } [data-hpos="top"] .fl-low { top: 28%; } [data-hpos="top"][data-hsize="big"] .fl-low { top: 26%; }
+  .fl-cities { top: calc(210vw * 0.085 + var(--cpad) * 0.62); --fw: 58px; } [data-cpos="behind"] .fl-cities { top: calc(210vw * 0.085 + var(--cpad) + 2.7rem + 0.5rem); } .fl-cities.fl-birds { --fw: 64px; } .fl-cities.fl-airship, .fl-cities.fl-deck { --fw: 70px; --t: 30s; } .fl-cities.fl-biplane { --fw: 64px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fl-track { animation: flFly var(--t) linear calc(var(--t) * -0.35) infinite; }
+  /* The cities piece waits at the left edge, fully in view (motion.js sets where), and sets off once the heading is on screen. */
+  .js .fl-cities .fl-track { animation-delay: 0s; animation-play-state: paused; }
+  .js #cities.head-in .fl-cities .fl-track { animation-play-state: running; }
+  .fl-track img { animation: flBob 8s ease-in-out infinite; }
+  /* In fully from the left, out fully at the right, about a second off screen (3% of the crossing), then round again. */
+  @keyframes flFly { 0% { translate: -100% 0; } 97%, 100% { translate: 0 0; } }
+  @keyframes flBob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-9px) rotate(2deg); } }
+}
+@media (prefers-reduced-motion: reduce) { .fl-track { translate: -80% 0; } .fl-high .fl-track { translate: -14% 0; } }
+
+/* ---------- Sky lanterns: single lanterns rising from behind the strip, each fading in low and out near the top ---------- */
+/* The layer reaches up over the nav bar, so lanterns rise to the top of the screen; the nav's logo and button stay in front. */
+.lanterns { position: absolute; inset: -7rem 0 0; overflow: hidden; pointer-events: none; }
+header.top { position: relative; z-index: 3; }
+/* Each lantern moves by its position on the page (top), not by a transform: costlier per frame, but with three to ten
+   small lanterns that is nothing, and every browser paints it where it is (transforms here were culled in Safari). */
+.lnt { position: absolute; top: 100%; width: clamp(calc(var(--w) * 0.7px), calc(var(--w) * 100vw / 1440), calc(var(--w) * 1.6px)); opacity: 0; }
+.lnt img { display: block; width: 100%; height: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .lnt { animation: lnRise var(--t) linear var(--dl) infinite; }
+  .lnt img { animation: lnSway 7s ease-in-out var(--dl) infinite alternate; }
+  /* Fade in low (behind the strip), then stay lit all the way up and leave through the top edge. */
+  @keyframes lnRise { 0% { top: 100%; translate: 0 0; opacity: 0; } 10%, 100% { opacity: 0.95; } 100% { top: 0%; translate: 0 -100%; } }
+  @keyframes lnSway { from { transform: translateX(-6px) rotate(-4deg); } to { transform: translateX(6px) rotate(3deg); } }
+}
+@media (prefers-reduced-motion: reduce) { .lnt { opacity: 0.85; top: var(--ry, 30%); } }
+
+/* ---------- Preview options panel (preview only): the choices still open ---------- */
+.pv-opts { position: fixed; z-index: 40; left: calc(12px + env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 8px; font: 500 0.8125rem/1.2 var(--body); color: var(--navy); }
+.pv-toggle { border: 0; border-radius: 99px; padding: 0.55rem 1rem; background: rgba(255, 255, 255, 0.95); color: var(--navy); font: inherit; font-weight: 600; cursor: pointer; box-shadow: 0 6px 24px rgba(3, 10, 36, 0.28); }
+.pv-panel { display: grid; gap: 2px; padding: 8px; width: 272px; border-radius: 16px; background: rgba(255, 255, 255, 0.96); box-shadow: 0 12px 40px rgba(3, 10, 36, 0.32); }
+.pv-opts[data-open="false"] .pv-panel { display: none; }
+.pv-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 3px 3px 3px 8px; }
+.pv-row span { color: var(--navy-muted); white-space: nowrap; }
+.pv-row select { font: inherit; color: var(--navy); background: rgba(14, 22, 48, 0.06); border: 0; border-radius: 99px; padding: 0.4rem 0.6rem; cursor: pointer; max-width: 150px; }
+@media (max-width: 640px) { .pv-opts { left: 50%; translate: -50% 0; align-items: center; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); } .pv-panel { width: min(300px, calc(100vw - 24px)); } }
+
+/* ---------- The cities heading's entrance (options). The sticker sits on its line at rest; nothing pops on its own.
+   It starts once the heading is on screen (motion.js adds .in to .cities-head). ---------- */
+#cities .die { rotate: -2deg; }
+.cities-head .cw { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  /* Soft rise: the heading comes up a few pixels into focus; the paragraph follows a beat later. */
+  [data-hl="soft"] .cities-head h2, [data-hl="soft"] .cities-head .body { transition: opacity 900ms cubic-bezier(0.2, 0.7, 0.2, 1), translate 1100ms cubic-bezier(0.16, 1, 0.3, 1), filter 900ms ease-out; }
+  [data-hl="soft"] .cities-head .body { transition-delay: 160ms; }
+  .js[data-hl="soft"] .cities-head:not(.in) h2, .js[data-hl="soft"] .cities-head:not(.in) .body { opacity: 0; translate: 0 18px; filter: blur(6px); }
+  /* Word by word: the hero headline's reveal, on scroll. */
+  [data-hl="words"] .cities-head .cw { transition: opacity 950ms cubic-bezier(0.2, 0.75, 0.2, 1), translate 950ms cubic-bezier(0.2, 0.75, 0.2, 1), rotate 950ms cubic-bezier(0.2, 0.75, 0.2, 1), filter 950ms cubic-bezier(0.2, 0.75, 0.2, 1); transition-delay: calc(var(--i) * 70ms); }
+  [data-hl="words"] .cities-head .die.cw { rotate: -2deg; }
+  .js[data-hl="words"] .cities-head:not(.in) .cw { opacity: 0; translate: 0 0.42em; rotate: 2.5deg; filter: blur(8px); }
+  [data-hl="words"] .cities-head .body { transition: opacity 800ms ease-out 360ms; }
+  .js[data-hl="words"] .cities-head:not(.in) .body { opacity: 0; }
+}
+
+/* Every working button shows the hand, as links do (the browser default for buttons is the arrow). */
+button:not(:disabled) { cursor: pointer; }
+
+/* Discovered: the Rome diorama beside the count; each landmark found drops a location pin on it (motion.js). */
+.found { position: relative; }
+.found .num, .found .new { position: relative; z-index: 1; }
+.disc-map { position: absolute; right: -6%; top: 50%; translate: 0 -54%; width: 56%; max-width: 240px; pointer-events: none; }
+.disc-map img { display: block; width: 100%; height: auto; }
+.dpin { position: absolute; width: 11px; height: 11px; translate: -50% -50%; border-radius: 50%; background: #3D7BFF; opacity: 0;
+  box-shadow: 0 0 0 3px #FFFFFF, 0 4px 10px rgba(14, 22, 48, 0.35); }
+@media (prefers-reduced-motion: reduce) { .dpin { opacity: 1; } }
+
+/* ---------- Closing line on an ad blimp (option): the words are text lettered along the blank body, sized to the blimp. ---------- */
+.blimp { --bw: min(940px, 94vw); width: var(--bw); margin: clamp(0.5rem, 2vw, 1.25rem) auto 0; }
+.blimp-in { position: relative; container-type: inline-size; }
+.blimp-in img { display: block; width: 100%; height: auto; }
+.blimp-text { position: absolute; margin: 0; display: grid; place-items: center; text-align: center; white-space: nowrap;
+  font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 72; letter-spacing: -0.01em; line-height: 1; }
+.blimp-text em { font-style: italic; }
+.blimp-ad-cream .blimp-text { left: 13%; width: 78%; top: 10%; height: 46%; font-size: 6.1cqw; color: var(--navy); }
+.blimp-ad-cream .blimp-text em { color: #D9694F; }
+/* Towed banners: the line set along the banner, inside its coral hems (areas measured from each picture). */
+.blimp-bn-cream, .blimp-bn-navy, .blimp-bn-plane { --bw: min(1180px, 96vw); }
+@media (max-width: 760px) { [data-bmove="fly"] .blimp-bn-cream, [data-bmove="fly"] .blimp-bn-navy, [data-bmove="fly"] .blimp-bn-plane { --bw: 170vw; } }
+.blimp-bn-cream .blimp-text { left: 2.6%; width: 44.8%; top: 17.7%; height: 53.5%; font-size: 3.25cqw; color: var(--navy); }
+.blimp-bn-navy .blimp-text { left: 2.6%; width: 43.6%; top: 28.1%; height: 51.9%; font-size: 3.16cqw; color: var(--navy); }
+.blimp-bn-plane .blimp-text { left: 3.2%; width: 51.8%; top: 23.6%; height: 40%; font-size: 3.75cqw; color: var(--navy); }
+.blimp-bn-cream .blimp-text em, .blimp-bn-navy .blimp-text em, .blimp-bn-plane .blimp-text em { color: #D9694F; }
+.blimp-ad-navy .blimp-text { left: 15.5%; width: 79%; top: 12%; height: 50%; font-size: 6.1cqw; color: #F7F3EA; }   /* centred on the body, not the image (the fins lengthen the left) */
+.blimp-ad-navy .blimp-text em { color: #B8D9F5; }
+/* With a blimp the plain headline stays for screen readers only, the Argo logo above it goes, and the crossing footer
+   balloon steps aside. */
+[data-closing]:not([data-closing="headline"]) #closing-h { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+[data-closing]:not([data-closing="headline"]) .closing .appicon, [data-closing]:not([data-closing="headline"]) .balloon-lane { display: none; }
+/* Without the logo above it the blimp sat low (a wide gap above, a tight one to the badge): lift it, and give the badge a
+   little more room below it. */
+[data-closing]:not([data-closing="headline"]) .blimp { margin-top: calc(-1 * clamp(1.25rem, 4.5vw, 4.1rem)); margin-bottom: clamp(0.5rem, 1.4vw, 1.25rem); }
+/* Flying: the blimp keeps its place in the page (same size, empty) while a track one screen plus one blimp wide carries
+   it across, in fully from the left, out fully at the right, a second off screen; only the track's own size is used.
+   The track is placed against the closing section itself (the screen's edges), at the placeholder's height (its static
+   position), so a blimp wider than the page column can't shift it. */
+.closing { position: relative; overflow-x: clip; }
+[data-bmove="fly"] .blimp { position: static; aspect-ratio: var(--ar); }
+[data-bmove="fly"] .bf-track { position: absolute; left: 0; box-sizing: content-box; width: 100vw; padding-right: var(--bw); height: 0; translate: -50% 0; }
+[data-bmove="fly"] .bf-track .blimp-in { position: absolute; right: 0; top: 0; width: var(--bw); }
+@media (prefers-reduced-motion: no-preference) {
+  .blimp-in { animation: blimpBob 7s ease-in-out infinite; }
+  [data-bmove="fly"] .bf-track { animation: bfFly 30s linear -12s infinite; }
+  @keyframes bfFly { 0% { translate: -100% 0; } 97%, 100% { translate: 0 0; } }
+  @keyframes blimpBob { 0%, 100% { translate: 0 0; rotate: -0.6deg; } 50% { translate: 0 -8px; rotate: 0.6deg; } }
+}
+
+/* Discovered, centred (option): no diorama; the count and its +1 tag sit in the middle of the card's open space. */
+[data-disc="center"] .disc-map { display: none; }
+[data-disc="center"] .found { justify-items: center; }
+[data-disc="center"] .found .new span { left: 50%; translate: -50% 0; white-space: nowrap; }
+
+.pv-bar { display: flex; gap: 6px; }
+.pv-copy { border: 0; border-radius: 99px; padding: 0.55rem 0.9rem; background: rgba(255, 255, 255, 0.95); color: var(--navy); font: inherit; font-weight: 600; cursor: pointer; box-shadow: 0 6px 24px rgba(3, 10, 36, 0.28); }
+
+/* Colour lift (option): a gentle saturation and contrast lift on the two panoramas, which are pale by design. */
+[data-lift="on"] .hero-art .strip, [data-lift="on"] .closing .scene img { filter: saturate(1.16) contrast(1.06); }
+
+/* Cities heading italics (option): "and-cities" sets "and cities." in italic (as before); "landmarks" sets "landmarks" and
+   "cities." in italic with "and" upright. */
+#cities-h em.it-lm, [data-hit="landmarks"] #cities-h em.it-and { font-style: normal; font-weight: inherit; }
+[data-hit="landmarks"] #cities-h em.it-lm { font-style: italic; font-weight: 750; }
 
 </style>
 </head>
@@ -698,6 +900,7 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
 
 <main id="top">
   <section class="hero night" aria-labelledby="hero-h">
+    <div class="stars" aria-hidden="true"><div class="st-pin"><i class="w g" style="left:3%;top:6%;--d:4.2s;--dl:-0.5s;--s:2.4px"></i><i class="w" style="left:8%;top:22%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="w" style="left:5%;top:38%;--d:3.6s;--dl:-1.4s;--s:2px"></i><i class="w" style="left:12%;top:58%;--d:6.4s;--dl:-3.3s;--s:1.8px"></i><i class="w" style="left:16%;top:9%;--d:4.9s;--dl:-4.0s;--s:1.6px"></i><i class="w g" style="left:21%;top:49%;--d:5.2s;--dl:-0.9s;--s:2.6px"></i><i class="w" style="left:2%;top:64%;--d:3.9s;--dl:-2.6s;--s:1.6px"></i><i class="w" style="left:97%;top:5%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="w g" style="left:93%;top:18%;--d:6.1s;--dl:-0.2s;--s:2.8px"></i><i class="w" style="left:90%;top:33%;--d:3.7s;--dl:-3.1s;--s:1.6px"></i><i class="w" style="left:95%;top:47%;--d:5.5s;--dl:-2.4s;--s:2px"></i><i class="w" style="left:86%;top:61%;--d:4.6s;--dl:-4.4s;--s:1.8px"></i><i class="w" style="left:81%;top:12%;--d:5.1s;--dl:-1.1s;--s:1.6px"></i><i class="w" style="left:78%;top:50%;--d:6.7s;--dl:-3.8s;--s:2.2px"></i><i class="w" style="left:99%;top:66%;--d:4.0s;--dl:-0.7s;--s:1.6px"></i><i class="w" style="left:30%;top:3%;--d:5.4s;--dl:-2.9s;--s:1.6px"></i><i class="w" style="left:64%;top:5%;--d:3.8s;--dl:-1.6s;--s:2px"></i><i class="w" style="left:50%;top:2%;--d:6.2s;--dl:-4.7s;--s:1.6px"></i><i class="p g" style="left:4%;top:3%;--d:4.2s;--dl:-0.5s;--s:2px"></i><i class="p" style="left:22%;top:1.5%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="p" style="left:47%;top:3.5%;--d:3.6s;--dl:-1.4s;--s:2.2px"></i><i class="p" style="left:71%;top:2%;--d:6.4s;--dl:-3.3s;--s:1.6px"></i><i class="p g" style="left:95%;top:4%;--d:4.9s;--dl:-4.0s;--s:2.4px"></i><i class="p" style="left:8%;top:30%;--d:5.2s;--dl:-0.9s;--s:1.6px"></i><i class="p" style="left:92%;top:31%;--d:3.9s;--dl:-2.6s;--s:2px"></i><i class="p" style="left:6%;top:59%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="p" style="left:93%;top:57%;--d:6.1s;--dl:-0.2s;--s:1.6px"></i></div></div><div class="lanterns" aria-hidden="true"><span class="lnt" style="left:6%;--w:32;--t:46s;--dl:-28.5s;--ry:54%"><img src="assets/img/fl-lantern-1.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:17%;--w:20;--t:58s;--dl:-26.1s;--ry:31%"><img src="assets/img/fl-lantern-2.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:79%;--w:28;--t:52s;--dl:-40.6s;--ry:15%"><img src="assets/img/fl-lantern-3.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:88%;--w:22;--t:64s;--dl:-21.1s;--ry:28%"><img src="assets/img/fl-lantern-4.webp" alt="" decoding="async" fetchpriority="low"></span></div><div class="floaters" aria-hidden="true"><div class="fl-lane fl-low fl-girl"><span class="fl-track"><img src="assets/img/balloon-only.webp" alt="" width="290" height="520" decoding="async" fetchpriority="low"></span></div></div>
     <div class="wrap hero-copy">
       <h1 class="hl" id="hero-h"><span class="w" style="--i:0">Learn</span> <span class="w" style="--i:1">the</span> <span class="w" style="--i:2">backstory</span> <span class="w" style="--i:3">of</span> <span class="w" style="--i:4">any</span> <span class="w" style="--i:5">place</span> <span class="w" style="--i:6">on</span> <span class="w" style="--i:7"><em>Earth.</em></span></h1>
       <p class="sub">Your personal tour guide, worldwide.</p>
@@ -710,15 +913,16 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
       <div class="ph l"><div class="iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel"><div class="scr"><span class="island"></span><img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAzNScgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSdkaXNjcmV0ZScgdGFibGVWYWx1ZXM9JzEgMScvPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzE2JyBoZWlnaHQ9JzM1JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1J0QUFBQUJYUlVKUVZsQTRJTVFBQUFCd0JRQ2RBU29RQUNNQVB0MWlxVStvcFNPaUtxZ0JFQnVKWkFDMitvTXFtK2dCa1VNRUt1T1RPdDJhbVkwR3pXNFVCRTBBQVBoajJBVS8zN1pWaHRWUXNndTE3YjVxeDlHVmswY25ZUnNsTXkvUDd3RG9kMmQ2c0ZmanBheTk2cVF5czVOdlpLRmptYjZNK1VXd2cyY25wdzJRQXhyM0w4NG02YVdBTnJmWUhURmlMNzhZcitvUWVuQ2Jlc0JLRjd1VXlMSXhwMzlmajVmZytUM2p4K3JsU05WTmtjRm85YzJMaUgvQ093WVQzMzJmQmcySnlPU1FRQ1NDREUxdWxHWUdRQUFBJy8+PC9zdmc+) 0 0/100% 100% no-repeat" class="shot" src="assets/img/phone-map.webp" srcset="assets/img/phone-map-480.webp 480w, assets/img/phone-map.webp 600w" sizes="(max-width: 760px) 33vw, min(247px, 15.4vw)" alt="" width="600" height="1304"></div></div></div></div>
       <div class="ph m"><div class="iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel"><div class="scr"><span class="island"></span><img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAzNScgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSdkaXNjcmV0ZScgdGFibGVWYWx1ZXM9JzEgMScvPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzE2JyBoZWlnaHQ9JzM1JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1Jzd0FBQUJYUlVKUVZsQTRJTUFBQUFEUUJBQ2RBU29RQUNNQVB0MVlwVXlvcFNPaU5WZ0lBUkFiaVdjQXhuMkwxcFZqaFhVajJucGhxeUlMRXc1WkFBRCs5Q3FnVVUrbHpXc3VTdXhjeDBRNHdaT1FmbDUyMHF5YVVNUzY4Ymh0dzk4VUgzTFY1M3MrQUc2bXcxMm9ZZ0RmVUVtY0RjZERYL1V6TXUzUUZDYVlLSUgzcVBSNTk3YTF1YlVOSkFBYlAyTTJWb2xYTmwzeHVYeEs1M21SUjZwOFFobk5XRnBaWDA3QnFLRnN6RExjbjNXYmlMb0NkRkZSVG00YmZxd2V0bG5KY3l3QlRoVjFCZTNDOHpwTjRBQT0nLz48L3N2Zz4=) 0 0/100% 100% no-repeat" class="shot" src="assets/img/phone-tours.webp" srcset="assets/img/phone-tours-480.webp 480w, assets/img/phone-tours.webp 600w" sizes="(max-width: 760px) 33vw, min(247px, 15.4vw)" alt="" width="600" height="1304"></div></div></div></div>
       <div class="ph r"><div class="iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel"><div class="scr"><span class="island"></span><img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAzNScgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSdkaXNjcmV0ZScgdGFibGVWYWx1ZXM9JzEgMScvPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzE2JyBoZWlnaHQ9JzM1JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1JvQUFBQUJYUlVKUVZsQTRJSFFBQUFDUUJBQ2RBU29RQUNNQVB0MWNwMDBvcFNPaUtxd0JFQnVKWXdDZEFCWnRqUzMwcWt1TjI5c3NuYldpbVFBQS91a3I5ZDNhWDVUNm1sdHJObzA3dER2V2xRa3NOWGlaWkZjZVI2VkhTbU1kSGp1YUE2SnlpcG1GNlowL2E1US9rdE4ybzNNUzVQUEhySUFCdDhDSVJXejhOUUFBQUE9PScvPjwvc3ZnPg==) 0 0/100% 100% no-repeat" class="shot" src="assets/img/phone-player.webp" srcset="assets/img/phone-player-480.webp 480w, assets/img/phone-player.webp 600w" sizes="(max-width: 760px) 33vw, min(247px, 15.4vw)" alt="" width="600" height="1304"></div></div></div></div>
-      <img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0OCAxMycgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzQ4JyBoZWlnaHQ9JzEzJyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1J2WUNBQUJYUlVKUVZsQTRXQW9BQUFBUUFBQUFMd0FBREFBQVFVeFFTSzRCQUFBQmtDM2J0bWs3WTY1OVRtemJ0bTNidG0zYnlhTnQyN1p0MjdhZGhSRmNmMEZFVEFBQ0Z3VWZFdllUUks0WEJZTC9mUjRDVk1wRFNCZDlwZEkrNGZNRzRva2djRUV3bFU4QWtiaExycFNYWXErOHRPMnJkU29EQlFoYVY0Y0FDajMybGhNVmhBQjlhdHlIbHcveUYva2RDK0ZiQXdwSlU4cDZzcEI0Q2sxSVV3SmVRQ0tGRzhXQ0FpTDRmWkg4alpoR21yaG95c1BZS1ZJb2I1WW9IcXIyaTVNeVpySXVFSWdDZ0R4UDNjMU1pSllSNHZsbFBPdktkRmZTODdYVXJtZEVUR3lQYUFNV0Zjdldmc0RKaU1vUCtCU1FzbjNpRkdqOW5FTUE0QmduWURvTFlkYVAzOXkxcnovZjlKbmRhODJNQitUVDhFQzAzSUR5NmxKOGc3ZVNiMXYwckZQL094L0huTUpPODBuSFQ1ckdjblB6RzI5cGZwbWVlYWNkNUlDc1FNWFBhZHArdU93c0EzMzRreVFkU1JvNisvWUZhZW40NHl2cCtDYlhtR3UvM3ZQekw5SVpiUnpwU0RwTmtvNEJPd2FzTFgvejloc2FhdWVNTWRaYVk0elIxdjF2L3pmR2FHMk10ZFpxYmF6Uit1bHpodkgzSFlZTkdEaXdlOXQyL2Vmdk9iUjMwNnBsRy9aZnVQZms4ZDJiVnk5Zk9YOWd6Y3hweXpadjNiYi85SmxkczBkM2JkVjkzTnpwVmxBNElDSUJBQUJ3QmdDZEFTb3dBQTBBUHRGV3BFeW9KS09pTlVnQkFCb0paQUNkTXQxZC9ub3NsNWZnYVhkbW5keGt0cmRSY2gzUkVyYmN0MTVaL2hXZ1drd0EvdXFZQWdzQXljR205YWJyeGprQ0hoa3dwUjN4QTBLVms3YTFWN1RiSStYV1lHeGdwc25qTmN1OVUrckkvaGZuV3JlOEE1R0JlNVBIdS9hcWQ2dmpIbHYwbXpOWnRoR3lMY0xxMERkbnRvVzZ3MzRZUWdITmlSTkZKZnZBYmVzeHpFQ043Y29yRDdDQTRpN3ROV25TdFMzRC9KcCtsRzFVanBndldwZ0NkVUdqTnRnS3VWZ2ZuLzRWVjUwcm5GdzB1SlZSSHFUa2hpVnFpakx3djd5WllyZzd4OCtsTmNkRHRLL2lGUWxTQWNnVjNWRk1MQSt6Wk1WVkpDVnh5MnVWZjN4TXNEdHBBRU9YRUhqdG04NXFrK01UZ0xmZ3VQZ3BNb1dicEx2UVBxYmZqQkVBQUE9PScvPjwvc3ZnPg==) 0 0/100% 100% no-repeat" class="strip" fetchpriority="high" src="assets/img/strip.webp" srcset="assets/img/strip-1200.webp 1200w, assets/img/strip.webp 2032w" sizes="(max-width: 760px) 210vw, min(1600px, 100vw)" alt="" width="2032" height="536">
+      <img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0OCAxMycgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzQ4JyBoZWlnaHQ9JzEzJyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1JnWURBQUJYUlVKUVZsQTRXQW9BQUFBUUFBQUFMd0FBREFBQVFVeFFTTEVCQUFBQmtDM2J0bWs3WTY2OWIyemJ0bTNiZG5JZDIrYWpiZHUyYmR1MnZkZGFJN2pNRjBURUJDQjBVWENSb3A4Z2R0UFlFUHpyT2doUktRY1JYZWFseXZ5RXo1cUpJNExRQmVGMFhBRkVFaSs1VWszS3ZuUXlCOVFKcmdnRkNQenJRUUNGSG51cWlncERpSzRhOS83Ri9hS2xmeVZBTkQ5QUlVMTZXVStXRUVlaE5lbVZFeWNra1ZJdEUwQUIwVnczaGs5TFpwTFdObzV5TUhheWxDaVVLNWFET24wVHBZdWZwak1Fb2dDZzBCTjdJd2ZpNW9CeWZHUThHOHQwVzk1eGZiWHRFUjBUQXhGM3dJS3llWUlHbm9pdWZBQlhBZW1EVXFTRjN6TU9Cb0NqSEkvcExJRlozMzl4NTk3K2ZOVm5kcy9WMCsrVFQ2SUNjUW9CeW1sTThSbThoWHpUdmtlalp0LzRLUDRVZHB4UFduNzBxQTAzdGJ2K2h2cW43bGxrMmtFT3lBM1UvSlE1NFAwbGF4anFnNThrYVVsUzA1bzNMMGhEeSs5ZlNNdlhCY2RjL2ZtT24zNlNWbnZha3BhazlValNNbVRMa0QzRFg3ejVtcHFldFZwclk0eldXbnZHL212KzFWcDdudGJHR09ONTJtalBlL3ljLy9uYjRLSDlCd3pvNWgvWWI5N3VnM3Mycmx5NmZ1LzVPNDhlM2JseCtkS2xzL3RYejVpNmRPT1dyZnRPbmRveGMyUVgzMjVqNTB3RkFGWlFPQ0F1QVFBQVVBY0FuUUVxTUFBTkFEN05WcU5NcDZTaklqVklBUEFaaVdnQW5UTGlHRGtSVzJqWk9mbEFKNEZBazdpWHRaTE84UjN5aGF3RVM4RG91UzcxV0xKbXp3TVN6QUQrNnBoTGZwbWtTZlNOUXVKTzgyaFJKTUVkOFFIV2ovZzBlY0FQU3k4TVdmZWdXSWJZZWJqWE1KbGdBM1dDem55bWY4V1Q1RmpLdG9YSFRtQXZhNXJ3WTBPRmlWZGkveTZBSWtVeG56TkZULzZKQmt1M2dMVVM0SXVHTXVGdzBvcjdPU3ZJWktSRnorY2JCaGdrbTFabnVGdTM2Und6c0ljdnVrTGRQSnd5VmRHcjh6K0o3dXNldndtT1drcHBMeDdyemRGTmRtSVc1b2lRYlFNVU03OUJsR0lIaS82UUF0Z3NmbHFmMEQ5blU0SFJGWkdnNW5hN3dBVnE5Z3N1MENQSWNXcWxZTFNIcC9NZi9qR0NaUWtZS1RnV3g0cms0V3dMUGJaSDZwc01HYStxekRLUGVWNXNBQUE9Jy8+PC9zdmc+) 0 0/100% 100% no-repeat" class="strip" fetchpriority="high" src="assets/img/strip-esrgan-2032.webp" srcset="assets/img/strip-esrgan-1200.webp 1200w, assets/img/strip-esrgan-2032.webp 2032w, assets/img/strip-esrgan-3000.webp 3000w, assets/img/strip-esrgan-4064.webp 4064w" sizes="(max-width: 760px) 170vw, min(1600px, 100vw)" alt="" width="2032" height="536">
     </div>
   </section>
 
   <section class="band sky" id="cities" aria-labelledby="cities-h">
+    <div class="floaters" aria-hidden="true"><div class="fl-lane fl-cities fl-airship"><span class="fl-track"><img loading="lazy" src="assets/img/fl-airship.webp" alt="" width="380" height="235" decoding="async" fetchpriority="low"></span></div></div>
     <div class="wrap">
       <div class="cities-head">
-        <h2 class="hl" id="cities-h">Tour <span class="die big" data-t="1 million+">1 million+</span><br>landmarks <em>and cities.</em></h2>
-        <p class="body">Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what’s there.</p>
+        <h2 class="hl" id="cities-h"><span class="cw" style="--i:0">Tour</span> <span class="cw die big" style="--i:1" data-t="1 million+">1 million+</span><br><span class="cw" style="--i:2"><em class="it-lm">landmarks</em></span> <span class="cw" style="--i:3"><em class="it-and">and</em> <em>cities.</em></span></h2>
+        <p class="body">Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.</p>
       </div>
       <ul class="cities">
         <li><span class="dio"><img decoding="async" src="assets/img/city-rome-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Rome</b></li>
@@ -734,6 +938,7 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
         <li><span class="dio"><img decoding="async" src="assets/img/city-cairo-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Cairo</b></li>
         <li><span class="dio"><img decoding="async" src="assets/img/city-rio-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Rio de Janeiro</b></li>
       </ul>
+      <p class="cities-more"><span data-m="3">…and many more.</span></p>
     </div>
   </section>
 
@@ -820,7 +1025,8 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
   </section>
 
   <section class="band sky" id="yourway" aria-labelledby="yourway-h">
-    <img decoding="async" class="yw-balloon" src="assets/img/sky-balloon.webp" alt="" width="209" height="260" loading="lazy">
+    <img decoding="async" class="yw-right" src="assets/img/fl-yw-bench-w.webp" alt="" width="340" height="266" loading="lazy">
+    <img decoding="async" class="yw-left yw-headphones" src="assets/img/fl-yw-headphones-w.webp" alt="" width="300" height="333" loading="lazy">
     <div class="wrap">
       <div class="yw-head">
         <h2 class="hl" id="yourway-h">Listen <em>your way.</em></h2>
@@ -886,7 +1092,7 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
         </article>
 
         <article class="card c-played played" style="--i:5">
-          <div class="cap"><h3>Played</h3><p>Come back to the tours you’ve played.</p></div>
+          <div class="cap"><h3>Stay on track</h3><p>Come back to the tours you’ve played.</p></div>
           <div class="viz" aria-hidden="true"><div class="stk" style="--r:-1.2deg"><div class="list" id="playedList">
             <div class="row"><img decoding="async" src="assets/img/st-giza-pyramids.webp" alt="" width="144" height="144" loading="lazy"><div><b>Pyramids of Giza</b><small>Giza</small></div><svg class="check" viewBox="0 0 30 30"><circle cx="15" cy="15" r="15"/><path d="M9.5 15.5l3.8 3.8 7.2-8"/></svg></div>
             <div class="row"><img decoding="async" src="assets/img/st-giza-pyramids.webp" alt="" width="144" height="144" loading="lazy"><div><b>Pyramids of Giza</b><small>Giza</small></div><svg class="check" viewBox="0 0 30 30"><circle cx="15" cy="15" r="15"/><path d="M9.5 15.5l3.8 3.8 7.2-8"/></svg></div>
@@ -902,10 +1108,11 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
     <div class="wrap">
       <img decoding="async" class="appicon" src="assets/img/balloon-270.webp" alt="" width="229" height="270" loading="lazy">
       <h2 class="hl" id="closing-h">Get Argo on the <em>App Store.</em></h2>
+      <div class="blimp blimp-ad-navy" style="--ar:1400/406"><div class="bf-track"><div class="blimp-in"><img decoding="async" src="assets/img/fl-adblimp-navy.webp" alt="" width="1400" height="406" loading="lazy"><p class="blimp-text" aria-hidden="true"><span>Get Argo on the <em>App Store.</em></span></p></div></div></div>
       <a class="badge" href="https://apps.apple.com/app/apple-store/id6823674049?pt=123373640&ct=website&mt=8"><img decoding="async" loading="lazy" src="assets/img/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
     </div>
-<div class="balloon-lane fly" aria-hidden="true"><img decoding="async" class="drift" src="assets/img/balloon-only.webp" alt="" width="290" height="520" loading="lazy"><img decoding="async" class="drift twin" src="assets/img/balloon-only.webp" alt="" width="290" height="520" loading="lazy"></div>
-        <div class="scene" data-art="wtwo1"><img decoding="async" src="assets/img/strip-wtwo1.webp" srcset="assets/img/strip-wtwo1-1200.webp 1200w, assets/img/strip-wtwo1.webp 2000w" sizes="(max-width: 760px) 210vw, 100vw" alt="A paper skyline of every continent with a walker and a cyclist" width="2000" height="604" loading="lazy"></div>
+<div class="balloon-lane fly" aria-hidden="true"><img decoding="async" class="drift" src="assets/img/balloon-only.webp" alt="" width="290" height="520" loading="lazy"></div>
+        <div class="scene" data-art="wtwo1"><img decoding="async" src="assets/img/strip-wtwo1-esrgan-2000.webp" srcset="assets/img/strip-wtwo1-esrgan-1200.webp 1200w, assets/img/strip-wtwo1-esrgan-2000.webp 2000w, assets/img/strip-wtwo1-esrgan-3000.webp 3000w, assets/img/strip-wtwo1-esrgan-4000.webp 4000w" sizes="(max-width: 760px) 170vw, min(1600px, 100vw)" alt="A paper skyline of every continent with a walker and a cyclist" width="2000" height="604" loading="lazy"></div>
   </section>
 
 </main>
@@ -1114,8 +1321,21 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
   if ("IntersectionObserver" in window) {
     const io2 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io2.unobserve(e.target); } }), { threshold: 0.18 });
     document.querySelectorAll(".cities, #cities, .bento, #anywhere").forEach((el) => io2.observe(el));
+    // The cities heading's entrance starts once most of it is on screen, clear of the bottom edge.
+    // Cities sky: park each piece flush with the left edge, fully in view (the point in its crossing where its left side
+    // meets the edge: 0.97 × piece / (lane + piece) of the way through); the CSS starts it once the heading is on screen.
+    const parkCity = () => document.querySelectorAll(".fl-cities:not([hidden]) .fl-track").forEach((tr) => {
+      const a = tr.getAnimations().find((x) => x.animationName === "flFly"); if (!a || document.getElementById("cities").classList.contains("head-in")) return;
+      const fw = tr.querySelector("img").getBoundingClientRect().width, lw = tr.parentElement.clientWidth, d = a.effect.getComputedTiming().duration;
+      a.currentTime = (0.97 * fw / (lw + fw)) * d;
+    });
+    window.__parkCity = parkCity;
+    requestAnimationFrame(parkCity); addEventListener("resize", parkCity);
+    const io3 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); const c = e.target.closest("#cities"); if (c) c.classList.add("head-in"); io3.unobserve(e.target); } }), { threshold: 0.6, rootMargin: "0px 0px -10% 0px" });
+    document.querySelectorAll(".cities-head").forEach((el) => io3.observe(el));
   } else {
-    document.querySelectorAll(".cities, #cities, .bento, #anywhere").forEach((el) => el.classList.add("in"));
+    document.querySelectorAll(".cities, #cities, .bento, #anywhere, .cities-head").forEach((el) => el.classList.add("in"));
+    const cs = document.getElementById("cities"); if (cs) cs.classList.add("head-in");
   }
 
   // The hero button's waveform moves while a tour plays.
@@ -1189,94 +1409,50 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
   }
   const drawEdges = () => { tears.forEach(drawTear); drawHole(); };
   const vs = $("variants");
-  function setEdges(v) {
-    document.documentElement.dataset.edges = v;
-    if (vs) vs.querySelectorAll("button[data-edges]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.edges === v)));
-    try { localStorage.setItem("argo.edges", v); } catch (e) {}
-    requestAnimationFrame(drawEdges);
-  }
-  if (vs) {
-    let saved = null; try { saved = localStorage.getItem("argo.edges"); } catch (e) {}
-    vs.addEventListener("click", (e) => {
-      const b = e.target.closest("button"); if (!b) return;
-      if (b.dataset.edges) setEdges(b.dataset.edges);
-    });
-    setEdges(saved || document.documentElement.dataset.edges);
-  } else drawEdges();
+  drawEdges();
   addEventListener("resize", drawEdges);
-  // Preview only: the from-home props with no outline or a white sticker rim.
-  const rimBtns = vs ? [...vs.querySelectorAll("button[data-rim]")] : [];
-  if (rimBtns.length) {
-    const props = [...document.querySelectorAll(".home-scene img")];
-    const setRim = (v) => {
-      props.forEach((im) => { const base = im.getAttribute("src").replace(/-w\.webp$/, ".webp"); im.setAttribute("src", v === "white" ? base.replace(/\.webp$/, "-w.webp") : base); });
-      rimBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.rim === v)));
-      try { localStorage.setItem("argo.rim", v); } catch (e) {}
-    };
-    let sr = null; try { sr = localStorage.getItem("argo.rim"); } catch (e) {}
-    setRim(sr === "white" ? "white" : "none");
-    rimBtns.forEach((b) => b.addEventListener("click", () => setRim(b.dataset.rim)));
-  }
-  // Preview only: the subtitle's colour.
-  const subBtns = vs ? [...vs.querySelectorAll("button[data-subc]")] : [];
-  if (subBtns.length) {
-    const setSubc = (v) => { document.documentElement.dataset.subc = v; subBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.subc === v))); try { localStorage.setItem("argo.subc", v); } catch (e) {} };
-    let sc = null; try { sc = localStorage.getItem("argo.subc"); } catch (e) {}
-    setSubc(["accent", "quiet", "grey"].includes(sc) ? sc : "grey");
-    subBtns.forEach((b) => b.addEventListener("click", () => setSubc(b.dataset.subc)));
-  }
-  // Preview only: button height, 48 or 40.
-  const btnBtns = vs ? [...vs.querySelectorAll("button[data-btn]")] : [];
-  if (btnBtns.length) {
-    const setBtn = (v) => { document.documentElement.dataset.btn = v; btnBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.btn === v))); try { localStorage.setItem("argo.btn", v); } catch (e) {} };
-    let sv = null; try { sv = localStorage.getItem("argo.btn"); } catch (e) {}
-    setBtn(sv === "40" ? "40" : "48");
-    btnBtns.forEach((b) => b.addEventListener("click", () => setBtn(b.dataset.btn)));
-  }
-  // Preview only: the balloon over the footer, on or off.
-  // Preview only: how the Auto Tour card loops (fade out and restart, or walk back).
-  const loopBtns = vs ? [...vs.querySelectorAll("button[data-autoloop]")] : [];
-  if (loopBtns.length) {
-    const setLoop = (v) => { document.documentElement.dataset.autoloop = v; loopBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.autoloop === v))); try { localStorage.setItem("argo.autoloop2", v); } catch (e) {} };
-    let sl = null; try { sl = localStorage.getItem("argo.autoloop2"); } catch (e) {}
-    setLoop(["fade", "back"].includes(sl) ? sl : document.documentElement.dataset.autoloop || "fade");
-    loopBtns.forEach((b) => b.addEventListener("click", () => setLoop(b.dataset.autoloop)));
-  }
-  const balBtns = vs ? [...vs.querySelectorAll("button[data-balloon]")] : [], lane = document.querySelector(".balloon-lane");
-  if (balBtns.length && lane) {
-    const setBal = (v) => { lane.hidden = v === "off"; lane.classList.toggle("fly", v === "fly"); balBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.balloon === v))); try { localStorage.setItem("argo.balloon", v); } catch (e) {} };
-    let sb = null; try { sb = localStorage.getItem("argo.balloon"); } catch (e) {}
-    setBal(["float", "fly", "off"].includes(sb) ? sb : "fly");
-    balBtns.forEach((b) => b.addEventListener("click", () => setBal(b.dataset.balloon)));
-  }
-  // Preview only: the hero landmark strip's outline (blue, white or none).
-  const rimhBtns = vs ? [...vs.querySelectorAll("button[data-rimh]")] : [], heroStrip = document.querySelector(".hero .strip");
-  if (rimhBtns.length && heroStrip) {
-    const NAMES = { blue: "strip", white: "strip-sky", none: "strip-none" };
-    const setRimh = (v) => {
-      const n = NAMES[v]; heroStrip.srcset = "assets/img/" + n + "-1200.webp 1200w, assets/img/" + n + ".webp 2032w"; heroStrip.src = "assets/img/" + n + ".webp";
-      rimhBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.rimh === v))); try { localStorage.setItem("argo.rimh", v); } catch (e) {}
-    };
-    let sr2 = null; try { sr2 = localStorage.getItem("argo.rimh"); } catch (e) {}
-    setRimh(NAMES[sr2] ? sr2 : "blue");
-    rimhBtns.forEach((b) => b.addEventListener("click", () => setRimh(b.dataset.rimh)));
-  }
-  // Preview only: the lock screen wallpaper on the Hands Free card.
-  const wallSel = $("wallSel"), wall = $("lkWall");
-  if (wallSel && wall) {
-    const setWall = (v) => { wall.src = "assets/img/wall-" + v + ".webp"; wallSel.value = v; try { localStorage.setItem("argo.wall2", v); } catch (e) {} };
-    let sw = null; try { sw = localStorage.getItem("argo.wall2"); } catch (e) {}
-    if (sw && [...wallSel.options].some((o) => o.value === sw)) setWall(sw);
-    wallSel.addEventListener("change", () => setWall(wallSel.value));
-  }
-  // Preview only: pick the closing art.
-  const footSel = $("footSel");
-  if (footSel) {
-    const scenes = [...document.querySelectorAll(".closing .scene[data-art]")];
-    const setFoot = (v) => { scenes.forEach((s) => { s.hidden = s.dataset.art !== v; }); footSel.value = v; try { localStorage.setItem("argo.foot", v); } catch (e) {} };
-    let sf = null; try { sf = localStorage.getItem("argo.foot"); } catch (e) {}
-    if (sf && scenes.some((s) => s.dataset.art === sf)) setFoot(sf);
-    footSel.addEventListener("change", () => setFoot(footSel.value));
+  // Preview only: the options panel lists the choices still open. Each is a value on <html>; the pieces of a spot carry
+  // data-spot and data-on (the values that show them).
+  if (vs) {
+    const FB = { girl: "balloon-only", coral: "fl-balloon-coral", sage: "fl-balloon-sage", lavender: "fl-balloon-lavender", blue: "fl-balloon-blue" };
+    const tog = vs.querySelector(".pv-toggle");
+    const setOpen = (o) => { vs.dataset.open = String(o); tog.setAttribute("aria-expanded", String(o)); try { localStorage.setItem("argo.opts.open", o ? "1" : "0"); } catch (e) {} };
+    let so = null; try { so = localStorage.getItem("argo.opts.open"); } catch (e) {}
+    setOpen(so !== "0");
+    tog.addEventListener("click", () => setOpen(vs.dataset.open !== "true"));
+    // Copy: the open choices and what each is set to, one per line, ready to paste back.
+    const copyBtn = vs.querySelector(".pv-copy");
+    if (copyBtn) copyBtn.addEventListener("click", async () => {
+      const text = [...vs.querySelectorAll(".pv-row")].map((r) => r.querySelector("span").textContent + ": " + r.querySelector("select").selectedOptions[0].textContent).join("\n");
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {}
+      if (!ok) { const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { ok = document.execCommand("copy"); } catch (e) {} ta.remove(); }
+      copyBtn.textContent = ok ? "Copied" : "Copy failed"; setTimeout(() => { copyBtn.textContent = "Copy"; }, 1600);
+    });
+    vs.querySelectorAll("select[data-opt]").forEach((sel) => {
+      const key = sel.dataset.opt, allowed = [...sel.options].map((o) => o.value);
+      const parts = [...document.querySelectorAll('[data-spot="' + key + '"]')];
+      const footer = key === "fball" ? [...document.querySelectorAll(".balloon-lane img")] : [];
+      // Panoramas: swap both strips' sources (phones capped near 2000 wide by the sizes hint, as on the site).
+      const swapPano = (v) => {
+        const heroImg = document.querySelector(".hero-art .strip"), footImg = document.querySelector('.closing .scene[data-art="wtwo1"] img');
+        const set3 = (img, base, wide, widths) => { if (!img) return;
+          if (v === "current") { img.sizes = "(max-width: 760px) 210vw, min(1600px, 100vw)"; img.srcset = "assets/img/" + base + "-1200.webp 1200w, assets/img/" + base + ".webp " + wide + "w"; img.src = "assets/img/" + base + ".webp"; return; }
+          img.sizes = "(max-width: 760px) 170vw, min(1600px, 100vw)"; img.srcset = widths.map((w) => "assets/img/" + base + "-" + v + "-" + w + ".webp " + w + "w").join(", "); img.src = "assets/img/" + base + "-" + v + "-" + widths[1] + ".webp"; };
+        set3(heroImg, "strip", 2032, [1200, 2032, 3000, 4064]); set3(footImg, "strip-wtwo1", 2000, [1200, 2000, 3000, 4000]);
+      };
+      const set = (v) => {
+        document.documentElement.dataset[key] = v; sel.value = v;
+        parts.forEach((el) => { el.hidden = !el.dataset.on.split(" ").includes(v); });
+        footer.forEach((im) => { im.src = "assets/img/" + FB[v] + ".webp"; });
+        if (key === "pano") swapPano(v);
+        if (key === "csky" && window.__parkCity) requestAnimationFrame(window.__parkCity);
+        try { localStorage.setItem("argo.opt." + key, v); } catch (e) {}
+      };
+      let sv = null; try { sv = localStorage.getItem("argo.opt." + key); } catch (e) {}
+      set(allowed.includes(sv) ? sv : sel.value);
+      sel.addEventListener("change", () => set(sel.value));
+    });
   }
   addEventListener("load", drawEdges);
   document.querySelectorAll("#anyArt img").forEach((im) => im.addEventListener("load", drawEdges));
@@ -1338,7 +1514,14 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
     const fade = L.fade ? (seg(t, 0, 0.4) * (1 - seg(t, L.period - 0.5, L.period))).toFixed(3) : "1";
     walker.style.left = x + "%"; walker.style.top = y + "%"; walker.style.opacity = fade;
     chip.style.top = y + "%"; chip.style.opacity = fade;
-    stops.forEach((s, i) => { const p = i === stop ? seg(t, arrived, arrived + 0.7) : 1; s.style.transform = "scale(" + (i === stop ? 1 + 0.1 * Math.sin(Math.PI * spring(p)) + 0.04 : 1).toFixed(3) + ")"; });
+    // A stop the walker stands at bounces once on arrival and rests a touch larger; that resting size eases in over the
+    // arrival and eases out over the first half second of the next leg, while the walker is still gathering pace.
+    stops.forEach((s, i) => {
+      let h = 0, b = 0;
+      if (i === stop) { h = soft(seg(t, arrived, arrived + 0.35)); b = 0.09 * Math.sin(Math.PI * spring(seg(t, arrived, arrived + 0.9))); }
+      else if (cur && i === cur[2]) h = 1 - soft(seg(t, cur[0], cur[0] + 0.5));
+      s.style.transform = "scale(" + (1 + 0.04 * h + b).toFixed(3) + ")";
+    });
     setText($("nxName"), NAMES[nextLeg[3]]);
     setText($("npStop"), NAMES[cur ? (prog > 0.5 ? cur[3] : cur[2]) : stop]);
     setOdo(odoA, cur ? legMetres(cur) * (1 - prog) : legMetres(nextLeg), 1);
@@ -1392,7 +1575,7 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
   // Discovered: the count rolls up by one and the newest landmark slides in.
   const odoD = $("odoD"); odo(odoD, 3);
   const FOUND = ["Pantheon", "Trevi Fountain", "Spanish Steps", "Piazza Navona", "Roman Forum", "Castel Sant’Angelo"];
-  const discA = $("discA"), discB = $("discB");
+  const discA = $("discA"), discB = $("discB"), dpins = [...document.querySelectorAll(".dpin")];
   function drawDisc(T) {
     // Six steps (47 to 52, one per landmark), then the tag fades out and the count starts again at 47.
     const K = Math.floor(T / 3.6), p = T % 3.6, k = K % FOUND.length;
@@ -1405,6 +1588,14 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
     setText(cur, FOUND[k]); setText(nxt, FOUND[(k + 1) % FOUND.length]);
     cur.style.opacity = (1 - e).toFixed(3); cur.style.transform = "translateY(" + (-e * 12).toFixed(2) + "px)";
     nxt.style.opacity = e.toFixed(3); nxt.style.transform = "translateY(" + ((1 - e) * 14).toFixed(2) + "px)";
+    // Pins: the Pantheon is already found when the count starts; each step's new landmark drops its pin as its tag
+    // slides in; every pin fades with the count when it starts again.
+    const drop = spring(seg(p, 0.55, 1.25));
+    dpins.forEach((pin, j) => {
+      const s = j === 0 || j <= k ? 1 : j === k + 1 ? drop : 0;
+      pin.style.opacity = (Math.min(1, s * 1.6) * reset).toFixed(3);
+      pin.style.transform = "translateY(" + ((1 - Math.min(s, 1)) * -12).toFixed(1) + "px) scale(" + s.toFixed(3) + ")";
+    });
   }
 
   // At your own pace: the listener picks the third stop, then the first, then the second.
