@@ -8,7 +8,7 @@
 <script>
   // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
   // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
-  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girl"; document.documentElement.dataset.csky = "airship"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "normal"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "soft"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "fewbal"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girl"; document.documentElement.dataset.csky = "airship"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "normal"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "soft"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
 </script>
 <meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta name="apple-itunes-app" content="app-id=6823674049">
@@ -309,7 +309,11 @@ h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
 .tour:hover .go { background: rgba(184, 217, 245, 0.22); }
 .tour[aria-pressed="true"] .go { background: var(--thread); color: #1B3A5C; }
 .tour:active .go { transform: scale(0.92); }
-.playing .tour[aria-pressed="true"] .go { display: none; }
+/* The playing row keeps its button, as a pause, right beside the wave (time · wave · pause). */
+.tour .ln .t { order: -1; }
+.tour .go .gi-pause { display: none; margin-left: 0; }
+.playing .tour[aria-pressed="true"] .go .gi-play { display: none; }
+.playing .tour[aria-pressed="true"] .go .gi-pause { display: block; }
 
 /* ---------- Footer: the night scene dissolves into it ---------- */
 .closing { background: linear-gradient(180deg, var(--night) 0%, #142C44 38%, #10233A 80%, var(--night) 100%); }
@@ -887,6 +891,27 @@ button:not(:disabled) { cursor: pointer; }
 #cities-h em.it-lm, [data-hit="landmarks"] #cities-h em.it-and { font-style: normal; font-weight: inherit; }
 [data-hit="landmarks"] #cities-h em.it-lm { font-style: italic; font-weight: 750; }
 
+/* "Premium-quality" above the listen heading: on phones half the heading's size read too small and sat tight on the
+   heading, so it gets a larger share and room below. */
+@media (max-width: 760px) { .hl .pre { font-size: 0.62em; margin-bottom: 0.55em; } }
+
+/* Phones: no sky lanterns (the narrow hero sky reads busy with them). */
+@media (max-width: 760px) { .lanterns { display: none; } }
+/* Hero balloon height on phones (option): "top" floats just under the nav (it passes behind "Learn the" only at the
+   centre), "mid" between the headline and the subtitle, "low" below the buttons (as before). */
+@media (max-width: 760px) {
+  [data-hbp="top"] .fl-low { top: 0.8%; }
+  [data-hbp="mid"] .fl-low { top: 31%; }
+}
+
+/* Options panel rows never run past the panel: the choice box shrinks (with an ellipsis) before the label does; on
+   phones the panel takes the screen's width less its margins. */
+.pv-row select { min-width: 0; flex: 0 1 auto; text-overflow: ellipsis; }
+.pv-row span { flex: 0 0 auto; }
+@media (max-width: 640px) { .pv-panel { width: calc(100vw - 24px); } .pv-row select { max-width: 58%; } }
+.pv-panel { grid-template-columns: minmax(0, 1fr); }
+.pv-row { min-width: 0; }
+
 </style>
 </head>
 <body>
@@ -900,7 +925,7 @@ button:not(:disabled) { cursor: pointer; }
 
 <main id="top">
   <section class="hero night" aria-labelledby="hero-h">
-    <div class="stars" aria-hidden="true"><div class="st-pin"><i class="w g" style="left:3%;top:6%;--d:4.2s;--dl:-0.5s;--s:2.4px"></i><i class="w" style="left:8%;top:22%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="w" style="left:5%;top:38%;--d:3.6s;--dl:-1.4s;--s:2px"></i><i class="w" style="left:12%;top:58%;--d:6.4s;--dl:-3.3s;--s:1.8px"></i><i class="w" style="left:16%;top:9%;--d:4.9s;--dl:-4.0s;--s:1.6px"></i><i class="w g" style="left:21%;top:49%;--d:5.2s;--dl:-0.9s;--s:2.6px"></i><i class="w" style="left:2%;top:64%;--d:3.9s;--dl:-2.6s;--s:1.6px"></i><i class="w" style="left:97%;top:5%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="w g" style="left:93%;top:18%;--d:6.1s;--dl:-0.2s;--s:2.8px"></i><i class="w" style="left:90%;top:33%;--d:3.7s;--dl:-3.1s;--s:1.6px"></i><i class="w" style="left:95%;top:47%;--d:5.5s;--dl:-2.4s;--s:2px"></i><i class="w" style="left:86%;top:61%;--d:4.6s;--dl:-4.4s;--s:1.8px"></i><i class="w" style="left:81%;top:12%;--d:5.1s;--dl:-1.1s;--s:1.6px"></i><i class="w" style="left:78%;top:50%;--d:6.7s;--dl:-3.8s;--s:2.2px"></i><i class="w" style="left:99%;top:66%;--d:4.0s;--dl:-0.7s;--s:1.6px"></i><i class="w" style="left:30%;top:3%;--d:5.4s;--dl:-2.9s;--s:1.6px"></i><i class="w" style="left:64%;top:5%;--d:3.8s;--dl:-1.6s;--s:2px"></i><i class="w" style="left:50%;top:2%;--d:6.2s;--dl:-4.7s;--s:1.6px"></i><i class="p g" style="left:4%;top:3%;--d:4.2s;--dl:-0.5s;--s:2px"></i><i class="p" style="left:22%;top:1.5%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="p" style="left:47%;top:3.5%;--d:3.6s;--dl:-1.4s;--s:2.2px"></i><i class="p" style="left:71%;top:2%;--d:6.4s;--dl:-3.3s;--s:1.6px"></i><i class="p g" style="left:95%;top:4%;--d:4.9s;--dl:-4.0s;--s:2.4px"></i><i class="p" style="left:8%;top:30%;--d:5.2s;--dl:-0.9s;--s:1.6px"></i><i class="p" style="left:92%;top:31%;--d:3.9s;--dl:-2.6s;--s:2px"></i><i class="p" style="left:6%;top:59%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="p" style="left:93%;top:57%;--d:6.1s;--dl:-0.2s;--s:1.6px"></i></div></div><div class="lanterns" aria-hidden="true"><span class="lnt" style="left:6%;--w:32;--t:46s;--dl:-28.5s;--ry:54%"><img src="assets/img/fl-lantern-1.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:17%;--w:20;--t:58s;--dl:-26.1s;--ry:31%"><img src="assets/img/fl-lantern-2.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:79%;--w:28;--t:52s;--dl:-40.6s;--ry:15%"><img src="assets/img/fl-lantern-3.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:88%;--w:22;--t:64s;--dl:-21.1s;--ry:28%"><img src="assets/img/fl-lantern-4.webp" alt="" decoding="async" fetchpriority="low"></span></div><div class="floaters" aria-hidden="true"><div class="fl-lane fl-low fl-girl"><span class="fl-track"><img src="assets/img/balloon-only.webp" alt="" width="290" height="520" decoding="async" fetchpriority="low"></span></div></div>
+    <div class="stars" aria-hidden="true"><div class="st-pin"><i class="w g" style="left:3%;top:6%;--d:4.2s;--dl:-0.5s;--s:2.4px"></i><i class="w" style="left:8%;top:22%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="w" style="left:5%;top:38%;--d:3.6s;--dl:-1.4s;--s:2px"></i><i class="w" style="left:12%;top:58%;--d:6.4s;--dl:-3.3s;--s:1.8px"></i><i class="w" style="left:16%;top:9%;--d:4.9s;--dl:-4.0s;--s:1.6px"></i><i class="w g" style="left:21%;top:49%;--d:5.2s;--dl:-0.9s;--s:2.6px"></i><i class="w" style="left:2%;top:64%;--d:3.9s;--dl:-2.6s;--s:1.6px"></i><i class="w" style="left:97%;top:5%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="w g" style="left:93%;top:18%;--d:6.1s;--dl:-0.2s;--s:2.8px"></i><i class="w" style="left:90%;top:33%;--d:3.7s;--dl:-3.1s;--s:1.6px"></i><i class="w" style="left:95%;top:47%;--d:5.5s;--dl:-2.4s;--s:2px"></i><i class="w" style="left:86%;top:61%;--d:4.6s;--dl:-4.4s;--s:1.8px"></i><i class="w" style="left:81%;top:12%;--d:5.1s;--dl:-1.1s;--s:1.6px"></i><i class="w" style="left:78%;top:50%;--d:6.7s;--dl:-3.8s;--s:2.2px"></i><i class="w" style="left:99%;top:66%;--d:4.0s;--dl:-0.7s;--s:1.6px"></i><i class="w" style="left:30%;top:3%;--d:5.4s;--dl:-2.9s;--s:1.6px"></i><i class="w" style="left:64%;top:5%;--d:3.8s;--dl:-1.6s;--s:2px"></i><i class="w" style="left:50%;top:2%;--d:6.2s;--dl:-4.7s;--s:1.6px"></i><i class="p g" style="left:4%;top:3%;--d:4.2s;--dl:-0.5s;--s:2px"></i><i class="p" style="left:22%;top:1.5%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="p" style="left:47%;top:3.5%;--d:3.6s;--dl:-1.4s;--s:2.2px"></i><i class="p" style="left:71%;top:2%;--d:6.4s;--dl:-3.3s;--s:1.6px"></i><i class="p g" style="left:95%;top:4%;--d:4.9s;--dl:-4.0s;--s:2.4px"></i><i class="p" style="left:8%;top:30%;--d:5.2s;--dl:-0.9s;--s:1.6px"></i><i class="p" style="left:92%;top:31%;--d:3.9s;--dl:-2.6s;--s:2px"></i><i class="p" style="left:6%;top:59%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="p" style="left:93%;top:57%;--d:6.1s;--dl:-0.2s;--s:1.6px"></i></div></div><div class="lanterns" aria-hidden="true"><span class="lnt" style="left:6%;--w:32;--t:46s;--dl:0s;--ry:54%"><img src="assets/img/fl-lantern-1.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:79%;--w:28;--t:52s;--dl:4.2s;--ry:15%"><img src="assets/img/fl-lantern-3.webp" alt="" decoding="async" fetchpriority="low"></span></div><div class="floaters" aria-hidden="true"><div class="fl-lane fl-low fl-girl"><span class="fl-track"><img src="assets/img/balloon-only.webp" alt="" width="290" height="520" decoding="async" fetchpriority="low"></span></div></div>
     <div class="wrap hero-copy">
       <h1 class="hl" id="hero-h"><span class="w" style="--i:0">Learn</span> <span class="w" style="--i:1">the</span> <span class="w" style="--i:2">backstory</span> <span class="w" style="--i:3">of</span> <span class="w" style="--i:4">any</span> <span class="w" style="--i:5">place</span> <span class="w" style="--i:6">on</span> <span class="w" style="--i:7"><em>Earth.</em></span></h1>
       <p class="sub">Your personal tour guide, worldwide.</p>
@@ -981,12 +1006,12 @@ button:not(:disabled) { cursor: pointer; }
         <p class="note" id="note" aria-live="polite"></p>
       </div>
       <ul class="tours" id="tours" aria-label="Tours">
-        <li><button class="tour" type="button" data-id="golden-gate-bridge" aria-pressed="true"><img decoding="async" loading="lazy" src="assets/img/city-sanfrancisco-t.webp" alt=""><span class="nm">Golden Gate Bridge</span><span class="mt">San Francisco · Narrated by Enzo</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:26</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
-        <li><button class="tour" type="button" data-id="eiffel-tower" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-paris-t.webp" alt=""><span class="nm">Eiffel Tower</span><span class="mt">Paris · Narrated by Morgan</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:32</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
-        <li><button class="tour" type="button" data-id="colosseum" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-rome-t.webp" alt=""><span class="nm">Colosseum</span><span class="mt">Rome · Narrated by Kira</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:33</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
-        <li><button class="tour" type="button" data-id="statue-of-liberty" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-newyork-t.webp" alt=""><span class="nm">Statue of Liberty</span><span class="mt">New York · Narrated by Luna</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:36</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
-        <li><button class="tour" type="button" data-id="tokyo-skytree" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-tokyo-t.webp" alt=""><span class="nm">Tokyo Skytree</span><span class="mt">Tokyo · Narrated by Quentin</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:25</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
-        <li><button class="tour" type="button" data-id="blue-mosque-istanbul" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-istanbul-t.webp" alt=""><span class="nm">Blue Mosque</span><span class="mt">Istanbul · Narrated by Skylar</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:41</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="golden-gate-bridge" aria-pressed="true"><img decoding="async" loading="lazy" src="assets/img/city-sanfrancisco-t.webp" alt=""><span class="nm">Golden Gate Bridge</span><span class="mt">San Francisco · Narrated by Enzo</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:26</span><span class="go" aria-hidden="true"><svg class="gi-play" viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><svg class="gi-pause" viewBox="0 0 10 12"><rect x="1" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/><rect x="6" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="eiffel-tower" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-paris-t.webp" alt=""><span class="nm">Eiffel Tower</span><span class="mt">Paris · Narrated by Morgan</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:32</span><span class="go" aria-hidden="true"><svg class="gi-play" viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><svg class="gi-pause" viewBox="0 0 10 12"><rect x="1" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/><rect x="6" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="colosseum" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-rome-t.webp" alt=""><span class="nm">Colosseum</span><span class="mt">Rome · Narrated by Kira</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:33</span><span class="go" aria-hidden="true"><svg class="gi-play" viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><svg class="gi-pause" viewBox="0 0 10 12"><rect x="1" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/><rect x="6" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="statue-of-liberty" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-newyork-t.webp" alt=""><span class="nm">Statue of Liberty</span><span class="mt">New York · Narrated by Luna</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:36</span><span class="go" aria-hidden="true"><svg class="gi-play" viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><svg class="gi-pause" viewBox="0 0 10 12"><rect x="1" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/><rect x="6" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="tokyo-skytree" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-tokyo-t.webp" alt=""><span class="nm">Tokyo Skytree</span><span class="mt">Tokyo · Narrated by Quentin</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:25</span><span class="go" aria-hidden="true"><svg class="gi-play" viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><svg class="gi-pause" viewBox="0 0 10 12"><rect x="1" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/><rect x="6" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="blue-mosque-istanbul" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-istanbul-t.webp" alt=""><span class="nm">Blue Mosque</span><span class="mt">Istanbul · Narrated by Skylar</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:41</span><span class="go" aria-hidden="true"><svg class="gi-play" viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><svg class="gi-pause" viewBox="0 0 10 12"><rect x="1" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/><rect x="6" y="0.5" width="3" height="11" rx="0.9" fill="currentColor"/></svg></span></span></button></li>
       </ul>
     </div>
   </section>
@@ -1324,13 +1349,35 @@ button:not(:disabled) { cursor: pointer; }
     // The cities heading's entrance starts once most of it is on screen, clear of the bottom edge.
     // Cities sky: park each piece flush with the left edge, fully in view (the point in its crossing where its left side
     // meets the edge: 0.97 × piece / (lane + piece) of the way through); the CSS starts it once the heading is on screen.
-    const parkCity = () => document.querySelectorAll(".fl-cities:not([hidden]) .fl-track").forEach((tr) => {
-      const a = tr.getAnimations().find((x) => x.animationName === "flFly"); if (!a || document.getElementById("cities").classList.contains("head-in")) return;
-      const fw = tr.querySelector("img").getBoundingClientRect().width, lw = tr.parentElement.clientWidth, d = a.effect.getComputedTiming().duration;
-      a.currentTime = (0.97 * fw / (lw + fw)) * d;
-    });
+    // Sky lanterns: each time one leaves the top it rises again from below as a different design, never one already in view.
+    // (The swap happens at the loop's turn, when it is below the landmark strip and unseen.) The eight are listed in full
+    // so the site's file list picks them up.
+    const LANTERN_IMGS = ["assets/img/fl-lantern-1.webp", "assets/img/fl-lantern-2.webp", "assets/img/fl-lantern-3.webp", "assets/img/fl-lantern-4.webp",
+      "assets/img/fl-lantern-5.webp", "assets/img/fl-lantern-6.webp", "assets/img/fl-lantern-7.webp", "assets/img/fl-lantern-8.webp"];
+    LANTERN_IMGS.forEach((u) => warmUrls.push(u));
+    // A different, random pair (or set) of designs on every page load.
+    { const pool = LANTERN_IMGS.slice(); for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+      document.querySelectorAll(".lnt img").forEach((im, i) => im.setAttribute("src", pool[i % pool.length])); }
+    document.querySelectorAll(".lnt").forEach((l) => l.addEventListener("animationiteration", (e) => {
+      if (e.target !== l || e.animationName !== "lnRise") return;
+      const img = l.querySelector("img"), cur = LANTERN_IMGS.indexOf(img.getAttribute("src"));
+      const inView = new Set([...document.querySelectorAll(".lnt:not([hidden]) img")].map((i) => i.getAttribute("src")));
+      for (let k = 1; k < LANTERN_IMGS.length; k++) { const next = LANTERN_IMGS[(cur + k) % LANTERN_IMGS.length]; if (!inView.has(next)) { img.setAttribute("src", next); break; } }
+    }));
+    const parkAtEdge = (tr) => {
+      const a = tr.getAnimations().find((x) => x.animationName === "flFly"); if (!a) return;
+      const fw = tr.querySelector("img").getBoundingClientRect().width, lw = tr.parentElement.clientWidth, t = a.effect.getTiming();
+      // the point where its left side meets the edge; a negative start offset needs whole loops added (a time before 0 shows nothing)
+      let c = (0.97 * fw / (lw + fw)) * t.duration + t.delay; while (c < 0) c += t.duration;
+      a.currentTime = c;
+    };
+    const parkCity = () => { if (!document.getElementById("cities").classList.contains("head-in")) document.querySelectorAll(".fl-cities:not([hidden]) .fl-track").forEach(parkAtEdge); };
     window.__parkCity = parkCity;
     requestAnimationFrame(parkCity); addEventListener("resize", parkCity);
+    // The hero balloon likewise starts flush with the left edge, fully in view, and sets off at once (the hero is on screen).
+    const parkHero = () => document.querySelectorAll(".hero .fl-low:not([hidden]) .fl-track").forEach(parkAtEdge);
+    window.__parkHero = parkHero;
+    requestAnimationFrame(parkHero);
     const io3 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); const c = e.target.closest("#cities"); if (c) c.classList.add("head-in"); io3.unobserve(e.target); } }), { threshold: 0.6, rootMargin: "0px 0px -10% 0px" });
     document.querySelectorAll(".cities-head").forEach((el) => io3.observe(el));
   } else {
@@ -1447,6 +1494,7 @@ button:not(:disabled) { cursor: pointer; }
         footer.forEach((im) => { im.src = "assets/img/" + FB[v] + ".webp"; });
         if (key === "pano") swapPano(v);
         if (key === "csky" && window.__parkCity) requestAnimationFrame(window.__parkCity);
+        if (key === "hball" && window.__parkHero) requestAnimationFrame(window.__parkHero);
         try { localStorage.setItem("argo.opt." + key, v); } catch (e) {}
       };
       let sv = null; try { sv = localStorage.getItem("argo.opt." + key); } catch (e) {}
