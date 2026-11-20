@@ -3,155 +3,1462 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Argo: Privacy Policy and Terms of Use</title>
-<meta name="description" content="Argo: your personal audio tour guide, worldwide. Privacy Policy and Terms of Use.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500;600&display=swap">
+<title>Argo: Audio Tours Worldwide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<script>
+  // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
+  // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.subc = "grey"; })();
+</script>
+<meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta name="apple-itunes-app" content="app-id=6823674049">
+<meta name="theme-color" content="#030A24">
+<link rel="canonical" href="https://discoverargo.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Argo">
+<meta property="og:url" content="https://discoverargo.com/">
+<meta property="og:title" content="Argo: Audio Tours Worldwide">
+<meta property="og:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta property="og:image" content="https://discoverargo.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Argo on three iPhones behind a paper skyline of world landmarks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Argo: Audio Tours Worldwide">
+<meta name="twitter:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta name="twitter:image" content="https://discoverargo.com/og.jpg">
+<link rel="preload" href="assets/fonts/FrauncesVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/FrauncesItalicVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/InterRegular.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  /* Layout: a single left-aligned reading column on the app's dark ground. */
-  :root {
-    color-scheme: dark;
-    --ground: #0d1226;
-    --ink: #e6eaf4;
-    --muted: #8f99b3;
-    --rule: rgba(201, 226, 245, 0.12);
-    --link: #c9e2f5;
-    --display: "Fraunces", Georgia, serif;
-    --body: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/FrauncesVariable.woff2") format("woff2"); font-weight: 650 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/FrauncesItalicVariable.woff2") format("woff2"); font-weight: 650 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("assets/fonts/InterRegular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("assets/fonts/InterMedium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("assets/fonts/InterSemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    background: var(--ground);
-    color: var(--ink);
-    font-family: var(--body);
-    font-size: 0.975rem;
-    line-height: 1.65;
-  }
+/* Layout: five full-width bands in the App Store set's order and grounds (night, sky, night, sky, night), each led by
+   its store headline; the app's own player plays real tours in the middle band. One look, by design: Argo's night. */
+:root {
+  color-scheme: dark;
+  --night: #030A24;          /* Abyss, the store set's night ground */
+  --night-raised: #0B1534;
+  --on-night: #EFF1F7;
+  --on-night-muted: #A6B1CF;
+  --thread: #B8D9F5;         /* the accent: italic words, highlights, progress */
+  --sun: #F2B090;
+  --sky: #7DB8ED;            /* the store set's day ground */
+  --navy: #0E1630;           /* ink on the sky */
+  --navy-muted: #2B3D66;
+  --paper: #FFFFFF;
+  --hairline: rgba(184, 217, 245, 0.14);
+  --sheet-top: #192444;      /* the app's player sheet, sampled from a capture */
+  --sheet-mid: #12182E;
+  --sheet-low: #070915;
+  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --device: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+  --gutter-l: max(16px, 4vw, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, 4vw, env(safe-area-inset-right, 0px));
+  --dots-night: radial-gradient(rgba(184, 217, 245, 0.10) 1.35px, transparent 1.7px);
+  --dots-sky: radial-gradient(rgba(255, 255, 255, 0.30) 1.2px, transparent 1.55px);
+}
 
-  .page {
-    max-width: 40rem;
-    margin: 0 auto;
-    padding-left: max(20px, env(safe-area-inset-left, 0px));
-    padding-right: max(20px, env(safe-area-inset-right, 0px));
-    padding-block: clamp(3rem, 10vw, 6rem) 4rem;
-  }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--night); color: var(--on-night); font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--thread); outline-offset: 3px; border-radius: 6px; }
+.sky :focus-visible { outline-color: var(--navy); }
 
-  a { color: var(--link); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
-  a:hover { color: var(--ink); }
-  :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 3px; }
+.wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.band { position: relative; padding-block: clamp(4.5rem, 9vw, 7.5rem); }
+.night { background-color: var(--night); background-image: var(--dots-night); background-size: 16px 16px; }
+.sky { background-color: var(--sky); background-image: var(--dots-sky); background-size: 15px 15px; color: var(--navy); }
 
-  header h1 {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 2.25rem;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    font-variation-settings: "opsz" 144;
-    margin: 0;
-  }
-  header p { margin: 0.9rem 0 0; color: var(--muted); }
-  header nav { margin-top: 1.5rem; display: flex; gap: 1.25rem; font-size: 0.9rem; }
+/* Store headline type: Fraunces at 800, soft and a little wonky, an italic word in the accent. */
+.hl { margin: 0; font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 96; letter-spacing: -0.02em; line-height: 1.02; text-wrap: balance; }
+.hl em { font-style: italic; font-weight: 750; color: var(--thread); }
+.sky .hl, .sky .hl em { color: var(--navy); }
+h1.hl { font-size: clamp(2.6rem, 6.6vw, 5.4rem); }
+h2.hl { font-size: clamp(2.2rem, 4.7vw, 3.75rem); }
+.body { margin: 1.25rem 0 0; max-width: 34rem; color: var(--on-night-muted); text-wrap: pretty; }
+.sky .body { color: var(--navy-muted); }
 
-  article {
-    border-top: 1px solid var(--rule);
-    margin-top: 3.5rem;
-    padding-top: 2.5rem;
-    scroll-margin-top: 1.5rem;
-  }
-  article h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin: 0;
-  }
-  .effective { margin: 0.25rem 0 0; font-size: 0.875rem; color: var(--muted); }
-  article h3 { font-size: 0.975rem; font-weight: 600; margin: 1.75rem 0 0.25rem; }
-  article p { margin: 0.25rem 0 0; }
-  article ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
-  article li + li { margin-top: 0.2rem; }
-  article li::marker { color: var(--muted); }
+/* A word cut out of white paper, as on the store's second slide. */
+.die { position: relative; display: inline-block; isolation: isolate; white-space: nowrap; }
+.die::before { content: attr(data-t); position: absolute; inset: 0; z-index: -1; color: var(--paper); -webkit-text-stroke: 0.2em var(--paper); filter: drop-shadow(0 0.07em 0.09em rgba(11, 16, 31, 0.3)); }
+.die.big { font-size: 1.32em; line-height: 1.05; }
 
-  footer {
-    border-top: 1px solid var(--rule);
-    margin-top: 3.5rem;
-    padding-top: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0.5rem 1.5rem;
-    font-size: 0.875rem;
-    color: var(--muted);
-  }
-  footer span { user-select: all; color: var(--ink); }
+/* The App Store badge. */
+.badge { display: inline-flex; flex: none; border-radius: 10px; text-decoration: none; transition: transform 160ms ease; }
+.badge img { display: block; width: 168px; height: auto; }
+.badge:hover { transform: translateY(-1px); }
+.badge:active { transform: scale(0.97); }
 
-  @media (prefers-reduced-motion: no-preference) {
-    html { scroll-behavior: smooth; }
-  }
+/* Top bar */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; }
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: var(--display); font-weight: 700; font-variation-settings: "SOFT" 100, "opsz" 48; font-size: 1.45rem; letter-spacing: -0.01em; }
+.brand img { width: auto; height: 34px; }
+.pill { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 40px; padding: 0 1.05rem; border-radius: 999px; border: 1px solid rgba(184, 217, 245, 0.35); background: rgba(184, 217, 245, 0.06); text-decoration: none; font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: background 160ms ease, transform 160ms ease; }
+.pill:hover { background: rgba(184, 217, 245, 0.14); }
+.pill:active { transform: scale(0.97); }
+
+/* Hero */
+.hero { padding-block: 0; overflow: hidden; }
+.hero-copy { text-align: center; padding-top: clamp(2.5rem, 7vw, 5rem); display: grid; justify-items: center; }
+.hero .lede { width: 100%; margin: 1.35rem 0 0; font-size: clamp(1.1rem, 1.8vw, 1.3rem); color: var(--on-night-muted); max-width: 36rem; text-wrap: balance; }
+.ctas { margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.9rem 1rem; }
+.hear { min-height: 56px; padding: 0 1.4rem 0 1.15rem; font-size: 1rem; border-color: rgba(184, 217, 245, 0.45); }
+.hear .ico { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--thread); color: #1B3A5C; }
+.hear .ico svg { width: 11px; height: 11px; margin-left: 2px; }
+
+.hero-art { position: relative; width: min(1600px, 100%); margin: clamp(1.5rem, 4vw, 2.5rem) auto 0; aspect-ratio: 1920 / 860; }
+.hero-art > * { position: absolute; }
+.hero-art .ph { width: 15.4%; top: 6%; padding: 0.4%; border-radius: 9% / 4.2%; background: #10131C; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 24px 60px rgba(0, 0, 0, 0.55); }
+.hero-art .ph img { width: 100%; aspect-ratio: 1320 / 2868; border-radius: 8.4% / 3.9%; object-fit: cover; }
+.hero-art .ph.l { left: 25.6%; top: 11.7%; rotate: -4deg; z-index: 2; }
+.hero-art .ph.m { left: 42.3%; top: 6.1%; z-index: 3; }
+.hero-art .ph.r { left: 59%; top: 11.7%; rotate: 4deg; z-index: 2; }
+.hero-art .strip { left: 0; right: 0; bottom: 0; width: 100%; z-index: 5; }
+@media (max-width: 760px) {
+  .hero-art { width: 210vw; max-width: none; margin-left: 50%; translate: -50% 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-art .ph { animation: rise 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .hero-art .ph.m { animation-delay: 80ms; }
+  .hero-art .ph.r { animation-delay: 180ms; }
+  @keyframes rise { from { transform: translateY(18%); } to { transform: none; } }
+}
+
+/* Cities (sky) */
+.cities-head { display: grid; justify-items: center; text-align: center; }
+.cities-head .body { text-align: center; }
+.cities { list-style: none; margin: clamp(2.5rem, 5vw, 3.75rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem 1rem; }
+@media (min-width: 640px) { .cities { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 980px) { .cities { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 2.25rem 1.25rem; } }
+.cities li { display: grid; justify-items: center; text-align: center; min-width: 0; }
+.cities img { width: 100%; aspect-ratio: 440 / 390; object-fit: contain; filter: drop-shadow(0 12px 14px rgba(14, 22, 48, 0.28)); }
+.cities b { margin-top: 0.55rem; font-size: 0.98rem; font-weight: 600; line-height: 1.25; }
+.cities span { font-size: 0.82rem; color: var(--navy-muted); }
+
+/* Listen (night): the app's player */
+.listen { display: grid; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "device" "tours"; }
+@media (min-width: 900px) {
+  .listen { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "copy device" "tours device"; row-gap: 2rem; align-items: start; }
+  .listen-copy { align-self: end; }
+}
+.listen-copy { grid-area: copy; }
+.hl .pre { display: block; font-size: 0.5em; font-weight: 700; color: var(--thread); letter-spacing: -0.005em; margin-bottom: 0.3em; }
+.tours { grid-area: tours; list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; max-width: 34rem; }
+.tour { width: 100%; display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; align-items: center; gap: 0.25rem 0.9rem; padding: 0.55rem 0.9rem 0.55rem 0.55rem; border-radius: 16px; border: 1px solid transparent; background: transparent; text-align: left; cursor: pointer; transition: background 160ms ease, border-color 160ms ease; }
+.tour:hover { background: rgba(184, 217, 245, 0.06); }
+.tour[aria-pressed="true"] { background: rgba(184, 217, 245, 0.08); border-color: rgba(184, 217, 245, 0.3); }
+.tour img { grid-row: span 2; width: 52px; height: 52px; object-fit: contain; border-radius: 12px; background: var(--night-raised); padding: 3px; }
+.tour .nm { font-weight: 600; line-height: 1.25; }
+.tour .mt { grid-column: 2; font-size: 0.85rem; line-height: 1.3; color: var(--on-night-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tour .ln { grid-row: 1 / span 2; grid-column: 3; font-size: 0.85rem; color: var(--on-night-muted); font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 0.5rem; }
+.eq { display: none; gap: 2px; align-items: end; height: 14px; }
+.eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--thread); transform-origin: bottom; }
+.playing .tour[aria-pressed="true"] .eq { display: inline-flex; }
+@media (prefers-reduced-motion: no-preference) {
+  .eq i { animation: eq 900ms ease-in-out infinite; }
+  .eq i:nth-child(2) { animation-delay: -300ms; }
+  .eq i:nth-child(3) { animation-delay: -600ms; }
+  @keyframes eq { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+}
+
+.device { grid-area: device; justify-self: center; width: clamp(286px, 78vw, 360px); }
+.phone { container-type: inline-size; position: relative; aspect-ratio: 1320 / 2868; padding: 2.2%; border-radius: 15.5% / 7.2%; background: #10131C; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 40px 80px rgba(0, 0, 0, 0.55); }
+.screen { position: relative; height: 100%; border-radius: 13.8% / 6.4%; overflow: hidden; background: #030207; font-family: var(--device); color: #fff; display: flex; flex-direction: column; }
+.status { flex: none; display: flex; justify-content: space-between; align-items: center; padding: 4.6cqw 8cqw 0 10cqw; height: 13.6cqw; font-size: 4.1cqw; font-weight: 600; }
+.status svg { height: 3.4cqw; width: auto; }
+.sheet { position: relative; flex: 1; display: flex; flex-direction: column; min-height: 0; margin-top: 1.4cqw; border-radius: 6.5cqw 6.5cqw 0 0; background: linear-gradient(180deg, var(--sheet-top) 0%, var(--sheet-mid) 38%, var(--sheet-low) 74%, #050811 100%); }
+.grab { width: 9cqw; height: 1.2cqw; border-radius: 1cqw; background: rgba(255, 255, 255, 0.25); margin: 2.2cqw auto 0; }
+.ph-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 2cqw; padding: 2.4cqw 4.4cqw 0; }
+.disc { width: 10.4cqw; height: 10.4cqw; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
+.disc svg { width: 4.6cqw; height: 4.6cqw; }
+.np { display: flex; align-items: center; justify-content: center; gap: 2.2cqw; min-width: 0; }
+.np img { width: 9cqw; height: 9cqw; object-fit: contain; flex: none; }
+.np div { display: grid; min-width: 0; line-height: 1.2; }
+.np b { font-size: 3.7cqw; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.np small { font-size: 2.9cqw; color: rgba(255, 255, 255, 0.55); }
+.read { position: relative; flex: 1; min-height: 0; overflow: hidden; margin-top: 2cqw; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 78%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 78%, transparent 100%); }
+.read-in { padding: 6cqw 6.8cqw 40cqw; transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+.read p { margin: 0 0 4.6cqw; font-size: 6.15cqw; line-height: 1.255; font-weight: 600; letter-spacing: -0.01em; transition: opacity 500ms ease; opacity: 0.32; }
+.read p.now, .read p.past { opacity: 1; }
+.read p.past { opacity: 0.5; }
+.read mark { background: none; color: var(--thread); }
+.read em { font-style: italic; }
+.prog { flex: none; padding: 2cqw 5cqw 0; }
+.track { position: relative; height: 5cqw; cursor: pointer; touch-action: none; }
+.track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 0.9cqw; translate: 0 -50%; border-radius: 1cqw; background: rgba(255, 255, 255, 0.12); }
+.fill { position: absolute; left: 0; top: 50%; height: 0.9cqw; width: 0; translate: 0 -50%; border-radius: 1cqw; background: var(--thread); }
+.knob { position: absolute; top: 50%; left: 0; width: 3.4cqw; height: 3.4cqw; border-radius: 50%; translate: -50% -50%; background: var(--thread); }
+.times { display: flex; justify-content: space-between; margin-top: 2.4cqw; font-size: 2.9cqw; color: rgba(255, 255, 255, 0.55); font-variant-numeric: tabular-nums; }
+.ctrls { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; justify-items: center; padding: 3.5cqw 4cqw 9cqw; }
+.ctrls .sp { font-size: 4.3cqw; font-weight: 500; color: rgba(255, 255, 255, 0.85); }
+.ctrls .ic { background: none; border: 0; padding: 0; color: rgba(255, 255, 255, 0.85); cursor: pointer; display: grid; place-items: center; width: 11cqw; height: 11cqw; }
+.ctrls .ic svg { width: 6.6cqw; height: 6.6cqw; }
+.pp { width: 16.5cqw; height: 16.5cqw; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer; background: #2B2C31; color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14); position: relative; }
+.pp svg { width: 6cqw; height: 6cqw; }
+.pp .i-pause { display: none; }
+.playing .pp .i-play { display: none; }
+.playing .pp .i-pause { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .listen:not(.played) .pp::after { content: ""; position: absolute; inset: -1.6cqw; border-radius: 50%; border: 0.6cqw solid var(--thread); opacity: 0; animation: ring 2.4s ease-out 1.2s 3; }
+  @keyframes ring { 0% { opacity: 0.7; transform: scale(0.88); } 70%, 100% { opacity: 0; transform: scale(1.18); } }
+}
+.end { position: absolute; left: 0; right: 0; bottom: 0; padding: 14cqw 6.8cqw 9cqw; display: grid; justify-items: center; gap: 4cqw; text-align: center; background: linear-gradient(180deg, rgba(5, 8, 17, 0) 0%, #050811 30%); }
+.end p { margin: 0; font-family: var(--body); font-weight: 600; font-size: 5.2cqw; }
+.end .badge img { width: 46cqw; }
+.end .again { background: none; border: 0; padding: 1.5cqw 3cqw; color: rgba(255, 255, 255, 0.7); font-size: 3.6cqw; font-weight: 500; cursor: pointer; text-decoration: underline; text-underline-offset: 0.25em; }
+.note { margin: 0.9rem 0 0; text-align: center; font-size: 0.85rem; color: var(--on-night-muted); min-height: 1.4em; }
+
+/* Mini-player, as in the app: it docks while a tour plays and the player is off screen. */
+.mini { position: fixed; z-index: 30; left: 50%; translate: -50% 0; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); width: min(420px, calc(100% - 32px)); display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 0.75rem; padding: 0.5rem 0.6rem 0.5rem 0.5rem; border-radius: 22px; background: rgba(21, 28, 54, 0.92); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); box-shadow: 0 0 0 1px rgba(184, 217, 245, 0.18), 0 18px 40px rgba(0, 0, 0, 0.5); cursor: pointer; }
+.mini img { width: 44px; height: 44px; object-fit: contain; }
+.mini div { display: grid; min-width: 0; line-height: 1.25; }
+.mini b { font-size: 0.92rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini small { font-size: 0.78rem; color: var(--on-night-muted); }
+.mini button { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, 0.08); color: #fff; display: grid; place-items: center; cursor: pointer; }
+.mini button svg { width: 15px; height: 15px; }
+
+/* Nearby (sky) and anywhere (night): art beside copy. */
+.split { display: grid; gap: clamp(2rem, 5vw, 4rem); align-items: center; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .split { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); } .split.flip > .art { order: 2; } }
+.art img { width: 100%; height: auto; -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); }
+.art.tall img { -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent); mask-composite: intersect; max-width: 560px; margin: 0 auto; }
+.steps { list-style: none; counter-reset: step; margin: 1.75rem 0 0; padding: 0; display: grid; gap: 1rem; max-width: 30rem; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2.1rem minmax(0, 1fr); gap: 0.9rem; align-items: baseline; color: var(--navy); }
+.steps li::before { content: counter(step); align-self: start; margin-top: -0.2rem; display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--paper); color: var(--navy); font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100; font-size: 1rem; box-shadow: 0 6px 14px rgba(14, 22, 48, 0.18); }
+.steps-h { margin: 2rem 0 0; font-size: 0.95rem; font-weight: 600; color: var(--navy); }
+
+.more { margin-top: clamp(3.5rem, 7vw, 5.5rem); padding-top: clamp(2.5rem, 5vw, 3.5rem); border-top: 1px solid var(--hairline); display: grid; gap: 2rem 3rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) { .more { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.more h3 { margin: 0; font-family: var(--display); font-weight: 700; font-variation-settings: "SOFT" 100, "opsz" 36; font-size: 1.45rem; letter-spacing: -0.01em; }
+.more p, .more ul { margin: 0.6rem 0 0; color: var(--on-night-muted); max-width: 30rem; }
+.more ul { padding-left: 1.1rem; }
+.more li + li { margin-top: 0.2rem; }
+.more li::marker { color: var(--thread); }
+
+/* Closing: the night panorama */
+.closing { padding-block: clamp(4.5rem, 9vw, 7rem) 0; background: linear-gradient(180deg, var(--night) 0%, #142C44 100%); text-align: center; overflow: hidden; }
+.closing .wrap { display: grid; justify-items: center; }
+.closing .appicon { width: auto; height: 96px; }
+.closing h2.hl { margin-top: 1.6rem; font-size: clamp(1.9rem, 3.8vw, 3rem); max-width: 18em; }
+.closing .badge { margin-top: 2rem; }
+.closing .scene { width: 100%; margin-top: clamp(-1rem, -3vw, 0rem); }
+.closing .scene img { width: 100%; height: auto; min-height: 240px; object-fit: cover; object-position: 50% 100%; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%); mask-image: linear-gradient(180deg, transparent 0%, #000 22%); }
+
+/* Footer. The privacy policy and terms have their own pages. */
+.site-foot { background: var(--night); padding-block: 1.75rem calc(1.75rem + env(safe-area-inset-bottom, 0px)); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem 1.5rem; font-size: 0.875rem; color: var(--on-night-muted); }
+.foot nav { display: flex; gap: 1.25rem; }
+.foot a { text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+.foot .mail { user-select: all; color: var(--on-night); }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (prefers-reduced-motion: reduce) { .read-in, .read p { transition: none; } }
+/* ---------- iPhone frame: titanium edge, black bezel, Dynamic Island, side buttons ---------- */
+.iphone { position: relative; padding: 1.2%; border-radius: 16.6% / 7.65%; background: linear-gradient(155deg, #B4BAC6 0%, #5A5F6B 13%, #2B2E36 38%, #1E2128 62%, #4D525E 85%, #A8AEBB 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 44px 70px -20px rgba(0, 0, 0, 0.7), 0 16px 30px rgba(0, 0, 0, 0.35); }
+.iphone .bezel { padding: 2.4%; border-radius: 15.6% / 7.2%; background: #040406; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07); }
+.iphone .scr, .phone.iphone .screen { position: relative; overflow: hidden; aspect-ratio: 1320 / 2868; height: auto; border-radius: 13.4% / 6.2%; background: #000; container-type: inline-size; }
+.iphone .island { position: absolute; z-index: 6; top: 2.7cqw; left: 50%; translate: -50% 0; width: 29cqw; height: 8.6cqw; border-radius: 99px; background: #000; }
+.iphone .b { position: absolute; width: 1.4%; background: linear-gradient(90deg, #9097A3, #3A3E47); }
+.iphone .b1 { left: -1%; top: 15.5%; height: 3.4%; border-radius: 3px 0 0 3px; }
+.iphone .b2 { left: -1%; top: 22%; height: 6%; border-radius: 3px 0 0 3px; }
+.iphone .b3 { left: -1%; top: 29.5%; height: 6%; border-radius: 3px 0 0 3px; }
+.iphone .b4 { right: -1%; top: 24%; height: 9.5%; border-radius: 0 3px 3px 0; background: linear-gradient(270deg, #9097A3, #3A3E47); }
+.iphone .shot { display: block; width: 100%; height: 100%; object-fit: cover; }
+.phone.iphone { container-type: normal; aspect-ratio: auto; padding: 1.2%; border-radius: 16.6% / 7.65%; background: linear-gradient(155deg, #B4BAC6 0%, #5A5F6B 13%, #2B2E36 38%, #1E2128 62%, #4D525E 85%, #A8AEBB 100%); }
+.phone.iphone .status { padding-top: 2.8cqw; height: 11.6cqw; }
+
+.hero-art .ph { width: 16.4%; padding: 0; border-radius: 0; background: none; box-shadow: none; }
+.hero-art .ph.l { left: 25.1%; }
+.hero-art .ph.m { left: 41.8%; }
+.hero-art .ph.r { left: 58.5%; }
+
+/* ---------- Buttons ---------- */
+/* The tour button wears the app's own play-button colours; the download button is solid. */
+.hear { gap: 0.6rem; padding: 0 1.5rem 0 1.25rem; border: 0; background: #B8DAF5; color: #10233A; box-shadow: inset 0 -2px 0 rgba(16, 35, 58, 0.12), 0 12px 26px rgba(0, 0, 0, 0.35); transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+.hear:hover { background: #CDE6FA; transform: translateY(-2px); box-shadow: inset 0 -2px 0 rgba(16, 35, 58, 0.12), 0 18px 34px rgba(0, 0, 0, 0.42); }
+.hear:active { transform: translateY(0) scale(0.97); }
+.hear .lbl { display: inline-flex; align-items: center; gap: 0.6rem; }
+.hear .tri { width: 12px; height: 14px; color: #1B3A5C; }
+.hear .eqs { display: none; gap: 2.5px; align-items: end; height: 14px; }
+.hear .eqs i { width: 3px; height: 100%; border-radius: 2px; background: #1B3A5C; transform-origin: bottom; }
+.is-playing .hear .tri { display: none; }
+.is-playing .hear .eqs { display: inline-flex; }
+.nav-dl { gap: 0.5rem; padding: 0 1.05rem 0 0.95rem; border-color: #FFFFFF; background: #FFFFFF; color: var(--navy); transition: background 180ms ease, transform 160ms ease; }
+.nav-dl svg { width: 14px; height: 14px; margin-top: -2px; }
+.nav-dl:hover { background: #E3EEFA; border-color: #E3EEFA; }
+.badge { box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35); transition: transform 180ms ease, box-shadow 180ms ease; }
+.badge:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45); }
+.end .badge, .closing .badge { box-shadow: none; }
+
+.tour .ln .t { min-width: 2.2rem; text-align: right; }
+.tour .go { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(184, 217, 245, 0.1); color: var(--thread); transition: background 160ms ease, color 160ms ease, transform 160ms ease; }
+.tour .go svg { width: 11px; height: 12px; margin-left: 2px; }
+.tour:hover .go { background: rgba(184, 217, 245, 0.22); }
+.tour[aria-pressed="true"] .go { background: var(--thread); color: #1B3A5C; }
+.tour:active .go { transform: scale(0.92); }
+.playing .tour[aria-pressed="true"] .go { display: none; }
+
+/* ---------- Footer: the night scene dissolves into it ---------- */
+.closing { background: linear-gradient(180deg, var(--night) 0%, #142C44 38%, #10233A 80%, var(--night) 100%); }
+.closing .scene img { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 84%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 84%, transparent 100%); }
+.site-foot { padding-block: 0.75rem calc(2rem + env(safe-area-inset-bottom, 0px)); }
+.closing .appicon { height: 104px; }
+.closing .scene { pointer-events: none; }
+.closing .badge { position: relative; z-index: 1; }
+.closing .scene img { min-height: 0; }
+
+/* ---------- Sparkles, sonar, reveals ---------- */
+.sparks { position: absolute; inset: 0; pointer-events: none; }
+.spark { position: absolute; display: block; }
+.art.sonar-host { position: relative; }
+.sonar { position: absolute; left: 49.9%; top: 80.2%; width: 46%; aspect-ratio: 1; translate: -50% -50%; pointer-events: none; }
+.sonar i { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.85); opacity: 0; }
+.hl .w { display: inline-block; }
+.closing .scene { position: relative; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hl .w { animation: wIn 950ms cubic-bezier(0.2, 0.75, 0.2, 1) both; animation-delay: calc(var(--i) * 70ms + 60ms); }
+  @keyframes wIn { from { opacity: 0; transform: translateY(0.42em) rotate(2.5deg); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+  .hero .ctas { animation: up 700ms cubic-bezier(0.2, 0.75, 0.2, 1) 180ms both; }
+  @keyframes up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hero-art .ph { animation-delay: 420ms; }
+  .hero-art .ph.m { animation-delay: 500ms; }
+  .hero-art .ph.r { animation-delay: 600ms; }
+  .spark { animation: twinkle var(--d, 3.2s) ease-in-out var(--dl, 0s) 3; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.2; transform: scale(0.5) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(45deg); } }
+  .sonar i { animation: sonar 3.6s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; }
+  .sonar i:nth-child(2) { animation-delay: 1.2s; }
+  .sonar i:nth-child(3) { animation-delay: 2.4s; }
+  @keyframes sonar { 0% { opacity: 0.9; transform: scale(0.08); } 100% { opacity: 0; transform: scale(1); } }
+  .closing .appicon { animation: bob 6s ease-in-out 3; }
+  @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-9px) rotate(1.5deg); } }
+  .is-playing .hear .eqs i, .chip .eqs i { animation: bar 900ms ease-in-out infinite; }
+  .hear .eqs i:nth-child(2), .chip .eqs i:nth-child(2) { animation-delay: -300ms; }
+  .hear .eqs i:nth-child(3), .chip .eqs i:nth-child(3) { animation-delay: -600ms; }
+  @keyframes bar { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
+  .yw-balloon { animation: bob 7s ease-in-out 3; }
+  /* Reveals move into place from a visible resting state; nothing waits hidden for the observer. */
+  .js .cities li { transition: transform 850ms cubic-bezier(0.34, 1.45, 0.64, 1) calc(var(--i) * 45ms); }
+  .js .cities:not(.in) li { transform: translateY(28px) scale(0.94); }
+  .js #cities .die { transform: rotate(-2deg); transition: transform 800ms cubic-bezier(0.34, 1.7, 0.64, 1) 120ms; }
+  .js #cities:not(.in) .die { transform: scale(1.32) rotate(-10deg); }
+  .js .bento .card { transition: transform 900ms cubic-bezier(0.34, 1.35, 0.64, 1) calc(var(--i) * 70ms); }
+  .js .bento:not(.in) .card { transform: translateY(34px) scale(0.97); }
+}
+
+/* ---------- Listen your way: the app's own pieces as stickers on the sky, each running on its own clock ---------- */
+#yourway { overflow: hidden; }
+.yw-balloon { position: absolute; right: max(5%, calc(50% - 600px)); top: clamp(2.5rem, 6vw, 4.5rem); width: clamp(64px, 8vw, 112px); height: auto; filter: drop-shadow(0 12px 18px rgba(14, 22, 48, 0.25)); }
+.yw-head { display: grid; justify-items: center; text-align: center; }
+.yw-head .body { text-align: center; }
+.bento { margin-top: clamp(2.75rem, 5vw, 4rem); display: grid; gap: clamp(2.75rem, 4.5vw, 3.5rem) clamp(1.5rem, 3vw, 2.75rem); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 700px) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } .c-auto, .c-pace { grid-column: span 2; } .c-lock { grid-row: span 2; } }
+@media (min-width: 1020px) {
+  .bento { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: "tour tour lock" "fav found lock" "pace pace played"; }
+  .c-auto { grid-area: tour; } .c-lock { grid-area: lock; } .c-fav { grid-area: fav; } .c-disc { grid-area: found; } .c-pace { grid-area: pace; } .c-played { grid-area: played; }
+}
+.card { position: relative; display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.card .cap { max-width: 25rem; }
+.card h3 { margin: 0; font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 36; font-size: 1.55rem; line-height: 1.1; letter-spacing: -0.015em; color: var(--navy); }
+.card .cap p { margin: 0.4rem 0 0; font-size: 0.95rem; line-height: 1.5; color: var(--navy-muted); }
+.card .viz { position: relative; flex: 1; }
+/* A piece of the app cut out with a white rim, as on the store screenshots. */
+.stk { position: relative; padding: 10px; border-radius: 24px; border: 4px solid var(--paper); background: linear-gradient(180deg, #16224A 0%, #0C1536 100%); color: var(--on-night); box-shadow: 0 18px 32px rgba(14, 22, 48, 0.3); rotate: var(--r, 0deg); }
+
+/* Odometer digits */
+.odo { display: inline-flex; height: 1em; line-height: 1; overflow: hidden; vertical-align: -0.12em; font-variant-numeric: tabular-nums; }
+.odo .oc { display: flex; flex-direction: column; will-change: transform; }
+.odo .oc span { height: 1em; display: block; }
+
+/* Auto Tour: a walk past paper landmarks, the distance chip following the walker */
+.autopill { display: inline-flex; align-items: center; gap: 0.7rem; height: 48px; padding: 0 1.3rem 0 1rem; border-radius: 15px; background: #FFFFFF; color: var(--navy); font-weight: 600; font-size: 0.95rem; box-shadow: 0 12px 24px rgba(14, 22, 48, 0.25); rotate: -1.5deg; }
+.autopill .wave { display: inline-flex; align-items: center; gap: 2.5px; height: 22px; padding-right: 0.7rem; border-right: 1px solid rgba(14, 22, 48, 0.14); }
+.autopill .wave i { width: 3px; height: 100%; border-radius: 2px; background: var(--c); }
+.autopill .tri { width: 10px; height: 11px; color: #6C6CFF; margin-right: 0.4rem; }
+.trail { position: relative; height: clamp(170px, 20vw, 200px); margin-top: 0.25rem; }
+.trail svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.stop { position: absolute; width: var(--w); max-width: 150px; height: auto; translate: -50% -86%; transform-origin: 50% 100%; filter: drop-shadow(0 10px 14px rgba(14, 22, 48, 0.28)); }
+.walker { position: absolute; z-index: 2; width: 18px; height: 18px; translate: -50% -50%; border-radius: 50%; background: #3D7BFF; box-shadow: 0 0 0 4px #FFFFFF, 0 6px 14px rgba(14, 22, 48, 0.4); }
+.chip { position: absolute; z-index: 3; display: inline-grid; align-items: center; height: 34px; padding: 0 0.85rem; border-radius: 99px; background: #FFFFFF; color: var(--navy); font-size: 0.85rem; white-space: nowrap; box-shadow: 0 8px 18px rgba(14, 22, 48, 0.25); }
+.chip > span { grid-area: 1 / 1; display: inline-flex; align-items: center; justify-self: center; gap: 0.4rem; }
+.chip svg { width: 14px; height: 14px; }
+.chip b { font-weight: 700; }
+.chip .eqs { display: inline-flex; gap: 2px; align-items: end; height: 12px; }
+.chip .eqs i { width: 3px; height: 100%; border-radius: 2px; background: #3D7BFF; transform-origin: bottom; }
+
+/* Lock Screen */
+.c-lock .viz { display: grid; place-items: center; }
+.c-lock .iphone { width: min(250px, 72%); rotate: 2.5deg; }
+.lock .wall { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 38% 100%; }
+.lock::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3, 10, 36, 0.35) 0%, rgba(3, 10, 36, 0) 40%, rgba(3, 10, 36, 0.25) 100%); }
+.lk-time { position: absolute; z-index: 2; left: 0; right: 0; top: 17cqw; text-align: center; font-family: var(--device); font-weight: 700; font-size: 24cqw; line-height: 1; letter-spacing: -0.03em; color: rgba(255, 255, 255, 0.92); }
+.lk-np { position: absolute; z-index: 2; left: 5cqw; right: 5cqw; bottom: 9cqw; padding: 5cqw; border-radius: 9cqw; background: rgba(28, 34, 58, 0.6); -webkit-backdrop-filter: blur(12px) saturate(1.3); backdrop-filter: blur(12px) saturate(1.3); color: #FFFFFF; font-family: var(--device); }
+.lk-row { display: flex; align-items: center; gap: 3.5cqw; }
+.lk-row img { width: 15cqw; height: 15cqw; object-fit: contain; border-radius: 3cqw; background: rgba(255, 255, 255, 0.08); }
+.lk-row div { display: grid; min-width: 0; line-height: 1.2; }
+.lk-row b { font-size: 5.2cqw; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lk-row small { font-size: 4.2cqw; color: rgba(255, 255, 255, 0.65); }
+.lk-bar { position: relative; height: 1.4cqw; margin-top: 4.5cqw; border-radius: 2cqw; background: rgba(255, 255, 255, 0.25); overflow: hidden; }
+.lk-bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: #FFFFFF; border-radius: 2cqw; }
+.lk-ctl { display: flex; justify-content: space-around; align-items: center; margin-top: 4cqw; }
+.lk-ctl svg { width: 7cqw; height: 7cqw; }
+.lk-fade { transition: none; }
+
+/* Favorites, Played, At your own pace: rows like the app's lists */
+.rows { display: grid; gap: 8px; }
+.row { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 0.8rem; padding: 0.5rem 0.6rem 0.5rem 0.5rem; border-radius: 16px; background: rgba(184, 217, 245, 0.06); }
+.row img { width: 48px; height: 48px; object-fit: contain; }
+.row div { display: grid; min-width: 0; line-height: 1.25; }
+.row b { font-size: 0.92rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row small { font-size: 0.78rem; color: var(--on-night-muted); }
+.heart { position: relative; width: 36px; height: 36px; display: grid; place-items: center; }
+.heart svg { position: absolute; width: 22px; height: 22px; }
+.heart .hf { color: var(--sun); opacity: 0; }
+.heart .burst { position: absolute; inset: 0; }
+.heart .burst i { position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px; border-radius: 50%; background: var(--sun); opacity: 0; }
+.pace .row { position: relative; z-index: 1; background: transparent; }
+.pace { position: relative; }
+.pace .hilite { position: absolute; left: 10px; right: 10px; top: 0; height: 64px; border-radius: 16px; background: rgba(184, 217, 245, 0.12); box-shadow: inset 0 0 0 1px rgba(184, 217, 245, 0.3); }
+.pace .pbtn { position: relative; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(184, 217, 245, 0.1); color: var(--thread); }
+.pace .pbtn svg { width: 11px; height: 12px; margin-left: 2px; }
+.pace .pbtn .eqm { display: none; gap: 2px; align-items: end; height: 13px; }
+.pace .pbtn .eqm i { width: 3px; height: 100%; border-radius: 2px; background: #10233A; transform-origin: bottom; }
+.pace .row.on .pbtn { background: var(--thread); color: #10233A; }
+.pace .row.on .pbtn svg { display: none; }
+.pace .row.on .pbtn .eqm { display: inline-flex; }
+.pace .tap { position: absolute; right: calc(10px + 0.6rem); top: 50%; width: 34px; height: 34px; margin-top: -17px; border-radius: 50%; border: 2px solid var(--thread); opacity: 0; pointer-events: none; z-index: 3; }
+.played .list { position: relative; border-radius: 16px; height: calc(3 * 64px + 2 * 8px); overflow: hidden; }
+.played .row { position: absolute; left: 0; right: 0; top: 0; height: 64px; }
+.check { width: 30px; height: 30px; }
+.check circle { fill: rgba(184, 217, 245, 0.14); }
+.check path { fill: none; stroke: var(--thread); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; }
+
+/* Discovered: the count on a paper tag, the newest landmark on a chip */
+.found { display: grid; justify-items: start; align-content: center; gap: 1.1rem; min-height: 190px; }
+.found .num { display: inline-block; padding: 0.08em 0.3em 0.12em; border-radius: 0.24em; background: var(--paper); color: var(--navy); font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144; font-size: clamp(4.4rem, 8vw, 5.8rem); line-height: 1; letter-spacing: -0.03em; rotate: -3deg; box-shadow: 0 18px 32px rgba(14, 22, 48, 0.28); }
+.found .new { position: relative; height: 2.4rem; width: 100%; }
+.found .new span { position: absolute; left: 0.4rem; top: 0; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; border-radius: 99px; background: var(--paper); color: var(--navy); font-weight: 600; font-size: 0.88rem; box-shadow: 0 8px 18px rgba(14, 22, 48, 0.22); white-space: nowrap; }
+.found .new span::before { content: "+1"; color: #3D7BFF; font-weight: 700; }
+
+/* ---------- Hero meets the sky: the landmark strip straddles the two bands ---------- */
+.hero { display: flow-root; overflow: visible; overflow-x: clip; position: relative; z-index: 2; } /* flow-root: the strip overflows into the sky instead of stretching the night */
+.hero .ctas { margin-top: 2rem; }
+.hero-art { --artw: min(1600px, 100vw); margin-bottom: calc(var(--artw) * -0.085); }
+@media (max-width: 760px) { .hero-art { --artw: 210vw; } }
+#cities { padding-top: calc(clamp(4.5rem, 9vw, 7.5rem) + min(1600px, 100vw) * 0.085); }
+@media (max-width: 760px) { #cities { padding-top: calc(3.5rem + 210vw * 0.085); } }
+
+/* ---------- Audit fixes ---------- */
+/* Art edges: a short feather on every side, so the labels inside the art stay whole. */
+.art img { -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent), linear-gradient(180deg, transparent, #000 5%, #000 95%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent), linear-gradient(180deg, transparent, #000 5%, #000 95%, transparent); mask-composite: intersect; }
+@media (min-width: 900px) { .art.tall img { max-width: 440px; } }
+/* Single column (under 900px): one centred axis for copy, art and lists. */
+@media (max-width: 899px) {
+  .art img { max-width: 560px; margin-inline: auto; }
+  .listen-copy, .split > div:not(.art) { text-align: center; }
+  .listen .body, .split .body { margin-inline: auto; }
+  .steps { margin-inline: auto; text-align: left; }
+  .tours { justify-self: center; width: 100%; }
+}
+@media (min-width: 700px) and (max-width: 1019px) { .c-played { grid-column: span 2; } .c-played .stk { max-width: 30rem; } }
+
+/* ---------- Round 6 ---------- */
+/* Hear a tour wears the app's Auto Tour pill. */
+.hear { min-height: 56px; gap: 0.75rem; padding: 0 1.4rem 0 1.05rem; border: 0; border-radius: 16px; background: #FFFFFF; color: var(--navy); font-weight: 600; box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35); }
+.hear:hover { background: #FFFFFF; transform: translateY(-2px); box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42); }
+.hear .wave { display: inline-flex; align-items: center; gap: 2.5px; height: 22px; padding-right: 0.75rem; border-right: 1px solid rgba(14, 22, 48, 0.14); }
+.hear .wave i { width: 3px; height: var(--h); border-radius: 2px; background: var(--c); transform-origin: center; }
+.hear .lbl { gap: 0.5rem; }
+.hear .tri, .is-playing .hear .tri { display: inline-block; width: 10px; height: 12px; color: #6C6CFF; }
+
+/* City art: a painted ground shadow instead of a CSS filter, and no motion. */
+.cities img { filter: none; }
+.cities li { isolation: isolate; }
+.dio { position: relative; display: block; width: 100%; }
+.dio::after { content: ""; position: absolute; z-index: -1; left: 10%; right: 10%; bottom: 0; height: 18%; border-radius: 50%; background: radial-gradient(closest-side, rgba(14, 22, 48, 0.3), rgba(14, 22, 48, 0)); }
+.js .cities li, .js .cities:not(.in) li { transform: none; transition: none; }
+
+/* From home: the copy stays in view beside the tall maps; the app's Explore This Area pill under it. */
+@media (min-width: 900px) { #anywhere .split { align-items: start; } }
+.eta { position: relative; display: inline-flex; align-items: center; gap: 0.55rem; margin-top: 1.6rem; height: 46px; padding: 0 1.2rem 0 0.95rem; border-radius: 99px; background: #FFFFFF; color: var(--navy); font-weight: 600; font-size: 0.95rem; box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35); }
+.eta svg { width: 22px; height: 22px; }
+.eta .ripple { position: absolute; inset: -6px; border-radius: 99px; border: 2px solid var(--thread); opacity: 0; pointer-events: none; }
+#anyArt .on-sky { display: none; }
+
+/* Torn edges (the store covers' tear): the night is a sheet of paper laid over the sky. */
+.tear, .hole { display: none; position: absolute; pointer-events: none; }
+/* The tear sits wholly on the sky side of the boundary, so it never paints over the section's own dots. */
+.tear { left: 0; width: 100%; height: 60px; z-index: 3; overflow: hidden; }
+.tear.t-top { top: -60px; }
+.tear.t-bot { top: 100%; }   /* not .top: the header owns that class */
+.hole { inset: 0; width: 100%; height: 100%; z-index: 0; }
+#anywhere > .wrap { position: relative; z-index: 1; }
+.closing { position: relative; overflow: visible; overflow-x: clip; }
+[data-edges="torn"] .tear, [data-edges="open"] .tear { display: block; }
+[data-edges="torn"] .band.night, [data-edges="open"] .band.night, [data-edges="torn"] .closing, [data-edges="open"] .closing { z-index: 1; }
+[data-edges="open"] #anywhere { background-color: var(--sky); background-image: var(--dots-sky); background-size: 15px 15px; }
+[data-edges="open"] .hole { display: block; }
+[data-edges="open"] #anyArt .on-night { display: none; }
+[data-edges="open"] #anyArt .on-sky { display: block; }
+
+/* Preview-only switcher for the edge variations. */
+.variants { position: fixed; z-index: 40; left: calc(12px + env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 3px; padding: 4px; border-radius: 99px; background: rgba(255, 255, 255, 0.96); color: var(--navy); font-size: 0.8rem; font-weight: 600; box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35); }
+.variants span { padding: 0 0.45rem 0 0.6rem; color: var(--navy-muted); }
+.variants button { border: 0; border-radius: 99px; padding: 0.42rem 0.75rem; background: transparent; color: var(--navy); font: inherit; cursor: pointer; }
+.variants button[aria-pressed="true"] { background: var(--navy); color: #FFFFFF; }
+.variants button, .variants span { white-space: nowrap; }
+@media (max-width: 640px) { .variants { left: 50%; translate: -50% 0; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); font-size: 0.75rem; } .variants button { padding: 0.4rem 0.6rem; } }
+@media (max-width: 899px) { [data-edges="open"] #anywhere .split { gap: 4.5rem; } }
+
+/* Faster first frame: the headline, buttons and phones are in place within about half a second. */
+@media (prefers-reduced-motion: no-preference) {
+  .hl .w { animation: wIn2 600ms cubic-bezier(0.2, 0.75, 0.2, 1) both; animation-delay: calc(var(--i) * 35ms); }
+  @keyframes wIn2 { from { opacity: 0; transform: translateY(0.22em); } to { opacity: 1; transform: none; } }
+  .hero .ctas { animation: up 520ms cubic-bezier(0.2, 0.75, 0.2, 1) 120ms both; }
+  .hero-art .ph { animation-duration: 900ms; animation-delay: 80ms; }
+  .hero-art .ph.m { animation-delay: 120ms; }
+  .hero-art .ph.r { animation-delay: 180ms; }
+  .js #cities .die { transition-duration: 520ms; transition-delay: 0ms; }
+  .js .bento .card { transition-duration: 600ms; transition-delay: calc(var(--i) * 40ms); }
+  .hear:hover .wave i, .is-playing .hear .wave i { animation: bar 900ms ease-in-out infinite; }
+  .hear .wave i:nth-child(2n) { animation-delay: -300ms; }
+  .hear .wave i:nth-child(3n) { animation-delay: -600ms; }
+  .js #anywhere.in .eta .ripple { animation: etaRipple 2.6s ease-out 0.5s 3; }
+  @keyframes etaRipple { 0% { opacity: 0.9; transform: scale(0.94); } 100% { opacity: 0; transform: scale(1.3); } }
+}
+
+/* ---------- Round 7 ---------- */
+/* Subtitle under the headline: the display face, quieter. */
+/* Subtitle: the body face, as in the cities paragraph, in the light blue accent. */
+.hero .sub { width: 100%; max-width: 36rem; margin: 1.35rem auto 0; font-family: var(--body); font-weight: 400; font-size: clamp(1rem, 1.45vw, 1.15rem); line-height: 1.6; color: var(--thread); text-wrap: balance; }
+.variants .sep { width: 1px; height: 18px; margin: 0 0.3rem; padding: 0; background: rgba(14, 22, 48, 0.15); }
+
+/* From home: a small cut-paper scene under the copy (the armchair by the window, a teacup, binoculars). */
+.home-scene { position: relative; width: min(100%, 380px); aspect-ratio: 380 / 400; margin-top: 2.5rem; }
+.home-scene img { position: absolute; height: auto; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.45)); }
+.hs-chair { left: 4%; top: 0; width: 76%; rotate: -3deg; }
+.hs-cup { right: 2%; bottom: 0; width: 30%; rotate: 7deg; }
+.hs-bino { left: 0; bottom: 4%; width: 30%; rotate: -10deg; }
+@media (max-width: 899px) { .home-scene { margin-inline: auto; } }
+
+/* Closing: the same night as the rest of the page; the paper scene's sky was graded to match. */
+.closing { background: var(--night); background-image: var(--dots-night); background-size: 16px 16px; }
+.closing .scene img { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 86%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 86%, transparent 100%); }
+
+/* Footer: one quiet row on the night, the brand at the start. */
+.site-foot { background: var(--night); padding-block: 0.7rem calc(0.9rem + env(safe-area-inset-bottom, 0px)); }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; font-size: 0.9rem; color: var(--on-night-muted); }
+.foot-brand { font-size: 1.2rem; }
+.foot-brand img { height: 28px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.foot nav a { color: var(--on-night-muted); text-decoration: none; }
+.foot nav a:hover { color: var(--on-night); text-decoration: underline; }
+.foot .mail { user-select: all; }
+@media (max-width: 640px) { .foot { flex-direction: column; text-align: center; } .foot nav { justify-content: center; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hear a tour breathes slowly at rest, faster on hover and while a tour plays. */
+  .hear .wave i { animation: barSoft 2.4s ease-in-out infinite; }
+  .hear .wave i:nth-child(1) { animation-delay: -0.2s; } .hear .wave i:nth-child(2) { animation-delay: -1.1s; } .hear .wave i:nth-child(3) { animation-delay: -0.6s; }
+  .hear .wave i:nth-child(4) { animation-delay: -1.7s; } .hear .wave i:nth-child(5) { animation-delay: -0.9s; } .hear .wave i:nth-child(6) { animation-delay: -2s; } .hear .wave i:nth-child(7) { animation-delay: -1.4s; }
+  .hear:hover .wave i, .is-playing .hear .wave i { animation-name: bar; animation-duration: 900ms; }
+  @keyframes barSoft { 0%, 100% { transform: scaleY(0.55); } 50% { transform: scaleY(1); } }
+  .hero .sub { animation: up 520ms cubic-bezier(0.2, 0.75, 0.2, 1) 80ms both; }
+  .hs-cup { animation: bob 6s ease-in-out 3; }
+}
+
+/* The art is re-rendered whole (nothing cut by the old slide frame), so no edge fades. */
+.art img, .art.tall img { -webkit-mask-image: none; mask-image: none; }
+@media (min-width: 900px) { .art.tall img { max-width: 520px; } }
+.sonar { left: 48.5%; top: 80%; width: 38%; }
+
+/* ---------- Closing in daylight ---------- */
+/* The page ends on the sky: it runs straight on from the cards, the day landmark strip mirrors the night one at the
+   top of the page, and the footer sits on the same ground under it. */
+.closing { background: var(--sky); background-image: var(--dots-sky); background-size: 15px 15px; color: var(--navy); padding-top: clamp(1rem, 3vw, 2.5rem); overflow-x: clip; }
+.closing .hl, .closing .hl em { color: var(--navy); }
+.closing .appicon { filter: drop-shadow(0 12px 16px rgba(14, 22, 48, 0.22)); }
+.closing .scene { width: 100%; margin: clamp(2rem, 5vw, 3.5rem) 0 0; pointer-events: none; }   /* edge to edge at every width */
+.closing .scene img { display: block; width: 100%; height: auto; min-height: 0; object-fit: fill; -webkit-mask-image: none; mask-image: none; }
+@media (max-width: 760px) { .closing .scene { width: 210vw; max-width: none; margin-left: 50%; translate: -50% 0; } }
+.site-foot { background: var(--sky); background-image: var(--dots-sky); background-size: 15px 15px; padding-block: 0.4rem calc(0.9rem + env(safe-area-inset-bottom, 0px)); }
+.foot { color: var(--navy-muted); }
+.foot-brand { color: var(--navy); }
+.foot nav a { color: var(--navy-muted); }
+.foot nav a:hover { color: var(--navy); }
+.site-foot :focus-visible { outline-color: var(--navy); }
+
+/* City art: the shadow is baked into each picture from the tile's own outline (no CSS ellipse, no CSS filter). */
+.dio::after { display: none; }
+/* Every tile sits on the same baseline whatever its height, so the names line up. */
+.dio { position: relative; display: block; width: 100%; aspect-ratio: 1 / 0.92; }
+.cities .dio img { position: absolute; left: 50%; bottom: -5%; translate: -50% 0; width: 112.7%; max-width: none; height: auto; aspect-ratio: auto; margin: 0; }
+.foot .mail { color: var(--navy-muted); }
+
+/* ---------- Closing art options ---------- */
+.variants label { padding: 0 0.3rem 0 0.4rem; color: var(--navy-muted); white-space: nowrap; }
+.variants select { font: inherit; color: var(--navy); background: rgba(14, 22, 48, 0.06); border: 0; border-radius: 99px; padding: 0.38rem 0.6rem; cursor: pointer; }
+.sc-balloon { position: relative; }
+.closing .scene img.drift { position: absolute; z-index: 2; left: 11%; top: -62%; width: 14%; height: auto; filter: drop-shadow(0 14px 18px rgba(14, 22, 48, 0.22)); }
+@media (max-width: 760px) { .closing .scene img.drift { left: 33%; top: -55%; width: 9%; } }
+.closing .cl-phones { margin: clamp(2rem, 5vw, 3.5rem) auto 0; }
+@media (max-width: 760px) { .closing .cl-phones { margin-left: 50%; } }
+.closing .cl-phones .ph { animation: none; }
+.closing .cl-phones.front .ph.m { width: 19%; left: 40.5%; top: 0; z-index: 3; }
+.closing .cl-phones.front .ph.l { width: 14%; left: 29%; top: 13%; rotate: -9deg; }
+.closing .cl-phones.front .ph.r { width: 14%; left: 57%; top: 13%; rotate: 9deg; }
+.closing .scene.land img { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 88%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 88%, transparent 100%); }
+.closing .scene.land { width: 100%; }
+@media (max-width: 760px) { .closing .scene.land { width: 160vw; margin-left: 50%; translate: -50% 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  .closing .scene img.drift { animation: drift 9s ease-in-out infinite; }
+  @keyframes drift { 0%, 100% { transform: translate(0, 0) rotate(-2deg); } 50% { transform: translate(14px, -10px) rotate(2deg); } }
+}
+
+/* ---------- From home: spacing ---------- */
+/* Desktop: the copy-and-scene column and the maps are about the same height, so centre them against each other. */
+@media (min-width: 900px) {
+  #anywhere .split { align-items: center; column-gap: clamp(2.5rem, 6vw, 5.5rem); }
+  #anywhere .home-scene { width: min(100%, 450px); margin-top: 2.25rem; }
+  #anywhere .eta { margin-top: 1.5rem; }
+}
+/* One column: the heading comes first and the art after it; the armchair scene steps aside, the maps fill the width. */
+@media (max-width: 899px) {
+  .split > .art { order: 2; }
+  #anywhere .home-scene { display: none; }
+  #anywhere .eta { margin-top: 1.4rem; }
+}
+
+/* The balloon drifts over the footer art, whichever one ships. */
+.balloon-lane { position: relative; z-index: 3; width: min(1600px, 100%); height: 0; margin: 0 auto; pointer-events: none; }
+.balloon-lane img { position: absolute; left: 9%; top: calc(-1 * clamp(5rem, 14vw, 13rem)); width: clamp(78px, 8.5vw, 140px); height: auto; filter: drop-shadow(0 16px 20px rgba(14, 22, 48, 0.22)); }
+@media (max-width: 760px) { .balloon-lane img { left: 5%; top: -3.25rem; width: 70px; } }
+@media (prefers-reduced-motion: no-preference) {
+  .balloon-lane img { animation: drift 9s ease-in-out infinite; }
+}
+
+/* ---------- Button height: the App Store badge and Hear a tour share one height (48 ships; the preview can try 40) ---------- */
+:root { --btn-h: 48px; }
+[data-btn="40"] { --btn-h: 40px; }
+.hero .badge img, .closing .badge img { width: auto; height: var(--btn-h); }
+.hero .badge, .closing .badge { border-radius: calc(var(--btn-h) * 0.18); }
+.hear { min-height: var(--btn-h); height: var(--btn-h); padding: 0 calc(var(--btn-h) * 0.42) 0 calc(var(--btn-h) * 0.32); border-radius: calc(var(--btn-h) * 0.28); font-size: calc(var(--btn-h) * 0.33); gap: calc(var(--btn-h) * 0.22); }
+.hear .wave { height: calc(var(--btn-h) * 0.42); padding-right: calc(var(--btn-h) * 0.22); }
+.hear .wave i { height: calc(var(--h) * var(--btn-h) / 56px); }
+.nav-dl { padding: 0 1.05rem; }
+
+/* ---------- Subtitle colour (the preview compares three; the site ships SUB_COLOUR) ---------- */
+:root { --sub-colour: var(--thread); }
+[data-subc="quiet"] { --sub-colour: #9DBCE0; }
+[data-subc="grey"] { --sub-colour: #A6B1CF; }
+.hero .sub { color: var(--sub-colour); }
+
+/* Lock screen wallpapers are cropped to the phone's shape already. */
+.lock .wall { object-position: 50% 50%; }
+/* Balloon, fly-across: it crosses the closing from left to right, leaves the screen and comes back in from the left. */
+.balloon-lane.fly { width: 100%; }
+.balloon-lane.fly img { left: 9%; }
+/* Fly across, wrapped: a twin balloon one screen-width behind, so as one slides off the right edge the other slides in
+   from the left at the same moment, and the hand-over at the end of each lap is invisible. */
+.balloon-lane img.twin { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .balloon-lane.fly img { animation: fly 34s linear infinite, drift 9s ease-in-out infinite; }
+  .balloon-lane.fly img.twin { display: block; animation-name: flyTwin, drift; }
+  @keyframes fly { from { left: 0%; } to { left: 100%; } }
+  @keyframes flyTwin { from { left: -100%; } to { left: 0%; } }
+}
+
+/* The preview switcher scrolls sideways when it is wider than the screen. */
+.variants { max-width: calc(100vw - 24px); overflow-x: auto; scrollbar-width: none; }
+.variants::-webkit-scrollbar { display: none; }
+
 </style>
-
 </head>
 <body>
-<main class="page">
-  <header>
-    <h1>Argo</h1>
-    <p>Your Personal Audio Tour Guide, Worldwide.</p>
-    <nav aria-label="Documents">
-      <a href="#privacy">Privacy Policy</a>
-      <a href="#terms">Terms of Use</a>
-    </nav>
+
+<div class="night">
+  <header class="wrap top">
+    <a class="brand" href="#top" aria-label="Argo, top of page"><img src="data:image/webp;base64,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" alt="" width="102" height="120"><span>Argo</span></a>
+    <a class="pill nav-dl" href="https://apps.apple.com/app/apple-store/id6823674049?pt=123373640&ct=website&mt=8">Download</a>
   </header>
+</div>
 
-  <article id="privacy">
-    <h2>Privacy Policy</h2>
-    <p class="effective">Effective November 17, 2026</p>
+<main id="top">
+  <section class="hero night" aria-labelledby="hero-h">
+    <div class="wrap hero-copy">
+      <h1 class="hl" id="hero-h"><span class="w" style="--i:0">Learn</span> <span class="w" style="--i:1">the</span> <span class="w" style="--i:2">backstory</span> <span class="w" style="--i:3">of</span> <span class="w" style="--i:4">any</span> <span class="w" style="--i:5">place</span> <span class="w" style="--i:6">on</span> <span class="w" style="--i:7"><em>Earth.</em></span></h1>
+      <p class="sub">Your personal tour guide, worldwide.</p>
+      <div class="ctas">
+        <a class="badge" href="https://apps.apple.com/app/apple-store/id6823674049?pt=123373640&ct=website&mt=8"><img src="data:image/svg+xml;base64,PHN2ZyBpZD0ibGl2ZXR5cGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjExOS42NjQwNyIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDExOS42NjQwNyA0MCI+CiAgPHRpdGxlPkRvd25sb2FkX29uX3RoZV9BcHBfU3RvcmVfQmFkZ2VfVVMtVUtfUkdCX2Jsa180U1ZHXzA5MjkxNzwvdGl0bGU+CiAgPGc+CiAgICA8Zz4KICAgICAgPGc+CiAgICAgICAgPHBhdGggZD0iTTExMC4xMzQ3NywwSDkuNTM0NjhjLS4zNjY3LDAtLjcyOSwwLTEuMDk0NzMuMDAyLS4zMDYxNS4wMDItLjYwOTg2LjAwNzgxLS45MTg5NS4wMTI3QTEzLjIxNDc2LDEzLjIxNDc2LDAsMCwwLDUuNTE3MS4xOTE0MWE2LjY2NTA5LDYuNjY1MDksMCwwLDAtMS45MDA4OC42MjdBNi40Mzc3OSw2LjQzNzc5LDAsMCwwLDEuOTk3NTcsMS45OTcwNyw2LjI1ODQ0LDYuMjU4NDQsMCwwLDAsLjgxOTM1LDMuNjE4MTZhNi42MDExOSw2LjYwMTE5LDAsMCwwLS42MjUsMS45MDMzMiwxMi45OTMsMTIuOTkzLDAsMCwwLS4xNzkyLDIuMDAyQy4wMDU4Nyw3LjgzMDA4LjAwNDg5LDguMTM3NywwLDguNDQ0MzRWMzEuNTU4NmMuMDA0ODkuMzEwNS4wMDU4Ny42MTEzLjAxNTE1LjkyMTlhMTIuOTkyMzIsMTIuOTkyMzIsMCwwLDAsLjE3OTIsMi4wMDE5LDYuNTg3NTYsNi41ODc1NiwwLDAsMCwuNjI1LDEuOTA0M0E2LjIwNzc4LDYuMjA3NzgsMCwwLDAsMS45OTc1NywzOC4wMDFhNi4yNzQ0NSw2LjI3NDQ1LDAsMCwwLDEuNjE4NjUsMS4xNzg3LDYuNzAwODIsNi43MDA4MiwwLDAsMCwxLjkwMDg4LjYzMDgsMTMuNDU1MTQsMTMuNDU1MTQsMCwwLDAsMi4wMDM5LjE3NjhjLjMwOTA5LjAwNjguNjEyOC4wMTA3LjkxODk1LjAxMDdDOC44MDU2Nyw0MCw5LjE2OCw0MCw5LjUzNDY4LDQwSDExMC4xMzQ3N2MuMzU5NCwwLC43MjQ2LDAsMS4wODQtLjAwMi4zMDQ3LDAsLjYxNzItLjAwMzkuOTIxOS0uMDEwN2ExMy4yNzksMTMuMjc5LDAsMCwwLDItLjE3NjgsNi44MDQzMiw2LjgwNDMyLDAsMCwwLDEuOTA4Mi0uNjMwOCw2LjI3NzQyLDYuMjc3NDIsMCwwLDAsMS42MTcyLTEuMTc4Nyw2LjM5NDgyLDYuMzk0ODIsMCwwLDAsMS4xODE2LTEuNjE0Myw2LjYwNDEzLDYuNjA0MTMsMCwwLDAsLjYxOTEtMS45MDQzLDEzLjUwNjQzLDEzLjUwNjQzLDAsMCwwLC4xODU2LTIuMDAxOWMuMDAzOS0uMzEwNi4wMDM5LS42MTE0LjAwMzktLjkyMTkuMDA3OC0uMzYzMy4wMDc4LS43MjQ2LjAwNzgtMS4wOTM4VjkuNTM2MTNjMC0uMzY2MjEsMC0uNzI5NDktLjAwNzgtMS4wOTE3OSwwLS4zMDY2NCwwLS42MTQyNi0uMDAzOS0uOTIwOWExMy41MDcxLDEzLjUwNzEsMCwwLDAtLjE4NTYtMi4wMDIsNi42MTc3LDYuNjE3NywwLDAsMC0uNjE5MS0xLjkwMzMyLDYuNDY2MTksNi40NjYxOSwwLDAsMC0yLjc5ODgtMi43OTk4LDYuNzY3NTQsNi43Njc1NCwwLDAsMC0xLjkwODItLjYyNywxMy4wNDM5NCwxMy4wNDM5NCwwLDAsMC0yLS4xNzY3NmMtLjMwNDctLjAwNDg4LS42MTcyLS4wMTA3NC0uOTIxOS0uMDEyNjktLjM1OTQtLjAwMi0uNzI0Ni0uMDAyLTEuMDg0LS4wMDJaIiBzdHlsZT0iZmlsbDogI2E2YTZhNiIvPgogICAgICAgIDxwYXRoIGQ9Ik04LjQ0NDgzLDM5LjEyNWMtLjMwNDY4LDAtLjYwMi0uMDAzOS0uOTA0MjktLjAxMDdhMTIuNjg3MTQsMTIuNjg3MTQsMCwwLDEtMS44NjkxNC0uMTYzMSw1Ljg4MzgxLDUuODgzODEsMCwwLDEtMS42NTY3NC0uNTQ3OSw1LjQwNTczLDUuNDA1NzMsMCwwLDEtMS4zOTctMS4wMTY2LDUuMzIwODIsNS4zMjA4MiwwLDAsMS0xLjAyMDUxLTEuMzk2NSw1LjcyMTg2LDUuNzIxODYsMCwwLDEtLjU0My0xLjY1NzIsMTIuNDEzNTEsMTIuNDEzNTEsMCwwLDEtLjE2NjUtMS44NzVjLS4wMDYzNC0uMjEwOS0uMDE0NjQtLjkxMzEtLjAxNDY0LS45MTMxVjguNDQ0MzRTLjg4MTg1LDcuNzUyOTMuODg3Nyw3LjU0OThhMTIuMzcwMzksMTIuMzcwMzksMCwwLDEsLjE2NTUzLTEuODcyMDcsNS43NTU1LDUuNzU1NSwwLDAsMSwuNTQzNDYtMS42NjIxQTUuMzczNDksNS4zNzM0OSwwLDAsMSwyLjYxMTgzLDIuNjE3NjgsNS41NjU0Myw1LjU2NTQzLDAsMCwxLDQuMDE0MTcsMS41OTUyMWE1LjgyMzA5LDUuODIzMDksMCwwLDEsMS42NTMzMi0uNTQzOTRBMTIuNTg1ODksMTIuNTg1ODksMCwwLDEsNy41NDMuODg3MjFMOC40NDUzMi44NzVIMTExLjIxMzg3bC45MTMxLjAxMjdhMTIuMzg0OTMsMTIuMzg0OTMsMCwwLDEsMS44NTg0LjE2MjU5LDUuOTM4MzMsNS45MzgzMywwLDAsMSwxLjY3MDkuNTQ3ODUsNS41OTM3NCw1LjU5Mzc0LDAsMCwxLDIuNDE1LDIuNDE5OTMsNS43NjI2Nyw1Ljc2MjY3LDAsMCwxLC41MzUyLDEuNjQ4OTIsMTIuOTk1LDEyLjk5NSwwLDAsMSwuMTczOCwxLjg4NzIxYy4wMDI5LjI4MzIuMDAyOS41ODc0LjAwMjkuODkwMTQuMDA3OS4zNzUuMDA3OS43MzE5My4wMDc5LDEuMDkxNzlWMzAuNDY0OGMwLC4zNjMzLDAsLjcxNzgtLjAwNzksMS4wNzUyLDAsLjMyNTIsMCwuNjIzMS0uMDAzOS45Mjk3YTEyLjczMTI2LDEyLjczMTI2LDAsMCwxLS4xNzA5LDEuODUzNSw1LjczOSw1LjczOSwwLDAsMS0uNTQsMS42Nyw1LjQ4MDI5LDUuNDgwMjksMCwwLDEtMS4wMTU2LDEuMzg1Nyw1LjQxMjksNS40MTI5LDAsMCwxLTEuMzk5NCwxLjAyMjUsNS44NjE2OCw1Ljg2MTY4LDAsMCwxLTEuNjY4LjU0OTgsMTIuNTQyMTgsMTIuNTQyMTgsMCwwLDEtMS44NjkyLjE2MzFjLS4yOTI5LjAwNjgtLjU5OTYuMDEwNy0uODk3NC4wMTA3bC0xLjA4NC4wMDJaIi8+CiAgICAgIDwvZz4KICAgICAgPGcgaWQ9Il9Hcm91cF8iIGRhdGEtbmFtZT0iJmx0O0dyb3VwJmd0OyI+CiAgICAgICAgPGcgaWQ9Il9Hcm91cF8yIiBkYXRhLW5hbWU9IiZsdDtHcm91cCZndDsiPgogICAgICAgICAgPGcgaWQ9Il9Hcm91cF8zIiBkYXRhLW5hbWU9IiZsdDtHcm91cCZndDsiPgogICAgICAgICAgICA8cGF0aCBpZD0iX1BhdGhfIiBkYXRhLW5hbWU9IiZsdDtQYXRoJmd0OyIgZD0iTTI0Ljc2ODg4LDIwLjMwMDY4YTQuOTQ4ODEsNC45NDg4MSwwLDAsMSwyLjM1NjU2LTQuMTUyMDYsNS4wNjU2Niw1LjA2NTY2LDAsMCwwLTMuOTkxMTYtMi4xNTc2OGMtMS42NzkyNC0uMTc2MjYtMy4zMDcxOSwxLjAwNDgzLTQuMTYyOSwxLjAwNDgzLS44NzIyNywwLTIuMTg5NzctLjk4NzMzLTMuNjA4NS0uOTU4MTRhNS4zMTUyOSw1LjMxNTI5LDAsMCwwLTQuNDcyOTIsMi43Mjc4N2MtMS45MzQsMy4zNDg0Mi0uNDkxNDEsOC4yNjk0NywxLjM2MTIsMTAuOTc2MDguOTI2OSwxLjMyNTM1LDIuMDEwMTgsMi44MDU4LDMuNDI3NjMsMi43NTMzLDEuMzg3MDYtLjA1NzUzLDEuOTA1MS0uODg0NDgsMy41Nzk0LS44ODQ0OCwxLjY1ODc2LDAsMi4xNDQ3OS44ODQ0OCwzLjU5MS44NTExLDEuNDg4MzgtLjAyNDE2LDIuNDI2MTMtMS4zMzEyNCwzLjMyMDUxLTIuNjY5MTRhMTAuOTYyLDEwLjk2MiwwLDAsMCwxLjUxODQyLTMuMDkyNTFBNC43ODIwNSw0Ljc4MjA1LDAsMCwxLDI0Ljc2ODg4LDIwLjMwMDY4WiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgICAgICAgPHBhdGggaWQ9Il9QYXRoXzIiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7IiBkPSJNMjIuMDM3MjUsMTIuMjEwODlhNC44NzI0OCw0Ljg3MjQ4LDAsMCwwLDEuMTE0NTItMy40OTA2Miw0Ljk1NzQ2LDQuOTU3NDYsMCwwLDAtMy4yMDc1OCwxLjY1OTYxLDQuNjM2MzQsNC42MzYzNCwwLDAsMC0xLjE0MzcxLDMuMzYxMzlBNC4wOTkwNSw0LjA5OTA1LDAsMCwwLDIyLjAzNzI1LDEyLjIxMDg5WiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgICAgPGc+CiAgICAgICAgICA8cGF0aCBkPSJNNDIuMzAyMjcsMjcuMTM5NjVoLTQuNzMzNGwtMS4xMzY3MiwzLjM1NjQ1SDM0LjQyNzI3bDQuNDgzNC0xMi40MThoMi4wODNsNC40ODM0LDEyLjQxOEg0My40MzhaTTM4LjA1OTEsMjUuNTkwODJoMy43NTJsLTEuODQ5NjEtNS40NDcyN2gtLjA1MTc2WiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgICAgIDxwYXRoIGQ9Ik01NS4xNTk2OSwyNS45Njk3M2MwLDIuODEzNDgtMS41MDU4Niw0LjYyMTA5LTMuNzc4MzIsNC42MjEwOWEzLjA2OTMsMy4wNjkzLDAsMCwxLTIuODQ4NjMtMS41ODRoLS4wNDN2NC40ODQzOGgtMS44NTg0VjIxLjQ0MjM4SDQ4LjQzMDJ2MS41MDU4NmguMDM0MThhMy4yMTE2MiwzLjIxMTYyLDAsMCwxLDIuODgyODEtMS42MDA1OUM1My42NDUsMjEuMzQ3NjYsNTUuMTU5NjksMjMuMTY0MDYsNTUuMTU5NjksMjUuOTY5NzNabS0xLjkxMDE2LDBjMC0xLjgzMy0uOTQ3MjctMy4wMzgwOS0yLjM5MjU4LTMuMDM4MDktMS40MTk5MiwwLTIuMzc1LDEuMjMwNDctMi4zNzUsMy4wMzgwOSwwLDEuODI0MjIuOTU1MDgsMy4wNDU5LDIuMzc1LDMuMDQ1OUM1Mi4zMDIyNywyOS4wMTU2Myw1My4yNDk1MywyNy44MTkzNCw1My4yNDk1MywyNS45Njk3M1oiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgICA8cGF0aCBkPSJNNjUuMTI0NTMsMjUuOTY5NzNjMCwyLjgxMzQ4LTEuNTA1ODYsNC42MjEwOS0zLjc3ODMyLDQuNjIxMDlhMy4wNjkzLDMuMDY5MywwLDAsMS0yLjg0ODYzLTEuNTg0aC0uMDQzdjQuNDg0MzhoLTEuODU4NFYyMS40NDIzOEg1OC4zOTV2MS41MDU4NmguMDM0MThBMy4yMTE2MiwzLjIxMTYyLDAsMCwxLDYxLjMxMiwyMS4zNDc2NkM2My42MDk4OCwyMS4zNDc2Niw2NS4xMjQ1MywyMy4xNjQwNiw2NS4xMjQ1MywyNS45Njk3M1ptLTEuOTEwMTYsMGMwLTEuODMzLS45NDcyNy0zLjAzODA5LTIuMzkyNTgtMy4wMzgwOS0xLjQxOTkyLDAtMi4zNzUsMS4yMzA0Ny0yLjM3NSwzLjAzODA5LDAsMS44MjQyMi45NTUwOCwzLjA0NTksMi4zNzUsMy4wNDU5QzYyLjI2NzExLDI5LjAxNTYzLDYzLjIxNDM4LDI3LjgxOTM0LDYzLjIxNDM4LDI1Ljk2OTczWiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgICAgIDxwYXRoIGQ9Ik03MS43MTA0NywyNy4wMzYxM2MuMTM3NywxLjIzMTQ1LDEuMzM0LDIuMDQsMi45Njg3NSwyLjA0LDEuNTY2NDEsMCwyLjY5MzM2LS44MDg1OSwyLjY5MzM2LTEuOTE4OTUsMC0uOTYzODctLjY3OTY5LTEuNTQxLTIuMjg5MDYtMS45MzY1MmwtMS42MDkzNy0uMzg3N2MtMi4yODAyNy0uNTUwNzgtMy4zMzg4Ny0xLjYxNzE5LTMuMzM4ODctMy4zNDc2NiwwLTIuMTQyNTgsMS44NjcxOS0zLjYxNDI2LDQuNTE4NTUtMy42MTQyNiwyLjYyNCwwLDQuNDIyODUsMS40NzE2OCw0LjQ4MzQsMy42MTQyNmgtMS44NzZjLS4xMTIzLTEuMjM5MjYtMS4xMzY3Mi0xLjk4NzMtMi42MzM3OS0xLjk4NzNzLTIuNTIxNDguNzU2ODQtMi41MjE0OCwxLjg1ODRjMCwuODc3OTMuNjU0MywxLjM5NDUzLDIuMjU0ODgsMS43OWwxLjM2ODE2LjMzNTk0YzIuNTQ3ODUuNjAyNTQsMy42MDY0NSwxLjYyNiwzLjYwNjQ1LDMuNDQyMzgsMCwyLjMyMzI0LTEuODUwNTksMy43NzgzMi00Ljc5Mzk1LDMuNzc4MzItMi43NTM5MSwwLTQuNjEzMjgtMS40MjA5LTQuNzMzNC0zLjY2N1oiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgICA8cGF0aCBkPSJNODMuMzQ2MjEsMTkuMjk5OHYyLjE0MjU4aDEuNzIxNjh2MS40NzE2OEg4My4zNDYyMXY0Ljk5MTIxYzAsLjc3NTM5LjM0NDczLDEuMTM2NzIsMS4xMDE1NiwxLjEzNjcyYTUuODA3NTIsNS44MDc1MiwwLDAsMCwuNjExMzMtLjA0M3YxLjQ2Mjg5YTUuMTAzNTEsNS4xMDM1MSwwLDAsMS0xLjAzMjIzLjA4NTk0Yy0xLjgzMywwLTIuNTQ3ODUtLjY4ODQ4LTIuNTQ3ODUtMi40NDQzNFYyMi45MTQwNkg4MC4xNjI2MlYyMS40NDIzOEg4MS40NzlWMTkuMjk5OFoiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgICA8cGF0aCBkPSJNODYuMDY1LDI1Ljk2OTczYzAtMi44NDg2MywxLjY3NzczLTQuNjM4NjcsNC4yOTM5NS00LjYzODY3LDIuNjI1LDAsNC4yOTQ5MiwxLjc5LDQuMjk0OTIsNC42Mzg2NywwLDIuODU2NDUtMS42NjExMyw0LjYzODY3LTQuMjk0OTIsNC42Mzg2N0M4Ny43MjYwOSwzMC42MDg0LDg2LjA2NSwyOC44MjYxNyw4Ni4wNjUsMjUuOTY5NzNabTYuNjk1MzEsMGMwLTEuOTU0MS0uODk1NTEtMy4xMDc0Mi0yLjQwMTM3LTMuMTA3NDJzLTIuNDAwMzksMS4xNjIxMS0yLjQwMDM5LDMuMTA3NDJjMCwxLjk2MTkxLjg5NDUzLDMuMTA2NDUsMi40MDAzOSwzLjEwNjQ1UzkyLjc2MDI3LDI3LjkzMTY0LDkyLjc2MDI3LDI1Ljk2OTczWiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgICAgIDxwYXRoIGQ9Ik05Ni4xODYwNiwyMS40NDIzOGgxLjc3MjQ2djEuNTQxaC4wNDNhMi4xNTk0LDIuMTU5NCwwLDAsMSwyLjE3NzczLTEuNjM1NzQsMi44NjYxNiwyLjg2NjE2LDAsMCwxLC42MzY3Mi4wNjkzNHYxLjczODI4YTIuNTk3OTQsMi41OTc5NCwwLDAsMC0uODM1LS4xMTIzLDEuODcyNjQsMS44NzI2NCwwLDAsMC0xLjkzNjUyLDIuMDgzdjUuMzcwMTJoLTEuODU4NFoiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgICA8cGF0aCBkPSJNMTA5LjM4NDMsMjcuODM2OTFjLS4yNSwxLjY0MzU1LTEuODUwNTksMi43NzE0OC0zLjg5ODQ0LDIuNzcxNDgtMi42MzM3OSwwLTQuMjY4NTUtMS43NjQ2NS00LjI2ODU1LTQuNTk1NywwLTIuODM5ODQsMS42NDM1NS00LjY4MTY0LDQuMTkwNDMtNC42ODE2NCwyLjUwNDg4LDAsNC4wODAwOCwxLjcyMDcsNC4wODAwOCw0LjQ2NTgydi42MzY3MmgtNi4zOTQ1M3YuMTEyM2EyLjM1OCwyLjM1OCwwLDAsMCwyLjQzNTU1LDIuNTY0NDUsMi4wNDgzNCwyLjA0ODM0LDAsMCwwLDIuMDkwODItMS4yNzM0NFptLTYuMjgyMjMtMi43MDIxNWg0LjUyNjM3YTIuMTc3MywyLjE3NzMsMCwwLDAtMi4yMjA3LTIuMjk3ODVBMi4yOTIsMi4yOTIsMCwwLDAsMTAzLjEwMjA3LDI1LjEzNDc3WiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICAgIDxnIGlkPSJfR3JvdXBfNCIgZGF0YS1uYW1lPSImbHQ7R3JvdXAmZ3Q7Ij4KICAgICAgPGc+CiAgICAgICAgPHBhdGggZD0iTTM3LjgyNjE5LDguNzMxYTIuNjM5NjQsMi42Mzk2NCwwLDAsMSwyLjgwNzYyLDIuOTY0ODRjMCwxLjkwNjI1LTEuMDMwMjcsMy4wMDItMi44MDc2MiwzLjAwMkgzNS42NzA5MlY4LjczMVptLTEuMjI4NTIsNS4xMjNoMS4xMjVhMS44NzU4OCwxLjg3NTg4LDAsMCwwLDEuOTY3NzctMi4xNDYsMS44ODEsMS44ODEsMCwwLDAtMS45Njc3Ny0yLjEzMzc5aC0xLjEyNVoiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgPHBhdGggZD0iTTQxLjY4MDY4LDEyLjQ0NDM0YTIuMTMzMjMsMi4xMzMyMywwLDEsMSw0LjI0NzA3LDAsMi4xMzM1OCwyLjEzMzU4LDAsMSwxLTQuMjQ3MDcsMFptMy4zMzMsMGMwLS45NzYwNy0uNDM4NDgtMS41NDY4Ny0xLjIwOC0xLjU0Njg3LS43NzI0NiwwLTEuMjA3LjU3MDgtMS4yMDcsMS41NDY4OCwwLC45ODM4OS40MzQ1NywxLjU1MDI5LDEuMjA3LDEuNTUwMjlDNDQuNTc1MjIsMTMuOTk0NjMsNDUuMDEzNjksMTMuNDI0MzIsNDUuMDEzNjksMTIuNDQ0MzRaIiBzdHlsZT0iZmlsbDogI2ZmZiIvPgogICAgICAgIDxwYXRoIGQ9Ik01MS41NzMyNiwxNC42OTc3NWgtLjkyMTg3bC0uOTMwNjYtMy4zMTY0MWgtLjA3MDMxbC0uOTI2NzYsMy4zMTY0MWgtLjkxMzA5bC0xLjI0MTIxLTQuNTAyOTNoLjkwMTM3bC44MDY2NCwzLjQzNmguMDY2NDFsLjkyNTc4LTMuNDM2aC44NTI1NGwuOTI1NzgsMy40MzZoLjA3MDMxbC44MDI3My0zLjQzNmguODg4NjdaIiBzdHlsZT0iZmlsbDogI2ZmZiIvPgogICAgICAgIDxwYXRoIGQ9Ik01My44NTM1NCwxMC4xOTQ4Mkg1NC43MDl2LjcxNTMzaC4wNjY0MWExLjM0OCwxLjM0OCwwLDAsMSwxLjM0Mzc1LS44MDIyNSwxLjQ2NDU2LDEuNDY0NTYsMCwwLDEsMS41NTg1OSwxLjY3NDh2Mi45MTVoLS44ODg2N1YxMi4wMDU4NmMwLS43MjM2My0uMzE0NDUtMS4wODM1LS45NzE2OC0xLjA4MzVhMS4wMzI5NCwxLjAzMjk0LDAsMCwwLTEuMDc1MiwxLjE0MTExdjIuNjM0MjhoLS44ODg2N1oiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgPHBhdGggZD0iTTU5LjA5Mzc3LDguNDM3aC44ODg2N3Y2LjI2MDc0aC0uODg4NjdaIiBzdHlsZT0iZmlsbDogI2ZmZiIvPgogICAgICAgIDxwYXRoIGQ9Ik02MS4yMTc3OSwxMi40NDQzNGEyLjEzMzQ2LDIuMTMzNDYsMCwxLDEsNC4yNDc1NiwwLDIuMTMzOCwyLjEzMzgsMCwxLDEtNC4yNDc1NiwwWm0zLjMzMywwYzAtLjk3NjA3LS40Mzg0OC0xLjU0Njg3LTEuMjA4LTEuNTQ2ODctLjc3MjQ2LDAtMS4yMDcuNTcwOC0xLjIwNywxLjU0Njg4LDAsLjk4Mzg5LjQzNDU3LDEuNTUwMjksMS4yMDcsMS41NTAyOUM2NC4xMTIzMiwxMy45OTQ2Myw2NC41NTA4LDEzLjQyNDMyLDY0LjU1MDgsMTIuNDQ0MzRaIiBzdHlsZT0iZmlsbDogI2ZmZiIvPgogICAgICAgIDxwYXRoIGQ9Ik02Ni40MDA5LDEzLjQyNDMyYzAtLjgxMDU1LjYwMzUyLTEuMjc3ODMsMS42NzQ4LTEuMzQ0MjRsMS4yMTk3My0uMDcwMzF2LS4zODg2N2MwLS40NzU1OS0uMzE0NDUtLjc0NDE0LS45MjE4Ny0uNzQ0MTQtLjQ5NjA5LDAtLjgzOTg0LjE4MjEzLS45Mzg0OC41MDA0OWgtLjg2MDM1Yy4wOTA4Mi0uNzczNDQuODE4MzYtMS4yNjk1MywxLjgzOTg0LTEuMjY5NTMsMS4xMjg5MSwwLDEuNzY1NjMuNTYyLDEuNzY1NjMsMS41MTMxOHYzLjA3NjY2aC0uODU1NDd2LS42MzI4MWgtLjA3MDMxYTEuNTE1LDEuNTE1LDAsMCwxLTEuMzUyNTQuNzA3QTEuMzYwMjYsMS4zNjAyNiwwLDAsMSw2Ni40MDA5LDEzLjQyNDMyWm0yLjg5NDUzLS4zODQ3N3YtLjM3NjQ2bC0xLjA5OTYxLjA3MDMxYy0uNjIwMTIuMDQxNS0uOTAxMzcuMjUyNDQtLjkwMTM3LjY0OTQxLDAsLjQwNTI3LjM1MTU2LjY0MTExLjgzNS42NDExMUExLjA2MTUsMS4wNjE1LDAsMCwwLDY5LjI5NTQzLDEzLjAzOTU1WiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgICA8cGF0aCBkPSJNNzEuMzQ4MTYsMTIuNDQ0MzRjMC0xLjQyMjg1LjczMTQ1LTIuMzI0MjIsMS44NjkxNC0yLjMyNDIyYTEuNDg0LDEuNDg0LDAsMCwxLDEuMzgwODYuNzloLjA2NjQxVjguNDM3aC44ODg2N3Y2LjI2MDc0aC0uODUxNTZ2LS43MTE0M2gtLjA3MDMxYTEuNTYyODQsMS41NjI4NCwwLDAsMS0xLjQxNDA2Ljc4NTY0QzcyLjA3MTgsMTQuNzcyLDcxLjM0ODE2LDEzLjg3MDYxLDcxLjM0ODE2LDEyLjQ0NDM0Wm0uOTE4LDBjMCwuOTU1MDguNDUwMiwxLjUyOTc5LDEuMjAzMTMsMS41Mjk3OS43NDksMCwxLjIxMTkxLS41ODMsMS4yMTE5MS0xLjUyNTg4LDAtLjkzODQ4LS40Njc3Ny0xLjUyOTc5LTEuMjExOTEtMS41Mjk3OUM3Mi43MjEyMSwxMC45MTg0Niw3Mi4yNjYxMywxMS40OTcwNyw3Mi4yNjYxMywxMi40NDQzNFoiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgPHBhdGggZD0iTTc5LjIzLDEyLjQ0NDM0YTIuMTMzMjMsMi4xMzMyMywwLDEsMSw0LjI0NzA3LDAsMi4xMzM1OCwyLjEzMzU4LDAsMSwxLTQuMjQ3MDcsMFptMy4zMzMsMGMwLS45NzYwNy0uNDM4NDgtMS41NDY4Ny0xLjIwOC0xLjU0Njg3LS43NzI0NiwwLTEuMjA3LjU3MDgtMS4yMDcsMS41NDY4OCwwLC45ODM4OS40MzQ1NywxLjU1MDI5LDEuMjA3LDEuNTUwMjlDODIuMTI0NTMsMTMuOTk0NjMsODIuNTYzLDEzLjQyNDMyLDgyLjU2MywxMi40NDQzNFoiIHN0eWxlPSJmaWxsOiAjZmZmIi8+CiAgICAgICAgPHBhdGggZD0iTTg0LjY2OTQ1LDEwLjE5NDgyaC44NTU0N3YuNzE1MzNoLjA2NjQxYTEuMzQ4LDEuMzQ4LDAsMCwxLDEuMzQzNzUtLjgwMjI1LDEuNDY0NTYsMS40NjQ1NiwwLDAsMSwxLjU1ODU5LDEuNjc0OHYyLjkxNUg4Ny42MDVWMTIuMDA1ODZjMC0uNzIzNjMtLjMxNDQ1LTEuMDgzNS0uOTcxNjgtMS4wODM1YTEuMDMyOTQsMS4wMzI5NCwwLDAsMC0xLjA3NTIsMS4xNDExMXYyLjYzNDI4aC0uODg4NjdaIiBzdHlsZT0iZmlsbDogI2ZmZiIvPgogICAgICAgIDxwYXRoIGQ9Ik05My41MTUxNiw5LjA3MzczdjEuMTQxNmguOTc1NTl2Ljc0ODU0aC0uOTc1NTlWMTMuMjc5M2MwLC40NzE2OC4xOTQzNC42NzgyMi42MzY3Mi42NzgyMmEyLjk2NjU3LDIuOTY2NTcsMCwwLDAsLjMzODg3LS4wMjA1MXYuNzQwMjNhMi45MTU1LDIuOTE1NSwwLDAsMS0uNDgzNC4wNDU0MWMtLjk4ODI4LDAtMS4zODE4NC0uMzQ3NjYtMS4zODE4NC0xLjIxNTgydi0yLjU0M2gtLjcxNDg0di0uNzQ4NTRoLjcxNDg0VjkuMDczNzNaIiBzdHlsZT0iZmlsbDogI2ZmZiIvPgogICAgICAgIDxwYXRoIGQ9Ik05NS43MDQ2MSw4LjQzN2guODgwODZ2Mi40ODE0NWguMDcwMzFhMS4zODU2LDEuMzg1NiwwLDAsMSwxLjM3My0uODA2NjQsMS40ODMzOSwxLjQ4MzM5LDAsMCwxLDEuNTUwNzgsMS42Nzg3MXYyLjkwNzIzSDk4LjY5di0yLjY4OGMwLS43MTkyNC0uMzM1LTEuMDgzNS0uOTYyODktMS4wODM1YTEuMDUxOTQsMS4wNTE5NCwwLDAsMC0xLjEzMzc5LDEuMTQxNnYyLjYyOTg4aC0uODg4NjdaIiBzdHlsZT0iZmlsbDogI2ZmZiIvPgogICAgICAgIDxwYXRoIGQ9Ik0xMDQuNzYxMjUsMTMuNDgxOTNhMS44MjgsMS44MjgsMCwwLDEtMS45NTExNywxLjMwMjczQTIuMDQ1MzEsMi4wNDUzMSwwLDAsMSwxMDAuNzMsMTIuNDYwNDVhMi4wNzY4NSwyLjA3Njg1LDAsMCwxLDIuMDc2MTctMi4zNTI1NGMxLjI1MjkzLDAsMi4wMDg3OS44NTYsMi4wMDg3OSwyLjI3VjEyLjY4OGgtMy4xNzk2OXYuMDQ5OGExLjE5MDIsMS4xOTAyLDAsMCwwLDEuMTk5MjIsMS4yOSwxLjA3OTM0LDEuMDc5MzQsMCwwLDAsMS4wNzEyOS0uNTQ1OVptLTMuMTI2LTEuNDUxMTdoMi4yNzQ0MWExLjA4NjQ3LDEuMDg2NDcsMCwwLDAtMS4xMDg0LTEuMTY2NUExLjE1MTYyLDEuMTUxNjIsMCwwLDAsMTAxLjYzNTI3LDEyLjAzMDc2WiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4KICAgICAgPC9nPgogICAgPC9nPgogIDwvZz4KPC9zdmc+Cg==" alt="Download on the App Store" width="120" height="40"></a>
+        <button class="hear" type="button" id="hear"><span class="wave" aria-hidden="true"><i style="--h:9px;--c:#8C6CFF"></i><i style="--h:17px;--c:#7C72FF"></i><i style="--h:22px;--c:#6C7CFF"></i><i style="--h:14px;--c:#5E88FF"></i><i style="--h:19px;--c:#6C7CFF"></i><i style="--h:11px;--c:#7C72FF"></i><i style="--h:15px;--c:#8C6CFF"></i></span><span class="lbl"><svg class="tri" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0v12l10-6z" fill="currentColor"/></svg>Hear a tour</span></button>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="ph l"><div class="iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel"><div class="scr"><span class="island"></span><img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAzNScgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSdkaXNjcmV0ZScgdGFibGVWYWx1ZXM9JzEgMScvPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzE2JyBoZWlnaHQ9JzM1JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1J0QUFBQUJYUlVKUVZsQTRJTVFBQUFCd0JRQ2RBU29RQUNNQVB0MWlxVStvcFNPaUtxZ0JFQnVKWkFDMitvTXFtK2dCa1VNRUt1T1RPdDJhbVkwR3pXNFVCRTBBQVBoajJBVS8zN1pWaHRWUXNndTE3YjVxeDlHVmswY25ZUnNsTXkvUDd3RG9kMmQ2c0ZmanBheTk2cVF5czVOdlpLRmptYjZNK1VXd2cyY25wdzJRQXhyM0w4NG02YVdBTnJmWUhURmlMNzhZcitvUWVuQ2Jlc0JLRjd1VXlMSXhwMzlmajVmZytUM2p4K3JsU05WTmtjRm85YzJMaUgvQ093WVQzMzJmQmcySnlPU1FRQ1NDREUxdWxHWUdRQUFBJy8+PC9zdmc+) 0 0/100% 100% no-repeat" class="shot" src="assets/img/phone-map.webp" srcset="assets/img/phone-map-480.webp 480w, assets/img/phone-map.webp 600w" sizes="(max-width: 760px) 33vw, min(247px, 15.4vw)" alt="" width="600" height="1304"></div></div></div></div>
+      <div class="ph m"><div class="iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel"><div class="scr"><span class="island"></span><img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAzNScgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSdkaXNjcmV0ZScgdGFibGVWYWx1ZXM9JzEgMScvPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzE2JyBoZWlnaHQ9JzM1JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1Jzd0FBQUJYUlVKUVZsQTRJTUFBQUFEUUJBQ2RBU29RQUNNQVB0MVlwVXlvcFNPaU5WZ0lBUkFiaVdjQXhuMkwxcFZqaFhVajJucGhxeUlMRXc1WkFBRCs5Q3FnVVUrbHpXc3VTdXhjeDBRNHdaT1FmbDUyMHF5YVVNUzY4Ymh0dzk4VUgzTFY1M3MrQUc2bXcxMm9ZZ0RmVUVtY0RjZERYL1V6TXUzUUZDYVlLSUgzcVBSNTk3YTF1YlVOSkFBYlAyTTJWb2xYTmwzeHVYeEs1M21SUjZwOFFobk5XRnBaWDA3QnFLRnN6RExjbjNXYmlMb0NkRkZSVG00YmZxd2V0bG5KY3l3QlRoVjFCZTNDOHpwTjRBQT0nLz48L3N2Zz4=) 0 0/100% 100% no-repeat" class="shot" src="assets/img/phone-tours.webp" srcset="assets/img/phone-tours-480.webp 480w, assets/img/phone-tours.webp 600w" sizes="(max-width: 760px) 33vw, min(247px, 15.4vw)" alt="" width="600" height="1304"></div></div></div></div>
+      <div class="ph r"><div class="iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel"><div class="scr"><span class="island"></span><img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAzNScgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSdkaXNjcmV0ZScgdGFibGVWYWx1ZXM9JzEgMScvPjwvZmVDb21wb25lbnRUcmFuc2Zlcj48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzE2JyBoZWlnaHQ9JzM1JyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1JvQUFBQUJYUlVKUVZsQTRJSFFBQUFDUUJBQ2RBU29RQUNNQVB0MWNwMDBvcFNPaUtxd0JFQnVKWXdDZEFCWnRqUzMwcWt1TjI5c3NuYldpbVFBQS91a3I5ZDNhWDVUNm1sdHJObzA3dER2V2xRa3NOWGlaWkZjZVI2VkhTbU1kSGp1YUE2SnlpcG1GNlowL2E1US9rdE4ybzNNUzVQUEhySUFCdDhDSVJXejhOUUFBQUE9PScvPjwvc3ZnPg==) 0 0/100% 100% no-repeat" class="shot" src="assets/img/phone-player.webp" srcset="assets/img/phone-player-480.webp 480w, assets/img/phone-player.webp 600w" sizes="(max-width: 760px) 33vw, min(247px, 15.4vw)" alt="" width="600" height="1304"></div></div></div></div>
+      <img onload="this.style.backgroundImage='none'" style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0OCAxMycgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PGZpbHRlciBpZD0nYicgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSdzUkdCJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPScwLjgnLz48L2ZpbHRlcj48aW1hZ2Ugd2lkdGg9JzQ4JyBoZWlnaHQ9JzEzJyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyBmaWx0ZXI9J3VybCgjYiknIGhyZWY9J2RhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1J2WUNBQUJYUlVKUVZsQTRXQW9BQUFBUUFBQUFMd0FBREFBQVFVeFFTSzRCQUFBQmtDM2J0bWs3WTY1OVRtemJ0bTNidG0zYnlhTnQyN1p0MjdhZGhSRmNmMEZFVEFBQ0Z3VWZFdllUUks0WEJZTC9mUjRDVk1wRFNCZDlwZEkrNGZNRzRva2djRUV3bFU4QWtiaExycFNYWXErOHRPMnJkU29EQlFoYVY0Y0FDajMybGhNVmhBQjlhdHlIbHcveUYva2RDK0ZiQXdwSlU4cDZzcEI0Q2sxSVV3SmVRQ0tGRzhXQ0FpTDRmWkg4alpoR21yaG95c1BZS1ZJb2I1WW9IcXIyaTVNeVpySXVFSWdDZ0R4UDNjMU1pSllSNHZsbFBPdktkRmZTODdYVXJtZEVUR3lQYUFNV0Zjdldmc0RKaU1vUCtCU1FzbjNpRkdqOW5FTUE0QmduWURvTFlkYVAzOXkxcnovZjlKbmRhODJNQitUVDhFQzAzSUR5NmxKOGc3ZVNiMXYwckZQL094L0huTUpPODBuSFQ1ckdjblB6RzI5cGZwbWVlYWNkNUlDc1FNWFBhZHArdU93c0EzMzRreVFkU1JvNisvWUZhZW40NHl2cCtDYlhtR3UvM3ZQekw5SVpiUnpwU0RwTmtvNEJPd2FzTFgvejloc2FhdWVNTWRaYVk0elIxdjF2L3pmR2FHMk10ZFpxYmF6Uit1bHpodkgzSFlZTkdEaXdlOXQyL2Vmdk9iUjMwNnBsRy9aZnVQZms4ZDJiVnk5Zk9YOWd6Y3hweXpadjNiYi85SmxkczBkM2JkVjkzTnpwVmxBNElDSUJBQUJ3QmdDZEFTb3dBQTBBUHRGV3BFeW9KS09pTlVnQkFCb0paQUNkTXQxZC9ub3NsNWZnYVhkbW5keGt0cmRSY2gzUkVyYmN0MTVaL2hXZ1drd0EvdXFZQWdzQXljR205YWJyeGprQ0hoa3dwUjN4QTBLVms3YTFWN1RiSStYV1lHeGdwc25qTmN1OVUrckkvaGZuV3JlOEE1R0JlNVBIdS9hcWQ2dmpIbHYwbXpOWnRoR3lMY0xxMERkbnRvVzZ3MzRZUWdITmlSTkZKZnZBYmVzeHpFQ043Y29yRDdDQTRpN3ROV25TdFMzRC9KcCtsRzFVanBndldwZ0NkVUdqTnRnS3VWZ2ZuLzRWVjUwcm5GdzB1SlZSSHFUa2hpVnFpakx3djd5WllyZzd4OCtsTmNkRHRLL2lGUWxTQWNnVjNWRk1MQSt6Wk1WVkpDVnh5MnVWZjN4TXNEdHBBRU9YRUhqdG04NXFrK01UZ0xmZ3VQZ3BNb1dicEx2UVBxYmZqQkVBQUE9PScvPjwvc3ZnPg==) 0 0/100% 100% no-repeat" class="strip" fetchpriority="high" src="assets/img/strip.webp" srcset="assets/img/strip-1200.webp 1200w, assets/img/strip.webp 2032w" sizes="(max-width: 760px) 210vw, min(1600px, 100vw)" alt="" width="2032" height="536">
+    </div>
+  </section>
 
-    <h3>What we collect</h3>
-    <ul>
-      <li>Your Apple sign-in ID, and the email and name Apple shares if you allow it.</li>
-      <li>Your location, to find the landmarks around you.</li>
-      <li>The tours you play, places and cities you've been near, your favourites, and your answers to the setup questions.</li>
-      <li>Your purchase and subscription history.</li>
-      <li>Crash reports, which aren't linked to your account.</li>
-      <li>How you use the app.</li>
-    </ul>
+  <section class="band sky" id="cities" aria-labelledby="cities-h">
+    <div class="wrap">
+      <div class="cities-head">
+        <h2 class="hl" id="cities-h">Tour <span class="die big" data-t="1 million+">1 million+</span><br>landmarks <em>and cities.</em></h2>
+        <p class="body">Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what’s there.</p>
+      </div>
+      <ul class="cities">
+        <li><span class="dio"><img decoding="async" src="assets/img/city-rome-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Rome</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-paris-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Paris</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-london-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>London</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-newyork-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>New York</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-istanbul-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Istanbul</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-athens-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Athens</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-sanfrancisco-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>San Francisco</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-tokyo-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Tokyo</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-kyoto-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Kyoto</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-osaka-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Osaka</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-cairo-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Cairo</b></li>
+        <li><span class="dio"><img decoding="async" src="assets/img/city-rio-s.webp" alt="" width="496" height="446" loading="lazy"></span><b>Rio de Janeiro</b></li>
+      </ul>
+    </div>
+  </section>
 
-    <h3>Why</h3>
-    <p>To find landmarks near you, run your account and subscription, keep your history, see how the app is used, and fix problems.</p>
+  <section class="band night" id="listen" aria-labelledby="listen-h">
+    <div class="wrap listen" id="listenGrid">
+      <div class="listen-copy">
+        <h2 class="hl" id="listen-h"><span class="pre">Premium-quality</span>audio tours that play <em>as you move.</em></h2>
+      </div>
+      <div class="device">
+        <div class="phone iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel">
+          <div class="screen"><span class="island"></span>
+            <div class="status" aria-hidden="true"><span>9:41</span><svg viewBox="0 0 66 12"><g fill="#fff"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2.5" width="3" height="9.5" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/><path d="M30 3.2a10 10 0 0 1 13 0l-1.5 1.6a7.8 7.8 0 0 0-10 0zM32.5 6a6.3 6.3 0 0 1 8 0L39 7.6a4 4 0 0 0-5 0zM36.5 11.5 35 10a2 2 0 0 1 3 0z"/><rect x="47.5" y="0.5" width="16" height="11" rx="3.2" fill="none" stroke="#fff" stroke-opacity=".45"/><rect x="49.5" y="2.5" width="12" height="7" rx="1.8"/><rect x="64.5" y="4" width="1.5" height="4" rx=".7" fill-opacity=".45"/></g></svg></div>
+            <div class="sheet">
+              <div class="grab"></div>
+              <div class="ph-head">
+                <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+                <div class="np"><img decoding="async" loading="lazy" id="npImg" src="assets/img/city-sanfrancisco-t.webp" alt=""><div><b id="npTitle">Golden Gate Bridge</b><small id="npNarr">Narrated by Enzo</small></div></div>
+                <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.6 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg></span>
+              </div>
+              <div class="read"><div class="read-in" id="readIn"></div></div>
+              <div class="prog">
+                <div class="track" id="track" role="slider" tabindex="0" aria-label="Position in the tour" aria-valuemin="0" aria-valuemax="26" aria-valuenow="0"><div class="fill" id="fill"></div><div class="knob" id="knob"></div></div>
+                <div class="times"><span id="tCur">0:00</span><span id="tDur">0:26</span></div>
+              </div>
+              <div class="ctrls">
+                <span class="sp" aria-hidden="true">1x</span>
+                <button class="ic" type="button" id="prev" aria-label="Previous tour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M19 4.5v15L8 12z"/><path d="M5 4.5v15" stroke-linecap="round"/></svg></button>
+                <button class="pp" type="button" id="pp" aria-label="Play"><svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg><svg class="i-pause" viewBox="0 0 24 24"><rect x="5.5" y="4" width="4.5" height="16" rx="1.2" fill="currentColor"/><rect x="14" y="4" width="4.5" height="16" rx="1.2" fill="currentColor"/></svg></button>
+                <button class="ic" type="button" id="next" aria-label="Next tour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 4.5v15L16 12z"/><path d="M19 4.5v15" stroke-linecap="round"/></svg></button>
+                <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M8 10.5h7.5L13.5 8.5M16 13.5H8.5l2 2"/></svg></span>
+              </div>
+              <div class="end" id="end" hidden>
+                <p>Hear the rest.</p>
+                <a class="badge" href="https://apps.apple.com/app/apple-store/id6823674049?pt=123373640&ct=website&mt=8"><img decoding="async" loading="lazy" src="assets/img/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+                <button class="again" type="button" id="again">Play again</button>
+              </div>
+            </div>
+          </div>
+        </div></div>
+        <p class="note" id="note" aria-live="polite"></p>
+      </div>
+      <ul class="tours" id="tours" aria-label="Tours">
+        <li><button class="tour" type="button" data-id="golden-gate-bridge" aria-pressed="true"><img decoding="async" loading="lazy" src="assets/img/city-sanfrancisco-t.webp" alt=""><span class="nm">Golden Gate Bridge</span><span class="mt">San Francisco · Narrated by Enzo</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:26</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="eiffel-tower" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-paris-t.webp" alt=""><span class="nm">Eiffel Tower</span><span class="mt">Paris · Narrated by Morgan</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:32</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="colosseum" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-rome-t.webp" alt=""><span class="nm">Colosseum</span><span class="mt">Rome · Narrated by Kira</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:33</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="statue-of-liberty" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-newyork-t.webp" alt=""><span class="nm">Statue of Liberty</span><span class="mt">New York · Narrated by Luna</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:36</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="tokyo-skytree" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-tokyo-t.webp" alt=""><span class="nm">Tokyo Skytree</span><span class="mt">Tokyo · Narrated by Quentin</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:25</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
+        <li><button class="tour" type="button" data-id="blue-mosque-istanbul" aria-pressed="false"><img decoding="async" loading="lazy" src="assets/img/city-istanbul-t.webp" alt=""><span class="nm">Blue Mosque</span><span class="mt">Istanbul · Narrated by Skylar</span><span class="ln"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">0:41</span><span class="go" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg></span></span></button></li>
+      </ul>
+    </div>
+  </section>
 
-    <h3>Who receives it</h3>
-    <ul>
-      <li>Your account and history are stored on our servers.</li>
-      <li>Subscription services manage your purchases.</li>
-      <li>Mapbox shows the map. Its data is handled under the <a href="https://www.mapbox.com/legal/tos" rel="noopener">Mapbox Terms</a> and <a href="https://www.mapbox.com/legal/privacy" rel="noopener">Mapbox Privacy Policy</a>.</li>
-      <li>A crash-reporting service receives crash reports.</li>
-      <li>An analytics service receives how you use the app.</li>
-    </ul>
-    <p>These providers protect your information to the same standard we do. The app doesn't track you across other companies' apps or websites.</p>
+  <section class="band sky" id="nearby" aria-labelledby="nearby-h">
+    <div class="wrap split">
+      <div class="art sonar-host"><span class="sonar" aria-hidden="true"><i></i><i></i><i></i></span><img decoding="async" src="assets/img/nearby-w-1400.webp" srcset="assets/img/nearby-w-800.webp 800w, assets/img/nearby-w-1400.webp 1400w" sizes="(min-width: 900px) 600px, 100vw" alt="Landmarks around you in Kyoto: Jishu Shrine 30 m away, Kiyomizu-dera 89 m, Higashiyama 674 m" width="1400" height="1078" loading="lazy"></div>
+      <div>
+        <h2 class="hl" id="nearby-h">Discover monuments, culture, and history <em>nearby.</em></h2>
+        <ol class="steps">
+          <li>Browse through landmarks near you.</li>
+          <li>Tap one and listen to its story.</li>
+          <li>Turn on Auto Tour and Argo plays one nearby landmark after another, so you can keep walking and keep listening.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
 
-    <h3>Keeping and deleting it</h3>
-    <p>We keep your information until you delete your account in Settings, then delete it. Backup copies expire shortly after.</p>
+  <section class="band night" id="anywhere" aria-labelledby="anywhere-h">
+    <svg class="hole" id="hole" aria-hidden="true"></svg>
+    <div class="wrap">
+      <div class="split flip">
+        <div class="art tall" id="anyArt"><img decoding="async" class="on-night" src="assets/img/anywhere-nw-1100.webp" srcset="assets/img/anywhere-nw-640.webp 640w, assets/img/anywhere-nw-1100.webp 1100w" sizes="(min-width: 900px) 520px, 90vw" alt="Explore This Area on the maps of Paris, Kyoto, Lisbon and Giza" width="1100" height="1654" loading="lazy"><img decoding="async" class="on-sky" src="assets/img/anywhere-sw-1100.webp" srcset="assets/img/anywhere-sw-640.webp 640w, assets/img/anywhere-sw-1100.webp 1100w" sizes="(min-width: 900px) 520px, 90vw" alt="" width="1100" height="1670" loading="lazy"></div>
+        <div>
+          <h2 class="hl" id="anywhere-h">Or explore the world from <em>home.</em></h2>
+          <p class="body">Move the map anywhere and tap Explore This Area to hear what’s there, even from your couch.</p>
+          <span class="eta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.5 9.5 7 5.6c.3-.8 1.4-.9 1.9-.2L10 7h4l1.1-1.6c.5-.7 1.6-.6 1.9.2l1.5 3.9" fill="none" stroke="#6C5CE7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="14.5" r="4" fill="none" stroke="#6C5CE7" stroke-width="2"/><circle cx="17" cy="14.5" r="4" fill="none" stroke="#6C5CE7" stroke-width="2"/><path d="M11 14h2" stroke="#6C5CE7" stroke-width="2" stroke-linecap="round"/></svg>Explore This Area<i class="ripple"></i></span>
+          <div class="home-scene" aria-hidden="true">
+            <img decoding="async" class="hs-chair" src="assets/img/home-armchair-window.webp" alt="" width="549" height="620" loading="lazy">
+            <img decoding="async" class="hs-cup" src="assets/img/home-teacup.webp" alt="" width="190" height="320" loading="lazy">
+            <img decoding="async" class="hs-bino" src="assets/img/home-binoculars.webp" alt="" width="280" height="248" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h3>Location</h3>
-    <p>You can turn location off in iOS Settings at any time.</p>
+  <section class="band sky" id="yourway" aria-labelledby="yourway-h">
+    <img decoding="async" class="yw-balloon" src="assets/img/sky-balloon.webp" alt="" width="209" height="260" loading="lazy">
+    <div class="wrap">
+      <div class="yw-head">
+        <h2 class="hl" id="yourway-h">Listen <em>your way.</em></h2>
+      </div>
+      <div class="bento" id="bento">
+        <article class="card c-auto" style="--i:0">
+          <div class="cap"><h3>Auto Tour</h3></div>
+          <div class="viz" aria-hidden="true">
+            <span class="autopill"><span class="wave"><i style="--h:9px;--c:#8C6CFF"></i><i style="--h:17px;--c:#7C72FF"></i><i style="--h:22px;--c:#6C7CFF"></i><i style="--h:14px;--c:#5E88FF"></i><i style="--h:19px;--c:#6C7CFF"></i><i style="--h:11px;--c:#7C72FF"></i><i style="--h:15px;--c:#8C6CFF"></i></span><span><svg class="tri" viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg>Auto Tour</span></span>
+            <div class="trail" id="trail">
+              <svg viewBox="0 0 600 200" preserveAspectRatio="none"><path id="route" d="M110 168 C 190 120, 240 190, 300 160 S 430 118, 495 150" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="1 10" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
+              <img decoding="async" loading="lazy" class="stop" src="assets/img/sky-torii.webp" alt="" style="--w:20%">
+              <img decoding="async" loading="lazy" class="stop" src="assets/img/sky-kiyomizu.webp" alt="" style="--w:26%">
+              <img decoding="async" loading="lazy" class="stop" src="assets/img/sky-yasaka-pagoda.webp" alt="" style="--w:17%">
+              <span class="walker" id="walker"></span>
+              <span class="chip" id="chipA"><span class="c-walk" id="lnNext"><b><span class="odo" id="odoA"></span> m</b><span id="nxName">Kiyomizu-dera</span></span><span class="c-play" id="lnNow"><span class="eqs"><i></i><i></i><i></i></span><span>Now playing <b id="npStop">Jishu Shrine</b></span></span></span>
+            </div>
+          </div>
+        </article>
 
-    <h3>Changes</h3>
-    <p>We'll post any changes here with a new effective date.</p>
-  </article>
+        <article class="card c-lock" style="--i:1">
+          <div class="cap"><h3>Hands Free</h3><p>Tours keep playing with your phone locked, with controls on the Lock Screen.</p></div>
+          <div class="viz" aria-hidden="true">
+            <div class="iphone"><i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i><div class="bezel"><div class="scr lock">
+              <span class="island"></span>
+              <img decoding="async" class="wall" id="lkWall" src="assets/img/wall-kyoto.webp" alt="" width="600" height="1304" loading="lazy">
+              <div class="lk-time">9:41</div>
+              <div class="lk-np" id="lkNp">
+                <div class="lk-row"><img decoding="async" loading="lazy" id="lkImg" src="assets/img/city-kyoto-t.webp" alt=""><div><b id="lkTitle">Kiyomizu-dera</b><small id="lkNarr">Narrated by Lily</small></div></div>
+                <div class="lk-bar"><i id="lkFill"></i></div>
+                <div class="lk-ctl"><svg viewBox="0 0 24 24"><path d="M19 5v14L8 12zM6 5v14" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><rect x="5.5" y="4" width="4.5" height="16" rx="1.2" fill="#fff"/><rect x="14" y="4" width="4.5" height="16" rx="1.2" fill="#fff"/></svg><svg viewBox="0 0 24 24"><path d="M5 5v14l11-7zM18 5v14" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+              </div>
+            </div></div></div>
+          </div>
+        </article>
 
-  <article id="terms">
-    <h2>Terms of Use</h2>
-    <p class="effective">Effective October 17, 2026</p>
+        <article class="card c-fav" style="--i:2">
+          <div class="cap"><h3>Favorites</h3><p>Save tours to Favorites.</p></div>
+          <div class="viz" aria-hidden="true"><div class="stk rows" style="--r:-1.6deg">
+            <div class="row"><img decoding="async" src="assets/img/st-louvre-pyramid.webp" alt="" width="144" height="144" loading="lazy"><div><b>Louvre Museum</b><small>Paris</small></div><span class="heart"><span class="burst"><i></i><i></i><i></i><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.7a4.3 4.3 0 0 1 7.5 2.6c0 5.6-7.5 10.2-7.5 10.2z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/></svg><svg class="hf" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.7a4.3 4.3 0 0 1 7.5 2.6c0 5.6-7.5 10.2-7.5 10.2z" fill="currentColor"/></svg></span></div>
+            <div class="row"><img decoding="async" src="assets/img/st-notre-dame.webp" alt="" width="144" height="144" loading="lazy"><div><b>Notre-Dame</b><small>Paris</small></div><span class="heart"><span class="burst"><i></i><i></i><i></i><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.7a4.3 4.3 0 0 1 7.5 2.6c0 5.6-7.5 10.2-7.5 10.2z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/></svg><svg class="hf" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.7a4.3 4.3 0 0 1 7.5 2.6c0 5.6-7.5 10.2-7.5 10.2z" fill="currentColor"/></svg></span></div>
+            <div class="row"><img decoding="async" src="assets/img/st-bastille.webp" alt="" width="144" height="144" loading="lazy"><div><b>Place de la Bastille</b><small>Paris</small></div><span class="heart"><span class="burst"><i></i><i></i><i></i><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.7a4.3 4.3 0 0 1 7.5 2.6c0 5.6-7.5 10.2-7.5 10.2z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/></svg><svg class="hf" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.7a4.3 4.3 0 0 1 7.5 2.6c0 5.6-7.5 10.2-7.5 10.2z" fill="currentColor"/></svg></span></div>
+          </div></div>
+        </article>
 
-    <p style="margin-top: 1.75rem">Argo is licensed under Apple's standard <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener">Licensed Application End User License Agreement</a>.</p>
-  </article>
+        <article class="card c-disc" style="--i:3">
+          <div class="cap"><h3>Discovered</h3><p>See the landmarks you’ve discovered.</p></div>
+          <div class="viz found" aria-hidden="true">
+            <div class="num"><span class="odo" id="odoD"></span></div>
+            <div class="new" id="discNew"><span id="discA">Pantheon</span><span id="discB">Trevi Fountain</span></div>
+          </div>
+        </article>
 
-  <footer>
-    <div>Questions: <span>support@discoverargo.com</span></div>
-    <div>© 2026 Argo</div>
-  </footer>
+        <article class="card c-pace" style="--i:4">
+          <div class="cap"><h3>At your own pace</h3><p>No group to keep up with and no schedule to follow. Listen to the places you care about, in the order you like.</p></div>
+          <div class="viz" aria-hidden="true"><div class="stk pace" id="pace" style="--r:1.1deg">
+            <span class="hilite" id="hilite"></span>
+            <div class="row"><img decoding="async" src="assets/img/st-sphinx.webp" alt="" width="144" height="144" loading="lazy"><div><b>Great Sphinx of Giza</b><small>120 m</small></div><span class="pbtn"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><span class="eqm"><i></i><i></i><i></i></span></span></div>
+            <div class="row"><img decoding="async" src="assets/img/st-giza-pyramids.webp" alt="" width="144" height="144" loading="lazy"><div><b>Pyramid of Khafre</b><small>480 m</small></div><span class="pbtn"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><span class="eqm"><i></i><i></i><i></i></span></span></div>
+            <div class="row"><img decoding="async" src="assets/img/st-kinkakuji.webp" alt="" width="144" height="144" loading="lazy"><div><b>Kinkaku-ji</b><small>Kyoto</small></div><span class="pbtn"><svg viewBox="0 0 10 12"><path d="M0 0v12l10-6z" fill="currentColor"/></svg><span class="eqm"><i></i><i></i><i></i></span></span></div>
+            <span class="tap"></span>
+          </div></div>
+        </article>
+
+        <article class="card c-played played" style="--i:5">
+          <div class="cap"><h3>Played</h3><p>Come back to the tours you’ve played.</p></div>
+          <div class="viz" aria-hidden="true"><div class="stk" style="--r:-1.2deg"><div class="list" id="playedList">
+            <div class="row"><img decoding="async" src="assets/img/st-giza-pyramids.webp" alt="" width="144" height="144" loading="lazy"><div><b>Pyramids of Giza</b><small>Giza</small></div><svg class="check" viewBox="0 0 30 30"><circle cx="15" cy="15" r="15"/><path d="M9.5 15.5l3.8 3.8 7.2-8"/></svg></div>
+            <div class="row"><img decoding="async" src="assets/img/st-giza-pyramids.webp" alt="" width="144" height="144" loading="lazy"><div><b>Pyramids of Giza</b><small>Giza</small></div><svg class="check" viewBox="0 0 30 30"><circle cx="15" cy="15" r="15"/><path d="M9.5 15.5l3.8 3.8 7.2-8"/></svg></div>
+            <div class="row"><img decoding="async" src="assets/img/st-giza-pyramids.webp" alt="" width="144" height="144" loading="lazy"><div><b>Pyramids of Giza</b><small>Giza</small></div><svg class="check" viewBox="0 0 30 30"><circle cx="15" cy="15" r="15"/><path d="M9.5 15.5l3.8 3.8 7.2-8"/></svg></div>
+            <div class="row"><img decoding="async" src="assets/img/st-giza-pyramids.webp" alt="" width="144" height="144" loading="lazy"><div><b>Pyramids of Giza</b><small>Giza</small></div><svg class="check" viewBox="0 0 30 30"><circle cx="15" cy="15" r="15"/><path d="M9.5 15.5l3.8 3.8 7.2-8"/></svg></div>
+          </div></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing sky" aria-labelledby="closing-h">
+    <div class="wrap">
+      <img decoding="async" class="appicon" src="assets/img/balloon-270.webp" alt="" width="229" height="270" loading="lazy">
+      <h2 class="hl" id="closing-h">Get Argo on the <em>App Store.</em></h2>
+      <a class="badge" href="https://apps.apple.com/app/apple-store/id6823674049?pt=123373640&ct=website&mt=8"><img decoding="async" loading="lazy" src="assets/img/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+    </div>
+<div class="balloon-lane fly" aria-hidden="true"><img decoding="async" class="drift" src="assets/img/balloon-only.webp" alt="" width="290" height="520" loading="lazy"><img decoding="async" class="drift twin" src="assets/img/balloon-only.webp" alt="" width="290" height="520" loading="lazy"></div>
+        <div class="scene" data-art="wtwo1"><img decoding="async" src="assets/img/strip-wtwo1.webp" srcset="assets/img/strip-wtwo1-1200.webp 1200w, assets/img/strip-wtwo1.webp 2000w" sizes="(max-width: 760px) 210vw, 100vw" alt="A paper skyline of every continent with a walker and a cyclist" width="2000" height="604" loading="lazy"></div>
+  </section>
+
 </main>
+
+<footer class="site-foot">
+  <div class="wrap foot">
+    <a class="brand foot-brand" href="#top"><img decoding="async" loading="lazy" src="assets/img/balloon-120.webp" alt="" width="102" height="120"><span>Argo</span></a>
+    <nav aria-label="Legal"><a id="privacy" href="privacy/">Privacy Policy</a><a id="terms" href="terms/">Terms of Use</a><a class="mail" href="mailto:support@discoverargo.com">support@discoverargo.com</a></nav>
+    <div class="copy">© 2026 Argo</div>
+  </div>
+</footer>
+
+<!--variants-->
+<div class="mini" id="mini" hidden role="group" aria-label="Now playing">
+  <img decoding="async" loading="lazy" id="miniImg" src="assets/img/city-sanfrancisco-t.webp" alt="">
+  <div><b id="miniTitle">Golden Gate Bridge</b><small id="miniNarr">Narrated by Enzo</small></div>
+  <button type="button" id="miniPP" aria-label="Pause"><svg viewBox="0 0 24 24"><rect x="5.5" y="4" width="4.5" height="16" rx="1.2" fill="currentColor"/><rect x="14" y="4" width="4.5" height="16" rx="1.2" fill="currentColor"/></svg></button>
+</div>
+
+<script>
+(() => {
+  const TOURS = [{"id": "golden-gate-bridge", "title": "Golden Gate Bridge", "city": "San Francisco", "narrator": "Enzo", "img": "sanfrancisco", "dur": 26.43, "s": [{"t": 0.0, "e": 8.9, "md": "For decades, experts insisted that a bridge across the treacherous, **mile-wide strait** known as the **Golden Gate** was simply impossible."}, {"t": 9.48, "e": 14.42, "md": "The winds were too fierce, the fog too thick, and the water far too deep."}, {"t": 14.68, "e": 25.98, "md": "But when the **Golden Gate Bridge** finally opened in **1937**, it didn't just defy the odds; it became arguably the **most beautiful and photographed bridge in the world**."}]}, {"id": "eiffel-tower", "title": "Eiffel Tower", "city": "Paris", "narrator": "Morgan", "img": "paris", "dur": 32.05, "s": [{"t": 0.0, "e": 11.9, "md": "In the late 1880s, a group of prominent French artists signed a furious petition calling it a \"gigantic black smokestack\" that would crush the beauty of Paris under its \"barbaric bulk.\""}, {"t": 12.34, "e": 20.08, "md": "They were talking, of course, about the **Eiffel Tower**, which was built as the centerpiece for the **1889 World’s Fair**."}, {"t": 20.08, "e": 31.6, "md": "It was meant to celebrate the **centenary of the French Revolution**, but its creator, **Gustave Eiffel**, had to fight tooth and nail to prove his \"Iron Lady\" wasn't an eyesore."}]}, {"id": "colosseum", "title": "Colosseum", "city": "Rome", "narrator": "Kira", "img": "rome", "dur": 33.07, "s": [{"t": 0.0, "e": 7.34, "md": "For nearly two thousand years, this massive stone ellipse has defined the skyline of Rome."}, {"t": 7.96, "e": 19.62, "md": "You’re looking at the **Colosseum**, the **largest ancient amphitheatre ever built** and a masterpiece of Roman engineering that could once hold over **50,000 spectators**."}, {"t": 19.94, "e": 32.62, "md": "It was commissioned by the **Emperor Vespasian** around **72 AD** as a populist gift, built right over the site of a private lake that the tyrant Nero had claimed for his own palace."}]}, {"id": "statue-of-liberty", "title": "Statue of Liberty", "city": "New York", "narrator": "Luna", "img": "newyork", "dur": 35.57, "s": [{"t": 0.0, "e": 10.54, "md": "The **Statue of Liberty** is perhaps the **world's most recognizable symbol of freedom**, but she began as a **grand gesture of friendship from the people of France** to the United States."}, {"t": 11.08, "e": 23.24, "md": "Conceived by abolitionist **Édouard de Laboulaye** and designed by sculptor **Frédéric Auguste Bartholdi**, the monument was intended to celebrate the **centennial of American independence** and the recent end of the **Civil War**."}, {"t": 23.64, "e": 35.12, "md": "In fact, while we often focus on her torch, a powerful detail lies at her feet: she is **stepping over a broken shackle and chain**, commemorating the **national abolition of slavery**."}]}, {"id": "tokyo-skytree", "title": "Tokyo Skytree", "city": "Tokyo", "narrator": "Quentin", "img": "tokyo", "dur": 24.53, "s": [{"t": 0.0, "e": 4.74, "md": "For centuries, the area around the Sumida River was known as the **Musashi Province**."}, {"t": 5.52, "e": 15.2, "md": "When engineers were deciding on the final height of the **Tokyo Skytree**, they chose a very specific number as a nod to that heritage: **634 meters**."}, {"t": 16.0, "e": 24.08, "md": "In Japanese, those numbers can be read as \"Mu-sa-shi,\" making the height of this massive tower easy for every local to remember."}]}, {"id": "blue-mosque-istanbul", "title": "Blue Mosque", "city": "Istanbul", "narrator": "Skylar", "img": "istanbul", "dur": 40.51, "s": [{"t": 0.0, "e": 10.46, "md": "For over four hundred years, the skyline of Istanbul has been defined by the cascading domes and slender minarets of the **Sultan Ahmed Mosque**, famously known around the world as the **Blue Mosque**."}, {"t": 11.26, "e": 19.58, "md": "Completed in **1617** during the reign of **Sultan Ahmed I**, it was designed to rival the neighboring Hagia Sophia in both scale and splendor."}, {"t": 20.14, "e": 29.04, "md": "In a bold display of imperial power, the Sultan insisted on building **six minarets**, a feature that was then **unique only to the Ka'aba in Mecca**."}, {"t": 30.0, "e": 40.06, "md": "According to local legend, this may have been a lucky mistake; the architect allegedly misheard the Sultan's request for \"gold minarets\"—*altın*—as \"six minarets\"—*altı*."}]}];
+  const $ = (id) => document.getElementById(id);
+  const grid = $("listenGrid"), readIn = $("readIn"), fill = $("fill"), knob = $("knob"), track = $("track");
+  const audio = new Audio();
+  audio.preload = "none";
+  let cur = TOURS[0], idx = -1, raf = 0, wanted = false;
+
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<mark>$1</mark>").replace(/\*(.+?)\*/g, "<em>$1</em>");
+  const clock = (t) => { t = Math.max(0, Math.round(t)); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); };
+  const img = (t) => "assets/img/city-" + t.img + "-t.webp";
+  const narr = (t) => "Narrated by " + t.narrator;
+
+  function setPlaying(on) {
+    grid.classList.toggle("playing", on);
+    $("pp").setAttribute("aria-label", on ? "Pause" : "Play");
+    $("miniPP").setAttribute("aria-label", on ? "Pause" : "Play");
+    $("miniPP").innerHTML = on
+      ? '<svg viewBox="0 0 24 24"><rect x="5.5" y="4" width="4.5" height="16" rx="1.2" fill="currentColor"/><rect x="14" y="4" width="4.5" height="16" rx="1.2" fill="currentColor"/></svg>'
+      : '<svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>';
+    updateMini();
+  }
+
+  function load(t) {
+    cur = t; idx = -1;
+    audio.src = "assets/audio/" + t.id + ".mp3";
+    $("npImg").src = img(t); $("npTitle").textContent = t.title; $("npNarr").textContent = narr(t);
+    $("miniImg").src = img(t); $("miniTitle").textContent = t.title; $("miniNarr").textContent = narr(t);
+    $("tDur").textContent = clock(t.dur); track.setAttribute("aria-valuemax", String(Math.round(t.dur)));
+    readIn.innerHTML = t.s.map((s) => "<p>" + md(s.md) + "</p>").join("");
+    document.querySelectorAll(".tour").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.id === t.id)));
+    $("end").hidden = true; $("note").textContent = "";
+    paint(0);
+    if ("mediaSession" in navigator) {
+      try { navigator.mediaSession.metadata = new MediaMetadata({ title: t.title, artist: narr(t), album: "Argo", artwork: [{ src: "assets/img/icon-180.png", sizes: "180x180", type: "image/png" }] }); } catch (e) {}
+    }
+  }
+
+  function paint(t) {
+    const r = Math.min(1, t / cur.dur);
+    fill.style.width = r * 100 + "%"; knob.style.left = r * 100 + "%";
+    $("tCur").textContent = clock(t); track.setAttribute("aria-valuenow", String(Math.round(t)));
+    let i = 0;
+    cur.s.forEach((s, k) => { if (t + 0.05 >= s.t) i = k; });
+    if (i !== idx) {
+      idx = i;
+      [...readIn.children].forEach((p, k) => { p.className = k < i ? "past" : k === i ? "now" : ""; });
+      const p = readIn.children[i];
+      const peek = i > 0 ? readIn.parentElement.clientHeight * 0.1 : 0; // the end of the last sentence stays in view, as in the app
+      readIn.style.transform = "translateY(" + (-(p ? p.offsetTop - readIn.children[0].offsetTop : 0) + peek) + "px)";
+    }
+  }
+
+  function loop() { paint(audio.currentTime || 0); raf = requestAnimationFrame(loop); }
+
+  function play() {
+    wanted = true; grid.classList.add("played"); $("end").hidden = true;
+    const go = audio.play();
+    if (go && go.catch) go.catch(() => { wanted = false; setPlaying(false); $("note").textContent = "Your browser blocked the sound. Press play to try again."; });
+  }
+  function pause() { wanted = false; audio.pause(); }
+
+  audio.addEventListener("playing", () => { $("note").textContent = ""; setPlaying(true); cancelAnimationFrame(raf); loop(); });
+  audio.addEventListener("pause", () => { setPlaying(false); cancelAnimationFrame(raf); paint(audio.currentTime || 0); });
+  audio.addEventListener("ended", () => { wanted = false; setPlaying(false); cancelAnimationFrame(raf); paint(cur.dur); $("end").hidden = false; });
+  audio.addEventListener("error", () => { if (wanted) { wanted = false; setPlaying(false); $("note").textContent = "This tour didn't load. Check your connection and press play again."; } });
+
+  $("pp").addEventListener("click", () => {
+    if (!audio.paused) return pause();
+    if (audio.ended || !$("end").hidden) { audio.currentTime = 0; }
+    play();
+  });
+  $("again").addEventListener("click", () => { audio.currentTime = 0; play(); });
+  const step = (d) => { const k = (TOURS.indexOf(cur) + d + TOURS.length) % TOURS.length; load(TOURS[k]); play(); };
+  $("prev").addEventListener("click", () => step(-1));
+  $("next").addEventListener("click", () => step(1));
+  document.querySelectorAll(".tour").forEach((b) => b.addEventListener("click", () => {
+    const t = TOURS.find((x) => x.id === b.dataset.id);
+    if (t === cur && !audio.paused) return pause();
+    if (t !== cur) load(t);
+    play();
+  }));
+  $("hear").addEventListener("click", () => {
+    $("listen").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    if (audio.paused) play();
+  });
+
+  function seekTo(clientX) {
+    const r = track.getBoundingClientRect();
+    const t = Math.max(0, Math.min(1, (clientX - r.left) / r.width)) * cur.dur;
+    if (audio.readyState > 0) audio.currentTime = t;
+    $("end").hidden = true; paint(t);
+  }
+  track.addEventListener("pointerdown", (e) => { seekTo(e.clientX); track.setPointerCapture(e.pointerId); });
+  track.addEventListener("pointermove", (e) => { if (track.hasPointerCapture(e.pointerId)) seekTo(e.clientX); });
+  track.addEventListener("keydown", (e) => {
+    const d = e.key === "ArrowRight" ? 5 : e.key === "ArrowLeft" ? -5 : 0;
+    if (!d || audio.readyState === 0) return;
+    e.preventDefault(); audio.currentTime = Math.max(0, Math.min(cur.dur, audio.currentTime + d)); paint(audio.currentTime);
+  });
+
+  // The mini-player docks only while a tour plays and the player itself is out of view.
+  let deviceVisible = true, footVisible = false;
+  function updateMini() { $("mini").hidden = !(grid.classList.contains("playing") && !deviceVisible && !footVisible); }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver((es) => { deviceVisible = es[0].isIntersecting; updateMini(); }, { threshold: 0.15 }).observe(document.querySelector(".phone"));
+    new IntersectionObserver((es) => { footVisible = es[0].isIntersecting; updateMini(); }).observe(document.querySelector(".site-foot"));
+  }
+  $("mini").addEventListener("click", (e) => {
+    if (e.target.closest("#miniPP")) { e.stopPropagation(); return audio.paused ? play() : pause(); }
+    document.querySelector(".device").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  load(cur);
+  addEventListener("resize", () => { idx = -1; paint(audio.currentTime || 0); });
+})();
+</script>
+<script>
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+
+  // ---------- Loading: the first screen first, then the rest of the page in order, before anyone scrolls to it ----------
+  // Pictures below the top section are lazy in the HTML, so they never compete with the first screen. Each starts as
+  // soon as it comes within a screen and a half of the viewport, and once the page has loaded the rest follow in page
+  // order, six at a time, then warmUrls (pictures the cards swap in later), so a reader who scrolls finds them there.
+  const warmUrls = [];
+  (() => {
+    const lazy = [...document.querySelectorAll('img[loading="lazy"]')];
+    const start = (im) => { if (im.loading === "lazy") im.loading = "eager"; };
+    if ("IntersectionObserver" in window) {
+      const near = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { start(e.target); near.unobserve(e.target); } }), { rootMargin: "150% 0px" });
+      lazy.forEach((im) => near.observe(im));
+    }
+    const settle = (im) => new Promise((r) => { if (im.complete) r(); else { im.addEventListener("load", r, { once: true }); im.addEventListener("error", r, { once: true }); } });
+    async function warm() {
+      const queue = lazy.slice();
+      const lane = async () => { for (let im; (im = queue.shift()); ) { start(im); await settle(im); } };
+      await Promise.all([1, 2, 3, 4, 5, 6].map(lane));
+      const urls = [...new Set(warmUrls)];
+      const lane2 = async () => { for (let u; (u = urls.shift()); ) { const im = new Image(); im.decoding = "async"; im.src = u; await settle(im); } };
+      await Promise.all([1, 2, 3, 4].map(lane2));
+    }
+    const go = () => ("requestIdleCallback" in window ? requestIdleCallback(warm, { timeout: 600 }) : setTimeout(warm, 100));
+    if (document.readyState === "complete") go(); else addEventListener("load", go, { once: true });
+  })();
+  const seg = (t, a, b) => clamp((t - a) / (b - a));
+
+  // Motion language from the bento-ui-motion-grid skill: a damped spring from rest (about 12% overshoot) for anything
+  // that travels, a critically damped "soft" curve for fades and resets, quintic in-out for long travel.
+  const Z = 0.55, W = 4.6 / Z, WD = W * Math.sqrt(1 - Z * Z);
+  const sRaw = (p) => 1 - Math.exp(-Z * W * p) * (Math.cos(WD * p) + (Z * W / WD) * Math.sin(WD * p));
+  const S1 = sRaw(1);
+  const spring = (p) => (p <= 0 ? 0 : p >= 1 ? 1 : sRaw(p) / S1);
+  const softRaw = (p) => 1 - Math.exp(-7 * p) * (1 + 7 * p);
+  const SO1 = softRaw(1);
+  const soft = (p) => (p <= 0 ? 0 : p >= 1 ? 1 : softRaw(p) / SO1);
+  const io = (p) => { p = clamp(p); return p < 0.5 ? 16 * p ** 5 : 1 - Math.pow(-2 * p + 2, 5) / 2; };
+  const expo = (p) => (p <= 0 ? 0 : p >= 1 ? 1 : 1 - Math.pow(2, -10 * p));
+  const setText = (el, s) => { if (el && el.textContent !== s) el.textContent = s; };
+
+  // Odometer: one column of 0–9,0 per digit; lower digits roll continuously, higher ones turn over as they pass 9.
+  function odo(el, n) {
+    el.innerHTML = Array.from({ length: n }, () => '<span class="oc">' + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((d) => "<span>" + d + "</span>").join("") + "</span>").join("");
+    el._c = [...el.children];
+  }
+  function setOdo(el, v, minDigits) {
+    const cols = el._c, n = cols.length;
+    for (let k = 0; k < n; k++) {
+      const col = cols[n - 1 - k], p = 10 ** k;
+      let d;
+      if (k === 0) d = ((v % 10) + 10) % 10;
+      else { const lower = ((v % p) + p) % p; d = (Math.floor(v / p) % 10) + Math.max(0, lower - (p - 1)); }
+      col.style.transform = "translateY(" + (-d).toFixed(4) + "em)";
+      const vis = k < minDigits ? 1 : clamp((v - (p - 1)) / (k === 1 ? 3 : 12));   // a leading digit fades over a few units (tens: 3, hundreds: 12), never in one frame
+      col.style.opacity = vis;
+      col.style.width = vis >= 1 ? "" : (vis * 0.62).toFixed(3) + "em";
+    }
+  }
+
+  document.documentElement.classList.add("js");
+
+  // ---------- Reveals: transform only, from a visible resting state ----------
+  if ("IntersectionObserver" in window) {
+    const io2 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io2.unobserve(e.target); } }), { threshold: 0.18 });
+    document.querySelectorAll(".cities, #cities, .bento, #anywhere").forEach((el) => io2.observe(el));
+  } else {
+    document.querySelectorAll(".cities, #cities, .bento, #anywhere").forEach((el) => el.classList.add("in"));
+  }
+
+  // The hero button's waveform moves while a tour plays.
+  const grid = $("listenGrid");
+  if (grid && "MutationObserver" in window) {
+    new MutationObserver(() => document.body.classList.toggle("is-playing", grid.classList.contains("playing"))).observe(grid, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  // ---------- Torn edges (the store covers' tear): the night is a sheet of paper laid over the sky ----------
+  const NS = "http://www.w3.org/2000/svg", PAPER = "#F7F3EA", NIGHT = "#030A24";
+  const rng = (seed) => { let x = seed >>> 0; return () => ((x = (x * 1664525 + 1013904223) >>> 0) / 4294967296); };
+  // A ragged line through `points`: each sample jittered along the normal, now and then a deeper bite; `push` moves the
+  // whole line along the normal (the white paper core sits a few px past the dark face). Ported from the cover builder.
+  function tornPts(points, seed, o = {}) {
+    const step = o.step || 13, jitter = o.jitter ?? 7, bite = o.bite ?? 0.12, push = o.push || 0, closed = !!o.closed;
+    const r = rng(seed), pts = closed ? points.concat([points[0]]) : points, out = [];
+    for (let i = 0; i < pts.length - 1; i++) {
+      const [x0, y0] = pts[i], [x1, y1] = pts[i + 1], len = Math.hypot(x1 - x0, y1 - y0), n = Math.max(2, Math.floor(len / step));
+      const nx = -(y1 - y0) / len, ny = (x1 - x0) / len;
+      for (let k = 0; k < n; k++) {
+        const t = k / n; let j = push + (r() * 2 - 1) * jitter;
+        if (r() < bite) j += (6 + r() * 10) * (r() < 0.5 ? -1 : 1);
+        out.push([x0 + (x1 - x0) * t + nx * j, y0 + (y1 - y0) * t + ny * j]);
+      }
+    }
+    if (!closed) out.push(points[points.length - 1]);
+    return out;
+  }
+  const pathOf = (pts) => "M" + pts.map(([x, y]) => x.toFixed(1) + " " + y.toFixed(1)).join("L") + "Z";
+  const dotPattern = (id, phase) => '<defs><pattern id="' + id + '" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="translate(0 ' + phase + ')"><rect width="16" height="16" fill="' + NIGHT + '"/><circle cx="8" cy="8" r="1.35" fill="rgba(184,217,245,0.10)"/></pattern></defs>';
+  const tears = [["#listen", "top", 11], ["#listen", "bot", 23], ["#anywhere", "top", 37], ["#anywhere", "bot", 41]].map(([sel, where, seed]) => {
+    const sec = document.querySelector(sel); if (!sec) return null;
+    const svg = document.createElementNS(NS, "svg"); svg.setAttribute("class", "tear t-" + where); svg.setAttribute("aria-hidden", "true"); svg.setAttribute("preserveAspectRatio", "none");
+    sec.appendChild(svg); return { sec, svg, where, seed, dots: true };
+  }).filter(Boolean);
+  function drawTear(t) {
+    const W = t.sec.clientWidth, H = 60, OVER = 2; if (!W) return;   // OVER: the tear tucks 2px into the section, so sub-pixel positions never leave a seam
+    t.svg.style.top = t.where === "top" ? -(H - OVER) + "px" : "calc(100% - " + OVER + "px)";
+    const up = t.where === "top", base = up ? H - 18 : 18, near = up ? H : 0;   // `near` is the section's own edge
+    const r = rng(t.seed + 99), wob = () => (r() * 2 - 1) * 6;
+    const edge = [[-20, base + wob()], [W * 0.27, base + wob()], [W * 0.54, base + wob()], [W * 0.8, base + wob()], [W + 20, base + wob()]];
+    const keep = (pts) => pts.map(([x, y]) => [x, up ? Math.min(y, near) : Math.max(y, near)]);   // never past the section edge
+    const corners = [[W + 20, near], [-20, near]];
+    const face = keep(tornPts(edge, t.seed));
+    const core = keep(tornPts(edge, t.seed + 1, { jitter: 5, bite: 0.08, push: up ? -10 : 10 }));
+    const shade = keep(tornPts(edge, t.seed + 1, { jitter: 5, bite: 0.08, push: up ? -14 : 14 }));
+    const y0 = up ? -(H - OVER) : t.sec.offsetHeight - OVER, phase = ((-y0 % 16) + 16) % 16;   // keep the dots on the section's grid
+    const blur = '<filter id="tf' + t.seed + '" x="-2%" y="-80%" width="104%" height="260%"><feGaussianBlur stdDeviation="2.6"/></filter>';
+    t.svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    t.svg.innerHTML = dotPattern("td" + t.seed, phase) + "<defs>" + blur + "</defs>"
+      + '<path d="' + pathOf(shade.concat(corners)) + '" fill="rgba(14,22,48,0.3)" filter="url(#tf' + t.seed + ')"/>'
+      + '<path d="' + pathOf(core.concat(corners)) + '" fill="' + PAPER + '"/>'
+      + '<path d="' + pathOf(face.concat(corners)) + '" fill="url(#td' + t.seed + ')"/>';
+  }
+  // "Torn open": the night over the from-home section is ripped open around the maps; the white core rims the hole.
+  const hole = $("hole"), anyArt = $("anyArt"), anySec = $("anywhere");
+  function drawHole() {
+    if (!hole || document.documentElement.dataset.edges !== "open") return;
+    const s = anySec.getBoundingClientRect(), a = anyArt.getBoundingClientRect(); if (!a.width) return;
+    const W = s.width, H = s.height, small = W < 700, m = small ? 16 : 30, r = rng(77);
+    const x0 = a.left - s.left - m, y0 = a.top - s.top - m, x1 = a.right - s.left + m, y1 = a.bottom - s.top + m;
+    // A ripped outline, not a rectangle: walk the box clockwise in short legs, wobbling outward up to ~28px.
+    const loop = [], wob = (k) => Math.abs((r() * 2 - 1)) * (small ? 14 : 28) * k, side = (ax, ay, bx, by, nx, ny, n) => {
+      for (let i = 0; i < n; i++) { const t = i / n, w = wob(i === 0 ? 0.4 : 1); loop.push([ax + (bx - ax) * t + nx * w, ay + (by - ay) * t + ny * w]); }
+    };
+    side(x0, y0, x1, y0, 0, -1, 4); side(x1, y0, x1, y1, 1, 0, 7); side(x1, y1, x0, y1, 0, 1, 4); side(x0, y1, x0, y0, -1, 0, 7);
+    const face = tornPts(loop, 61, { closed: true }), core = tornPts(loop, 62, { closed: true, jitter: 5, bite: 0.08, push: 12 });
+    const outer = "M0 0L" + W + " 0L" + W + " " + H + "L0 " + H + "Z";
+    hole.setAttribute("viewBox", "0 0 " + W + " " + H);
+    hole.innerHTML = dotPattern("hd", 0) + '<path d="' + outer + " " + pathOf(core) + '" fill="' + PAPER + '" fill-rule="evenodd"/><path d="' + outer + " " + pathOf(face) + '" fill="url(#hd)" fill-rule="evenodd"/>';
+  }
+  const drawEdges = () => { tears.forEach(drawTear); drawHole(); };
+  const vs = $("variants");
+  function setEdges(v) {
+    document.documentElement.dataset.edges = v;
+    if (vs) vs.querySelectorAll("button[data-edges]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.edges === v)));
+    try { localStorage.setItem("argo.edges", v); } catch (e) {}
+    requestAnimationFrame(drawEdges);
+  }
+  if (vs) {
+    let saved = null; try { saved = localStorage.getItem("argo.edges"); } catch (e) {}
+    vs.addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      if (b.dataset.edges) setEdges(b.dataset.edges);
+    });
+    setEdges(saved || document.documentElement.dataset.edges);
+  } else drawEdges();
+  addEventListener("resize", drawEdges);
+  // Preview only: the from-home props with no outline or a white sticker rim.
+  const rimBtns = vs ? [...vs.querySelectorAll("button[data-rim]")] : [];
+  if (rimBtns.length) {
+    const props = [...document.querySelectorAll(".home-scene img")];
+    const setRim = (v) => {
+      props.forEach((im) => { const base = im.getAttribute("src").replace(/-w\.webp$/, ".webp"); im.setAttribute("src", v === "white" ? base.replace(/\.webp$/, "-w.webp") : base); });
+      rimBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.rim === v)));
+      try { localStorage.setItem("argo.rim", v); } catch (e) {}
+    };
+    let sr = null; try { sr = localStorage.getItem("argo.rim"); } catch (e) {}
+    setRim(sr === "white" ? "white" : "none");
+    rimBtns.forEach((b) => b.addEventListener("click", () => setRim(b.dataset.rim)));
+  }
+  // Preview only: the subtitle's colour.
+  const subBtns = vs ? [...vs.querySelectorAll("button[data-subc]")] : [];
+  if (subBtns.length) {
+    const setSubc = (v) => { document.documentElement.dataset.subc = v; subBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.subc === v))); try { localStorage.setItem("argo.subc", v); } catch (e) {} };
+    let sc = null; try { sc = localStorage.getItem("argo.subc"); } catch (e) {}
+    setSubc(["accent", "quiet", "grey"].includes(sc) ? sc : "grey");
+    subBtns.forEach((b) => b.addEventListener("click", () => setSubc(b.dataset.subc)));
+  }
+  // Preview only: button height, 48 or 40.
+  const btnBtns = vs ? [...vs.querySelectorAll("button[data-btn]")] : [];
+  if (btnBtns.length) {
+    const setBtn = (v) => { document.documentElement.dataset.btn = v; btnBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.btn === v))); try { localStorage.setItem("argo.btn", v); } catch (e) {} };
+    let sv = null; try { sv = localStorage.getItem("argo.btn"); } catch (e) {}
+    setBtn(sv === "40" ? "40" : "48");
+    btnBtns.forEach((b) => b.addEventListener("click", () => setBtn(b.dataset.btn)));
+  }
+  // Preview only: the balloon over the footer, on or off.
+  // Preview only: how the Auto Tour card loops (fade out and restart, or walk back).
+  const loopBtns = vs ? [...vs.querySelectorAll("button[data-autoloop]")] : [];
+  if (loopBtns.length) {
+    const setLoop = (v) => { document.documentElement.dataset.autoloop = v; loopBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.autoloop === v))); try { localStorage.setItem("argo.autoloop2", v); } catch (e) {} };
+    let sl = null; try { sl = localStorage.getItem("argo.autoloop2"); } catch (e) {}
+    setLoop(["fade", "back"].includes(sl) ? sl : document.documentElement.dataset.autoloop || "fade");
+    loopBtns.forEach((b) => b.addEventListener("click", () => setLoop(b.dataset.autoloop)));
+  }
+  const balBtns = vs ? [...vs.querySelectorAll("button[data-balloon]")] : [], lane = document.querySelector(".balloon-lane");
+  if (balBtns.length && lane) {
+    const setBal = (v) => { lane.hidden = v === "off"; lane.classList.toggle("fly", v === "fly"); balBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.balloon === v))); try { localStorage.setItem("argo.balloon", v); } catch (e) {} };
+    let sb = null; try { sb = localStorage.getItem("argo.balloon"); } catch (e) {}
+    setBal(["float", "fly", "off"].includes(sb) ? sb : "fly");
+    balBtns.forEach((b) => b.addEventListener("click", () => setBal(b.dataset.balloon)));
+  }
+  // Preview only: the hero landmark strip's outline (blue, white or none).
+  const rimhBtns = vs ? [...vs.querySelectorAll("button[data-rimh]")] : [], heroStrip = document.querySelector(".hero .strip");
+  if (rimhBtns.length && heroStrip) {
+    const NAMES = { blue: "strip", white: "strip-sky", none: "strip-none" };
+    const setRimh = (v) => {
+      const n = NAMES[v]; heroStrip.srcset = "assets/img/" + n + "-1200.webp 1200w, assets/img/" + n + ".webp 2032w"; heroStrip.src = "assets/img/" + n + ".webp";
+      rimhBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.rimh === v))); try { localStorage.setItem("argo.rimh", v); } catch (e) {}
+    };
+    let sr2 = null; try { sr2 = localStorage.getItem("argo.rimh"); } catch (e) {}
+    setRimh(NAMES[sr2] ? sr2 : "blue");
+    rimhBtns.forEach((b) => b.addEventListener("click", () => setRimh(b.dataset.rimh)));
+  }
+  // Preview only: the lock screen wallpaper on the Hands Free card.
+  const wallSel = $("wallSel"), wall = $("lkWall");
+  if (wallSel && wall) {
+    const setWall = (v) => { wall.src = "assets/img/wall-" + v + ".webp"; wallSel.value = v; try { localStorage.setItem("argo.wall2", v); } catch (e) {} };
+    let sw = null; try { sw = localStorage.getItem("argo.wall2"); } catch (e) {}
+    if (sw && [...wallSel.options].some((o) => o.value === sw)) setWall(sw);
+    wallSel.addEventListener("change", () => setWall(wallSel.value));
+  }
+  // Preview only: pick the closing art.
+  const footSel = $("footSel");
+  if (footSel) {
+    const scenes = [...document.querySelectorAll(".closing .scene[data-art]")];
+    const setFoot = (v) => { scenes.forEach((s) => { s.hidden = s.dataset.art !== v; }); footSel.value = v; try { localStorage.setItem("argo.foot", v); } catch (e) {} };
+    let sf = null; try { sf = localStorage.getItem("argo.foot"); } catch (e) {}
+    if (sf && scenes.some((s) => s.dataset.art === sf)) setFoot(sf);
+    footSel.addEventListener("change", () => setFoot(footSel.value));
+  }
+  addEventListener("load", drawEdges);
+  document.querySelectorAll("#anyArt img").forEach((im) => im.addEventListener("load", drawEdges));
+
+  // ---------- Listen your way: every card is a pure function of time ----------
+  const bento = $("bento");
+  if (!bento) return;
+  const bars = (els, t, seed) => els.forEach((b, i) => { b.style.transform = "scaleY(" + (0.32 + 0.68 * Math.abs(Math.sin(t * (3.1 + i * 0.7) + i * 1.9 + seed))).toFixed(3) + ")"; });
+
+  // Auto Tour: walk Jishu Shrine → Kiyomizu-dera → Higashiyama past paper landmarks; the chip follows the walker,
+  // counting the metres down, and turns into "Now playing" at each stop while that landmark bounces.
+  const trailEl = $("trail"), route = $("route"), stops = [...trailEl.querySelectorAll(".stop")], walker = $("walker"), chip = $("chipA");
+  const RL = route.getTotalLength(), AT = [0, 0.5, 1], NAMES = ["Jishu Shrine", "Kiyomizu-dera", "Higashiyama"], LEGS = [120, 380];   // long enough that the metres spin while the walker strides
+  const pointAt = (f) => { const pt = route.getPointAtLength(RL * f); return [pt.x / 600 * 100, pt.y / 200 * 100]; };
+  stops.forEach((s, i) => { const [x, y] = pointAt(AT[i]); s.style.left = x + "%"; s.style.top = y + "%"; });
+  const odoA = $("odoA"); odo(odoA, 3);
+  const autoBars = [...bento.querySelectorAll(".autopill .wave i")];
+  // One pill width for every state (the widest "Now playing …" or "380 m …"), so the pill never resizes as it moves;
+  // the text is centred inside. Measured again when the fonts arrive and on resize.
+  const io3 = (p) => { p = clamp(p); return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
+  function sizeChip() {
+    chip.style.width = "";
+    let w = 0;
+    NAMES.forEach((n) => { setText($("npStop"), n); setText($("nxName"), n); setOdo(odoA, Math.max(...LEGS), 1); w = Math.max(w, chip.offsetWidth); });
+    chip.style.width = Math.ceil(w) + "px";
+  }
+  sizeChip();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeChip);
+  addEventListener("resize", sizeChip);
+  // Two loops: "fade" walks Jishu Shrine → Kiyomizu-dera → Higashiyama, fades out and starts again; "back" walks there
+  // and back with no fade. A leg is [start s, end s, from stop, to stop, pill side at its start, at its end], where side
+  // 0 is the walker's right and 1 its left. The pill changes sides in step with the walker's own progress across the
+  // whole leg, so it moves with the walk's easing and barely travels while the walker passes beneath it; at every stop
+  // it already sits where the next leg starts.
+  const LOOPS = {
+    fade: { period: 13, fade: true, legs: [[0.8, 4.8, 0, 1, 0, 0], [7, 11, 1, 2, 0, 1]] },
+    back: { period: 24.8, fade: false, legs: [[1.1, 5.1, 0, 1, 0, 0], [7.3, 11.3, 1, 2, 0, 1], [13.5, 17.5, 2, 1, 1, 1], [19.7, 23.7, 1, 0, 1, 0]] },
+  };
+  const legMetres = (g) => LEGS[Math.min(g[2], g[3])];
+  function drawAuto(T) {
+    const L = LOOPS[document.documentElement.dataset.autoloop] || LOOPS.fade, t = T % L.period, legs = L.legs, first = legs[0];
+    let walk = 0, cur = null, prog = 0;
+    legs.forEach((g) => { if (t >= g[0] && t <= g[1]) { cur = g; prog = io(seg(t, g[0], g[1])); } walk = Math.max(walk, seg(t, g[0], g[0] + 0.3) * (1 - seg(t, g[1] - 0.3, g[1]))); });
+    // At a stop: the leg that ended last (wrapping round to the end of the loop) and the leg that starts next.
+    const prevLeg = [...legs].reverse().find((g) => g[1] <= t) || legs[legs.length - 1];
+    const nextLeg = cur || legs.find((g) => g[0] > t) || first;
+    let f, side, stop = -1, arrived = 0;
+    if (cur) {
+      f = AT[cur[2]] + (AT[cur[3]] - AT[cur[2]]) * prog;
+      side = cur[4] + (cur[5] - cur[4]) * prog;
+    } else {
+      const before = t < first[0];
+      stop = before ? first[2] : prevLeg[3];
+      f = AT[stop];
+      side = before ? first[4] : prevLeg[5];
+      arrived = before ? (L.fade ? 0 : prevLeg[1] - L.period) : prevLeg[1];
+    }
+    const [x, y] = pointAt(f);
+    const fade = L.fade ? (seg(t, 0, 0.4) * (1 - seg(t, L.period - 0.5, L.period))).toFixed(3) : "1";
+    walker.style.left = x + "%"; walker.style.top = y + "%"; walker.style.opacity = fade;
+    chip.style.top = y + "%"; chip.style.opacity = fade;
+    stops.forEach((s, i) => { const p = i === stop ? seg(t, arrived, arrived + 0.7) : 1; s.style.transform = "scale(" + (i === stop ? 1 + 0.1 * Math.sin(Math.PI * spring(p)) + 0.04 : 1).toFixed(3) + ")"; });
+    setText($("nxName"), NAMES[nextLeg[3]]);
+    setText($("npStop"), NAMES[cur ? (prog > 0.5 ? cur[3] : cur[2]) : stop]);
+    setOdo(odoA, cur ? legMetres(cur) * (1 - prog) : legMetres(nextLeg), 1);
+    $("lnNext").style.opacity = clamp(walk * 2 - 1).toFixed(3);
+    $("lnNow").style.opacity = clamp(1 - walk * 2).toFixed(3);
+    // Clamped inside the trail, so on a narrow card the pill waits at the edge rather than overflowing.
+    const TW = trailEl.clientWidth, CW = chip.offsetWidth, px = x / 100 * TW;
+    const left = Math.max(0, Math.min(TW - CW, px + 14 - side * (CW + 28)));
+    chip.style.left = "0"; chip.style.transform = "translate(" + left.toFixed(1) + "px, 16px)";
+    bars(autoBars, T, 0);
+  }
+
+  // Hands Free: the Lock Screen's Now Playing card moves through three tours (the clock stays at 9:41).
+  const LOCK = [["Kiyomizu-dera", "Lily", "kyoto"], ["Colosseum", "Kira", "rome"], ["Hagia Sophia", "Arlo", "istanbul"], ["Statue of Liberty", "Luna", "newyork"],
+    ["Eiffel Tower", "Nolan", "paris"], ["Big Ben", "Ella", "london"], ["Parthenon", "Daniel", "athens"], ["Great Pyramid of Giza", "Marin", "cairo"],
+    ["Christ the Redeemer", "Enzo", "rio"], ["Senso-ji", "Clive", "tokyo"], ["Osaka Castle", "Kira", "osaka"], ["Golden Gate Bridge", "Zane", "sanfrancisco"]];
+  const lockArt = (k) => "assets/img/city-" + LOCK[k % LOCK.length][2] + "-t.webp", lockWarm = new Set();
+  LOCK.forEach((x, k) => warmUrls.push(lockArt(k)));
+  function drawLock(T) {
+    const j = Math.floor(T / 9) % LOCK.length, q = T % 9;
+    const tour = LOCK[j];
+    setText($("lkTitle"), tour[0]); setText($("lkNarr"), "Narrated by " + tour[1]);
+    const src = lockArt(j);
+    if (!$("lkImg").src.endsWith(src)) $("lkImg").src = src;
+    const nextSrc = lockArt(j + 1);   // ready (and decoded) well before the row fades in with it
+    if (!lockWarm.has(nextSrc)) { lockWarm.add(nextSrc); const im = new Image(); im.src = nextSrc; if (im.decode) im.decode().catch(() => {}); }
+    // The row and its progress bar fade out together before the next tour; the bar only resets while hidden.
+    const shown = (seg(q, 0.12, 0.47) * (1 - seg(q, 8.55, 8.95))).toFixed(3);
+    $("lkFill").style.width = (Math.min(q, 8.55) / 8.55 * 100).toFixed(2) + "%";
+    $("lkNp").querySelector(".lk-row").style.opacity = shown;
+    $("lkNp").querySelector(".lk-bar").style.opacity = shown;
+  }
+
+  // Favorites: each heart pops and fills in turn, then they all clear softly.
+  const favs = [...bento.querySelectorAll(".c-fav .row")].map((r) => ({ fill: r.querySelector(".hf"), dots: [...r.querySelectorAll(".burst i")] }));
+  function drawFav(T) {
+    const t = T % 7.5, clear = soft(seg(t, 6.5, 7.2));
+    favs.forEach((h, i) => {
+      const f = 0.7 + i * 1.5, p = seg(t, f, f + 0.55);
+      const on = t >= f ? soft(seg(t, f, f + 0.15)) * (1 - clear) : 0;
+      h.fill.style.opacity = on.toFixed(3);
+      h.fill.style.transform = "scale(" + (t >= f ? 0.55 + 0.45 * spring(p) : 0.55).toFixed(3) + ")";
+      h.dots.forEach((d, j) => {
+        const a = (j / h.dots.length) * Math.PI * 2 - Math.PI / 2, r = t >= f ? 6 + 15 * expo(seg(t, f, f + 0.5)) : 0;
+        d.style.transform = "translate(" + (Math.cos(a) * r).toFixed(2) + "px," + (Math.sin(a) * r).toFixed(2) + "px)";
+        d.style.opacity = t >= f ? (1 - seg(t, f + 0.12, f + 0.55)).toFixed(3) : 0;
+      });
+    });
+  }
+
+  // Discovered: the count rolls up by one and the newest landmark slides in.
+  const odoD = $("odoD"); odo(odoD, 3);
+  const FOUND = ["Pantheon", "Trevi Fountain", "Spanish Steps", "Piazza Navona", "Roman Forum", "Castel Sant’Angelo"];
+  const discA = $("discA"), discB = $("discB");
+  function drawDisc(T) {
+    // Six steps (47 to 52, one per landmark), then the tag fades out and the count starts again at 47.
+    const K = Math.floor(T / 3.6), p = T % 3.6, k = K % FOUND.length;
+    const reset = k === FOUND.length - 1 ? 1 - seg(p, 2.9, 3.4) : k === 0 && K > 0 ? seg(p, 0, 0.4) : 1;
+    odoD.parentElement.style.opacity = reset.toFixed(3);
+    // No overshoot on a counter: a spring that passes the next digit and settles back reads as a jerk on the odometer.
+    setOdo(odoD, 47 + k + soft(seg(p, 0.5, 1.35)), 2);
+    const e = soft(seg(p, 0.5, 1.1));
+    const cur = k % 2 ? discB : discA, nxt = k % 2 ? discA : discB;
+    setText(cur, FOUND[k]); setText(nxt, FOUND[(k + 1) % FOUND.length]);
+    cur.style.opacity = (1 - e).toFixed(3); cur.style.transform = "translateY(" + (-e * 12).toFixed(2) + "px)";
+    nxt.style.opacity = e.toFixed(3); nxt.style.transform = "translateY(" + ((1 - e) * 14).toFixed(2) + "px)";
+  }
+
+  // At your own pace: the listener picks the third stop, then the first, then the second.
+  const pace = $("pace"), prow = [...pace.querySelectorAll(".row")], hil = $("hilite"), tap = pace.querySelector(".tap");
+  const ORDER = [2, 0, 1];
+  const paceBars = prow.map((r) => [...r.querySelectorAll(".eqm i")]);
+  function drawPace(T) {
+    const k = Math.floor(T / 3.2), p = T % 3.2;
+    const idx = ORDER[k % 3], prev = ORDER[(k + 2) % 3];
+    const top = (r) => prow[r].offsetTop, s = spring(seg(p, 0.45, 1.3));
+    hil.style.height = prow[idx].offsetHeight + "px";
+    hil.style.transform = "translateY(" + (top(prev) + (top(idx) - top(prev)) * s).toFixed(2) + "px)";
+    const live = p >= 0.45 ? idx : prev;
+    prow.forEach((r, i) => r.classList.toggle("on", i === live));
+    tap.style.top = (top(idx) + prow[idx].offsetHeight / 2) + "px";
+    const tp = seg(p, 0.05, 0.6);
+    tap.style.opacity = (tp > 0 && tp < 1 ? 0.9 * (1 - tp) : 0).toFixed(3);
+    tap.style.transform = "scale(" + (0.6 + 1.1 * expo(tp)).toFixed(3) + ")";
+    bars(paceBars[live], T * 1.2, live);
+  }
+
+  // Played: a newly finished tour slides in on top with its check drawn; the list moves down one.
+  const PLAYED = [["Pyramids of Giza", "Giza", "giza-pyramids"], ["Great Sphinx of Giza", "Giza", "sphinx"], ["Kinkaku-ji", "Kyoto", "kinkakuji"], ["Yasaka Pagoda", "Kyoto", "yasaka-pagoda"], ["Notre-Dame", "Paris", "notre-dame"], ["Louvre Museum", "Paris", "louvre-pyramid"]];
+  PLAYED.forEach((x) => warmUrls.push("assets/img/st-" + x[2] + ".webp"));
+  const prows = [...$("playedList").querySelectorAll(".row")].map((r) => ({ r, b: r.querySelector("b"), s: r.querySelector("small"), img: r.querySelector("img"), ck: r.querySelector(".check path") }));
+  function drawPlayed(T) {
+    // Each DOM row keeps its tour while it is on screen: row d sits in slot j = (k - d) mod 4. Only the row entering
+    // from the top (j = 0, fully transparent at the moment of the swap) takes a new tour, so nothing changes while visible.
+    const k = Math.floor(T / 3.4), p = T % 3.4, e = soft(seg(p, 0.3, 1.1)), N = PLAYED.length, R = prows.length;
+    prows.forEach((o, d) => {
+      const j = (((k - d) % R) + R) % R, item = PLAYED[(((k - j) % N) + N) % N];
+      setText(o.b, item[0]); setText(o.s, item[1]);
+      const src = "assets/img/st-" + item[2] + ".webp";
+      if (!o.img.src.endsWith(src)) o.img.src = src;
+      o.r.style.transform = "translateY(" + ((j - 1 + e) * 72).toFixed(2) + "px)";
+      o.r.style.opacity = (j === 0 ? e : j === 3 ? 1 - e : 1).toFixed(3);
+      o.ck.style.strokeDashoffset = (j === 0 ? 20 * (1 - soft(seg(p, 1.1, 1.7))) : 0).toFixed(2);
+    });
+  }
+
+  const draws = [drawAuto, drawLock, drawFav, drawDisc, drawPace, drawPlayed];
+  const drawAll = (t) => draws.forEach((d) => d(t));
+  if (reduce) { drawAll(5.4); return; }
+  let raf = 0, t0 = performance.now();
+  const loop = (now) => { drawAll((now - t0) / 1000); raf = requestAnimationFrame(loop); };
+  drawAll(0);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver((es) => {
+      if (es[0].isIntersecting) { if (!raf) raf = requestAnimationFrame(loop); }
+      else { cancelAnimationFrame(raf); raf = 0; }
+    }, { rootMargin: "120px 0px" }).observe(bento);
+  } else { raf = requestAnimationFrame(loop); }
+  addEventListener("resize", () => { if (!raf) drawAll((performance.now() - t0) / 1000); });
+})();
+</script>
 </body>
 </html>

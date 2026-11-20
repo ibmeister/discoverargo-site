@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Argo: Audio Tours Worldwide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<script>
+  // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
+  // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.subc = "grey"; })();
+</script>
+<meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta name="apple-itunes-app" content="app-id=6823674049">
+<meta name="theme-color" content="#030A24">
+<link rel="canonical" href="https://discoverargo.com/download/">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Argo">
+<meta property="og:url" content="https://discoverargo.com/download/">
+<meta property="og:title" content="Argo: Audio Tours Worldwide">
+<meta property="og:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta property="og:image" content="https://discoverargo.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Argo on three iPhones behind a paper skyline of world landmarks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Argo: Audio Tours Worldwide">
+<meta name="twitter:description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and hear what's there.">
+<meta name="twitter:image" content="https://discoverargo.com/og.jpg">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #030A24; color: #EFF1F7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; }
+  main { display: grid; justify-items: center; gap: 1.25rem; padding: 2rem max(16px, env(safe-area-inset-left, 0px)); }
+  img { width: auto; height: 104px; }
+  h1 { margin: 0; font-size: 1.6rem; }
+  .badge img { display: block; width: 180px; height: auto; }
+  p { margin: 0; max-width: 22rem; color: #A6B1CF; font-size: 0.95rem; line-height: 1.5; }
+</style>
+<script>
+  (function () {
+    // /download?c=tiktok counts the install under the campaign "tiktok" in App Analytics (only for people who
+    // share analytics with developers). Labels are letters, digits, - and _, at most 40 characters.
+    var pt = "123373640";
+    var m = /[?&]c=([A-Za-z0-9_-]{1,40})(?:&|$)/.exec(location.search);
+    var q = pt ? "?pt=" + pt + "&ct=" + (m ? m[1].toLowerCase() : "download") + "&mt=8" : "";
+    var path = pt ? "apps.apple.com/app/apple-store/id6823674049" : "apps.apple.com/app/id6823674049";
+    var ua = navigator.userAgent || "";
+    var iOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var inApp = /Instagram|FBAN|FBAV|FB_IAB|TikTok|musical_ly|BytedanceWebview|Twitter|LinkedInApp|Snapchat|Pinterest|Line\//i.test(ua);
+    if (iOS && inApp) { location.href = "itms-apps://" + path + q; }
+    else { location.replace("https://" + path + q); }
+  })();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://apps.apple.com/app/id6823674049"></noscript>
+</head>
+<body>
+<main>
+  <img src="../assets/img/balloon-270.webp" alt="">
+  <h1>Argo</h1>
+  <a class="badge" href="https://apps.apple.com/app/apple-store/id6823674049?pt=123373640&ct=website&mt=8"><img src="../assets/img/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+  <p>https://apps.apple.com/app/id6823674049</p>
+</main>
+</body>
+</html>
