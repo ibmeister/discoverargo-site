@@ -8,7 +8,7 @@
 <script>
   // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
   // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
-  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girl"; document.documentElement.dataset.csky = "airship"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "normal"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "soft"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); if ("scrollRestoration" in history) history.scrollRestoration = "manual"; /* a refresh opens at the top, not where the reader was */ document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girl"; document.documentElement.dataset.csky = "airship"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "normal"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "soft"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.lph = "off"; document.documentElement.dataset.drings = "pulse"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
 </script>
 <meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta name="apple-itunes-app" content="app-id=6823674049">
@@ -811,10 +811,17 @@ header.top { position: relative; z-index: 3; }
 #cities .die { rotate: -2deg; }
 .cities-head .cw { display: inline-block; }
 @media (prefers-reduced-motion: no-preference) {
-  /* Soft rise: the heading comes up a few pixels into focus; the paragraph follows a beat later. */
-  [data-hl="soft"] .cities-head h2, [data-hl="soft"] .cities-head .body { transition: opacity 900ms cubic-bezier(0.2, 0.7, 0.2, 1), translate 1100ms cubic-bezier(0.16, 1, 0.3, 1), filter 900ms ease-out; }
-  [data-hl="soft"] .cities-head .body { transition-delay: 160ms; }
-  .js[data-hl="soft"] .cities-head:not(.in) h2, .js[data-hl="soft"] .cities-head:not(.in) .body { opacity: 0; translate: 0 18px; filter: blur(6px); }
+  /* Every section heading below the hero (and the paragraph under it) comes in as it reaches the screen: motion.js
+     marks them .rv and adds .in. Soft: rises a few pixels into focus, fading in. Slot: no fade; the text rises out of an
+     unseen edge at its own foot (translate and the clip's bottom move together, so the edge stays put). */
+  [data-hl="soft"] .rv { transition: opacity 900ms cubic-bezier(0.2, 0.7, 0.2, 1), translate 1100ms cubic-bezier(0.16, 1, 0.3, 1), filter 900ms ease-out; transition-delay: var(--rvd, 0ms); }
+  .js[data-hl="soft"] .rv:not(.in) { opacity: 0; translate: 0 18px; filter: blur(6px); }
+  [data-hl="slot"] .rv { transition: translate 1050ms cubic-bezier(0.16, 1, 0.3, 1), clip-path 1050ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--rvd, 0ms); }
+  .js[data-hl="slot"] .rv:not(.in) { translate: 0 100%; clip-path: inset(-0.5em -1em 100% -1em); }
+  .js[data-hl="slot"] .rv.in:not(.shown):not(.rv-float) { clip-path: inset(-0.5em -1em -0.5em -1em); }
+  /* The closing blimp is a thing in the sky, so it drifts up into place instead of rising out of an edge. */
+  [data-hl="slot"] .rv.rv-float { transition: translate 1300ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .js[data-hl="slot"] .rv.rv-float:not(.in) { translate: 0 36px; clip-path: none; }
   /* Word by word: the hero headline's reveal, on scroll. */
   [data-hl="words"] .cities-head .cw { transition: opacity 950ms cubic-bezier(0.2, 0.75, 0.2, 1), translate 950ms cubic-bezier(0.2, 0.75, 0.2, 1), rotate 950ms cubic-bezier(0.2, 0.75, 0.2, 1), filter 950ms cubic-bezier(0.2, 0.75, 0.2, 1); transition-delay: calc(var(--i) * 70ms); }
   [data-hl="words"] .cities-head .die.cw { rotate: -2deg; }
@@ -896,7 +903,7 @@ button:not(:disabled) { cursor: pointer; }
 @media (max-width: 760px) { .hl .pre { font-size: 0.62em; margin-bottom: 0.55em; } }
 
 /* Phones: no sky lanterns (the narrow hero sky reads busy with them). */
-@media (max-width: 760px) { .lanterns { display: none; } }
+@media (max-width: 760px) { html:not([data-lph="on"]) .lanterns { display: none; } }
 /* Hero balloon height on phones (option): "top" floats just under the nav (it passes behind "Learn the" only at the
    centre), "mid" between the headline and the subtitle, "low" below the buttons (as before). */
 @media (max-width: 760px) {
@@ -912,6 +919,26 @@ button:not(:disabled) { cursor: pointer; }
 .pv-panel { grid-template-columns: minmax(0, 1fr); }
 .pv-row { min-width: 0; }
 
+/* The two lanterns start low in the sky, just above the fold on a laptop, so the sky is not empty at first; the layer
+   fades in on load so they do not pop in already lit. */
+.lanterns { animation: lnIn 1.6s ease-out both; }
+@keyframes lnIn { from { opacity: 0; } }
+@media (max-width: 760px) { .lnt { animation-delay: var(--dlp, var(--dl)); } }
+
+/* ---------- Discover rings (option): the store slide's static radar rings around the blue dot, measured off the dot
+   (2.64 art px per slide unit, so the slide's 3-unit line is 7.9 art px), drawn behind the stickers. "both" adds the
+   pulse at the same line weight, travelling out to the middle ring. "pulse" is the original sonar alone. ---------- */
+.rings-st { display: none; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+.rings-st .pl circle { fill: none; stroke: #FFFFFF; stroke-width: 7.9; opacity: 0; transform-box: view-box; transform-origin: 680px 860px; }
+[data-drings="static"] .rings-st, [data-drings="both"] .rings-st { display: block; }
+[data-drings="static"] .sonar-host .sonar, [data-drings="both"] .sonar-host .sonar, [data-drings="static"] .rings-st .pl { display: none; }
+[data-drings="static"] .sonar-host img, [data-drings="both"] .sonar-host img { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .rings-st .pl circle { animation: sonar 3.6s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; }
+  .rings-st .pl circle:nth-child(2) { animation-delay: 1.2s; }
+  .rings-st .pl circle:nth-child(3) { animation-delay: 2.4s; }
+}
+
 </style>
 </head>
 <body>
@@ -925,7 +952,7 @@ button:not(:disabled) { cursor: pointer; }
 
 <main id="top">
   <section class="hero night" aria-labelledby="hero-h">
-    <div class="stars" aria-hidden="true"><div class="st-pin"><i class="w g" style="left:3%;top:6%;--d:4.2s;--dl:-0.5s;--s:2.4px"></i><i class="w" style="left:8%;top:22%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="w" style="left:5%;top:38%;--d:3.6s;--dl:-1.4s;--s:2px"></i><i class="w" style="left:12%;top:58%;--d:6.4s;--dl:-3.3s;--s:1.8px"></i><i class="w" style="left:16%;top:9%;--d:4.9s;--dl:-4.0s;--s:1.6px"></i><i class="w g" style="left:21%;top:49%;--d:5.2s;--dl:-0.9s;--s:2.6px"></i><i class="w" style="left:2%;top:64%;--d:3.9s;--dl:-2.6s;--s:1.6px"></i><i class="w" style="left:97%;top:5%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="w g" style="left:93%;top:18%;--d:6.1s;--dl:-0.2s;--s:2.8px"></i><i class="w" style="left:90%;top:33%;--d:3.7s;--dl:-3.1s;--s:1.6px"></i><i class="w" style="left:95%;top:47%;--d:5.5s;--dl:-2.4s;--s:2px"></i><i class="w" style="left:86%;top:61%;--d:4.6s;--dl:-4.4s;--s:1.8px"></i><i class="w" style="left:81%;top:12%;--d:5.1s;--dl:-1.1s;--s:1.6px"></i><i class="w" style="left:78%;top:50%;--d:6.7s;--dl:-3.8s;--s:2.2px"></i><i class="w" style="left:99%;top:66%;--d:4.0s;--dl:-0.7s;--s:1.6px"></i><i class="w" style="left:30%;top:3%;--d:5.4s;--dl:-2.9s;--s:1.6px"></i><i class="w" style="left:64%;top:5%;--d:3.8s;--dl:-1.6s;--s:2px"></i><i class="w" style="left:50%;top:2%;--d:6.2s;--dl:-4.7s;--s:1.6px"></i><i class="p g" style="left:4%;top:3%;--d:4.2s;--dl:-0.5s;--s:2px"></i><i class="p" style="left:22%;top:1.5%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="p" style="left:47%;top:3.5%;--d:3.6s;--dl:-1.4s;--s:2.2px"></i><i class="p" style="left:71%;top:2%;--d:6.4s;--dl:-3.3s;--s:1.6px"></i><i class="p g" style="left:95%;top:4%;--d:4.9s;--dl:-4.0s;--s:2.4px"></i><i class="p" style="left:8%;top:30%;--d:5.2s;--dl:-0.9s;--s:1.6px"></i><i class="p" style="left:92%;top:31%;--d:3.9s;--dl:-2.6s;--s:2px"></i><i class="p" style="left:6%;top:59%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="p" style="left:93%;top:57%;--d:6.1s;--dl:-0.2s;--s:1.6px"></i></div></div><div class="lanterns" aria-hidden="true"><span class="lnt" style="left:6%;--w:32;--t:46s;--dl:0s;--ry:54%"><img src="assets/img/fl-lantern-1.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:79%;--w:28;--t:52s;--dl:4.2s;--ry:15%"><img src="assets/img/fl-lantern-3.webp" alt="" decoding="async" fetchpriority="low"></span></div><div class="floaters" aria-hidden="true"><div class="fl-lane fl-low fl-girl"><span class="fl-track"><img src="assets/img/balloon-only.webp" alt="" width="290" height="520" decoding="async" fetchpriority="low"></span></div></div>
+    <div class="stars" aria-hidden="true"><div class="st-pin"><i class="w g" style="left:3%;top:6%;--d:4.2s;--dl:-0.5s;--s:2.4px"></i><i class="w" style="left:8%;top:22%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="w" style="left:5%;top:38%;--d:3.6s;--dl:-1.4s;--s:2px"></i><i class="w" style="left:12%;top:58%;--d:6.4s;--dl:-3.3s;--s:1.8px"></i><i class="w" style="left:16%;top:9%;--d:4.9s;--dl:-4.0s;--s:1.6px"></i><i class="w g" style="left:21%;top:49%;--d:5.2s;--dl:-0.9s;--s:2.6px"></i><i class="w" style="left:2%;top:64%;--d:3.9s;--dl:-2.6s;--s:1.6px"></i><i class="w" style="left:97%;top:5%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="w g" style="left:93%;top:18%;--d:6.1s;--dl:-0.2s;--s:2.8px"></i><i class="w" style="left:90%;top:33%;--d:3.7s;--dl:-3.1s;--s:1.6px"></i><i class="w" style="left:95%;top:47%;--d:5.5s;--dl:-2.4s;--s:2px"></i><i class="w" style="left:86%;top:61%;--d:4.6s;--dl:-4.4s;--s:1.8px"></i><i class="w" style="left:81%;top:12%;--d:5.1s;--dl:-1.1s;--s:1.6px"></i><i class="w" style="left:78%;top:50%;--d:6.7s;--dl:-3.8s;--s:2.2px"></i><i class="w" style="left:99%;top:66%;--d:4.0s;--dl:-0.7s;--s:1.6px"></i><i class="w" style="left:30%;top:3%;--d:5.4s;--dl:-2.9s;--s:1.6px"></i><i class="w" style="left:64%;top:5%;--d:3.8s;--dl:-1.6s;--s:2px"></i><i class="w" style="left:50%;top:2%;--d:6.2s;--dl:-4.7s;--s:1.6px"></i><i class="p g" style="left:4%;top:3%;--d:4.2s;--dl:-0.5s;--s:2px"></i><i class="p" style="left:22%;top:1.5%;--d:5.8s;--dl:-2.1s;--s:1.6px"></i><i class="p" style="left:47%;top:3.5%;--d:3.6s;--dl:-1.4s;--s:2.2px"></i><i class="p" style="left:71%;top:2%;--d:6.4s;--dl:-3.3s;--s:1.6px"></i><i class="p g" style="left:95%;top:4%;--d:4.9s;--dl:-4.0s;--s:2.4px"></i><i class="p" style="left:8%;top:30%;--d:5.2s;--dl:-0.9s;--s:1.6px"></i><i class="p" style="left:92%;top:31%;--d:3.9s;--dl:-2.6s;--s:2px"></i><i class="p" style="left:6%;top:59%;--d:4.4s;--dl:-1.8s;--s:2px"></i><i class="p" style="left:93%;top:57%;--d:6.1s;--dl:-0.2s;--s:1.6px"></i></div></div><div class="lanterns" aria-hidden="true"><span class="lnt" style="left:6%;--w:32;--t:46s;--dl:-9.2s;--dlp:-16.6s;--ry:54%"><img src="assets/img/fl-lantern-1.webp" alt="" decoding="async" fetchpriority="low"></span><span class="lnt" style="left:88%;--w:28;--t:52s;--dl:-4.2s;--dlp:-13.5s;--ry:28%"><img src="assets/img/fl-lantern-3.webp" alt="" decoding="async" fetchpriority="low"></span></div><div class="floaters" aria-hidden="true"><div class="fl-lane fl-low fl-girl"><span class="fl-track"><img src="assets/img/balloon-only.webp" alt="" width="290" height="520" decoding="async" fetchpriority="low"></span></div></div>
     <div class="wrap hero-copy">
       <h1 class="hl" id="hero-h"><span class="w" style="--i:0">Learn</span> <span class="w" style="--i:1">the</span> <span class="w" style="--i:2">backstory</span> <span class="w" style="--i:3">of</span> <span class="w" style="--i:4">any</span> <span class="w" style="--i:5">place</span> <span class="w" style="--i:6">on</span> <span class="w" style="--i:7"><em>Earth.</em></span></h1>
       <p class="sub">Your personal tour guide, worldwide.</p>
@@ -1018,7 +1045,7 @@ button:not(:disabled) { cursor: pointer; }
 
   <section class="band sky" id="nearby" aria-labelledby="nearby-h">
     <div class="wrap split">
-      <div class="art sonar-host"><span class="sonar" aria-hidden="true"><i></i><i></i><i></i></span><img decoding="async" src="assets/img/nearby-w-1400.webp" srcset="assets/img/nearby-w-800.webp 800w, assets/img/nearby-w-1400.webp 1400w" sizes="(min-width: 900px) 600px, 100vw" alt="Landmarks around you in Kyoto: Jishu Shrine 30 m away, Kiyomizu-dera 89 m, Higashiyama 674 m" width="1400" height="1078" loading="lazy"></div>
+      <div class="art sonar-host"><svg class="rings-st" viewBox="0 0 1400 1078" aria-hidden="true"><circle cx="680" cy="860" r="243" fill="rgba(255,255,255,0.16)" stroke="#FFFFFF" stroke-width="7.9"/><circle cx="680" cy="860" r="465" fill="rgba(255,255,255,0.12)" stroke="#FFFFFF" stroke-width="7.9"/><circle cx="680" cy="860" r="681" fill="rgba(255,255,255,0.08)" stroke="#FFFFFF" stroke-width="7.9" stroke-dasharray="5.3 26.4" stroke-linecap="round"/><g class="pl"><circle cx="680" cy="860" r="465"/><circle cx="680" cy="860" r="465"/><circle cx="680" cy="860" r="465"/></g></svg><span class="sonar" aria-hidden="true"><i></i><i></i><i></i></span><img decoding="async" src="assets/img/nearby-w-1400.webp" srcset="assets/img/nearby-w-800.webp 800w, assets/img/nearby-w-1400.webp 1400w" sizes="(min-width: 900px) 600px, 100vw" alt="Landmarks around you in Kyoto: Jishu Shrine 30 m away, Kiyomizu-dera 89 m, Higashiyama 674 m" width="1400" height="1078" loading="lazy"></div>
       <div>
         <h2 class="hl" id="nearby-h">Discover monuments, culture, and history <em>nearby.</em></h2>
         <ol class="steps">
@@ -1380,6 +1407,21 @@ button:not(:disabled) { cursor: pointer; }
     requestAnimationFrame(parkHero);
     const io3 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); const c = e.target.closest("#cities"); if (c) c.classList.add("head-in"); io3.unobserve(e.target); } }), { threshold: 0.6, rootMargin: "0px 0px -10% 0px" });
     document.querySelectorAll(".cities-head").forEach((el) => io3.observe(el));
+    // Section headings below the hero, the paragraph under a heading, and the closing blimp come in as they reach the screen.
+    const rvs = [...document.querySelectorAll("h2.hl, .cities-head .body, #anywhere .body, .closing .blimp")];
+    rvs.forEach((el) => { el.classList.add("rv"); if (el.matches(".body")) el.style.setProperty("--rvd", "160ms"); if (el.matches(".blimp")) el.classList.add("rv-float"); });
+    // Each is triggered by the block that holds it: a heading clipped to nothing (the slot rise) counts as off screen.
+    const io4 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { (e.target.__rv || []).forEach((el) => el.classList.add("in")); io4.unobserve(e.target); } }), { threshold: 0, rootMargin: "0px 0px -14% 0px" });
+    rvs.forEach((el) => { const host = el.classList.contains("rv-float") ? el : el.parentElement; (host.__rv = host.__rv || []).push(el); io4.observe(host); });
+    // Once the slot rise ends its clip comes off, so nothing (an italic's overhang, the sticker's shadow) is ever cut.
+    document.addEventListener("transitionend", (e) => { if (e.propertyName === "clip-path" && e.target.classList && e.target.classList.contains("rv")) e.target.classList.add("shown"); });
+    // Replays the entrance of every heading already shown (the preview's toggle uses it).
+    window.__replayHeads = () => {
+      const els = [...document.querySelectorAll(".rv.in")];
+      els.forEach((el) => { el.style.transition = "none"; el.classList.remove("in", "shown"); });
+      void document.body.offsetHeight;
+      requestAnimationFrame(() => { els.forEach((el) => (el.style.transition = "")); requestAnimationFrame(() => els.forEach((el) => el.classList.add("in"))); });
+    };
   } else {
     document.querySelectorAll(".cities, #cities, .bento, #anywhere, .cities-head").forEach((el) => el.classList.add("in"));
     const cs = document.getElementById("cities"); if (cs) cs.classList.add("head-in");
@@ -1495,6 +1537,7 @@ button:not(:disabled) { cursor: pointer; }
         if (key === "pano") swapPano(v);
         if (key === "csky" && window.__parkCity) requestAnimationFrame(window.__parkCity);
         if (key === "hball" && window.__parkHero) requestAnimationFrame(window.__parkHero);
+        if (key === "hl" && window.__replayHeads) window.__replayHeads();
         try { localStorage.setItem("argo.opt." + key, v); } catch (e) {}
       };
       let sv = null; try { sv = localStorage.getItem("argo.opt." + key); } catch (e) {}
