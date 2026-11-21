@@ -8,7 +8,7 @@
 <script>
   // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
   // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
-  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); if ("scrollRestoration" in history) history.scrollRestoration = "manual"; /* a refresh opens at the top, not where the reader was */ document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girlw"; document.documentElement.dataset.csky = "airshipw"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "plus"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "lines"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.lph = "off"; document.documentElement.dataset.drings = "ringpulse"; document.documentElement.dataset.store = "live"; document.documentElement.dataset.navbtn = "pill"; document.documentElement.dataset.bstk = "plain"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); if ("scrollRestoration" in history) history.scrollRestoration = "manual"; /* a refresh opens at the top, not where the reader was */ document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girlw"; document.documentElement.dataset.csky = "airshipw"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "plus"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "lines"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.lph = "off"; document.documentElement.dataset.drings = "ringpulse"; document.documentElement.dataset.store = "live"; document.documentElement.dataset.navbtn = "pill"; document.documentElement.dataset.bstk = "plain"; document.documentElement.dataset.cstk = "art"; document.documentElement.dataset.subst = "tagtype"; document.documentElement.dataset.autolay = "right"; document.documentElement.dataset.play = "on"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
 </script>
 <meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta name="apple-itunes-app" content="app-id=6823674049">
@@ -36,6 +36,7 @@
 <style>
 @font-face { font-family: "Fraunces"; src: url("assets/fonts/FrauncesVariable.woff2") format("woff2"); font-weight: 650 800; font-style: normal; font-display: swap; }
 @font-face { font-family: "Fraunces"; src: url("assets/fonts/FrauncesItalicVariable.woff2") format("woff2"); font-weight: 650 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Fraunces Light"; src: url("assets/fonts/FrauncesLightItalic.woff2") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("assets/fonts/InterRegular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("assets/fonts/InterMedium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("assets/fonts/InterSemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
@@ -970,15 +971,13 @@ a img { -webkit-touch-callout: default; }
 [data-hsize="plus"] .fl-low { --fw: clamp(48px, 5.6vw, 90px); }
 [data-hpos="lift"][data-hsize="plus"] .fl-low { top: 31.5%; }
 .fl-low.fl-girlw .fl-track img { scale: 1.076; }
-@media (max-width: 760px) { [data-hsize="plus"] .fl-low { --fw: 46px; } [data-hbp="mid"][data-hsize="plus"] .fl-low { top: 30%; } }
+@media (max-width: 760px) { [data-hsize="plus"] .fl-low { --fw: 46px; } [data-hbp="mid"][data-hsize="plus"] .fl-low { top: 31.5%; } }
 
 /* ---------- Lanterns, sticker: the rimmed files are 1.167 times the art, so they are scaled up to keep the lantern's size. */
 [data-lant="two-w"] .lnt img { scale: 1.167; }
 
 /* ---------- The closing blimp is one link to the App Store. ---------- */
 a.blimp { display: block; color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-a.blimp .blimp-in { transition: translate 500ms cubic-bezier(0.22, 1, 0.36, 1); }
-a.blimp:hover .blimp-in { translate: 0 -4px; }
 a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; border-radius: 14px; }
 
 /* ---------- App Store buttons (option). Apple's badge is used as supplied; only its surroundings change. ---------- */
@@ -1055,6 +1054,74 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
 [data-drings="thickrings"] .rings-st .tp { display: inline; }
 [data-drings="thickrings"] .sonar-host .nb-w { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { [data-drings="thickrings"] .rings-st .tp { display: none; } [data-drings="thickrings"] .rings-st .st { display: inline; } }
+
+/* ---------- Featured cities, sticker: the rimmed file is 520 px for the 496 px art, so it is scaled up by that much to
+   keep each city the same size (the page's own soft shadow stays under it). */
+[data-cstk="sticker"] .cities .dio img { scale: 1.0484; }
+
+/* ---------- Hero subtitle (option): "label" puts it on a white sticker label; "letters" sets navy letters with a white
+   die-cut rim (a ring of text shadows, so it works in every browser). ---------- */
+[data-subst="label"] .hero .sub { width: fit-content; margin-inline: auto; padding: 0.3em 0.78em 0.34em; border-radius: 10px; background: #FFFFFF; color: var(--navy);
+  font-size: 0.84em; font-weight: 600; rotate: -1.5deg; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.32); }
+[data-subst="letters"] .hero .sub { color: var(--navy); font-weight: 700;
+  text-shadow: 3px 0 0 #FFF, -3px 0 0 #FFF, 0 3px 0 #FFF, 0 -3px 0 #FFF, 2.1px 2.1px 0 #FFF, -2.1px 2.1px 0 #FFF, 2.1px -2.1px 0 #FFF, -2.1px -2.1px 0 #FFF,
+    2.8px 1.2px 0 #FFF, -2.8px 1.2px 0 #FFF, 2.8px -1.2px 0 #FFF, -2.8px -1.2px 0 #FFF, 1.2px 2.8px 0 #FFF, -1.2px 2.8px 0 #FFF, 1.2px -2.8px 0 #FFF, -1.2px -2.8px 0 #FFF,
+    0 6px 12px rgba(0, 0, 0, 0.45); }
+
+/* ---------- Auto Tour card (option): ways to fill the space right of the title and pill. ---------- */
+.c-auto .auto-line, .c-auto .auto-birds { display: none; }
+@media (min-width: 700px) {
+  [data-autolay="right"] .c-auto .cap, [data-autolay="right"] .c-auto .autopill { margin-left: 26%; }
+  [data-autolay="center"] .c-auto .cap { margin-inline: auto; text-align: center; }
+  [data-autolay="center"] .c-auto .viz { text-align: center; }
+  [data-autolay="center"] .c-auto .trail { text-align: initial; }
+}
+[data-autolay="line"] .c-auto .auto-line { display: block; }
+[data-autolay="birds"] .c-auto { position: relative; }
+[data-autolay="birds"] .c-auto .auto-birds { display: block; position: absolute; top: 7%; left: 52%; width: clamp(64px, 13%, 120px); height: auto; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-autolay="birds"] .c-auto .auto-birds { animation: birdsDrift 9s ease-in-out infinite alternate; }
+  @keyframes birdsDrift { from { translate: -14px 4px; } to { translate: 22px -6px; } }
+}
+[data-subst="off"] .hero .sub { display: none; }
+
+/* ---------- Hero subtitle in the onboarding's kicker styles (FCKicker.swift, night ground). The tags are drawn by motion.js
+   as an SVG behind the text, ported from FCKickerTagShape: the ticket (corner 3.5, a semicircle bite of 4.6 in each short
+   end) and the pinned luggage tag (leading corners clipped 8.5, corners softened 2.5, a punched hole under a coral push
+   pin). Sizes are the comp's, in ems of the tag's own type; the tag tilts about its leading edge. ---------- */
+.hero .sub .tk, .hero .sub .tk-text { display: contents; }
+.hero .sub .tk-stub { display: none; }
+.hero .sub .tag-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: -1; pointer-events: none; }
+[data-subst="italic"] .hero .sub { font-family: "Fraunces Light", var(--display); font-style: italic; font-weight: 300; font-size: clamp(1.1rem, 1.6vw, 1.3rem); letter-spacing: 0; }
+[data-subst^="tk-"] .hero .sub, [data-subst^="pin-"] .hero .sub { position: relative; isolation: isolate; width: fit-content; margin-inline: auto; white-space: nowrap; line-height: 1.25;
+  font-family: var(--body); font-weight: 500; transform-origin: 0 50%; }
+[data-subst^="tk-"] .hero .sub { font-size: clamp(0.8rem, 1.05vw, 0.92rem); padding: 0.4286em 1.086em; rotate: -2deg; }
+[data-subst="tk-quiet"] .hero .sub { rotate: -1.5deg; }
+[data-subst^="pin-"] .hero .sub { font-size: clamp(0.84rem, 1.12vw, 0.98rem); padding: 0.522em 0.957em 0.522em 1.739em; rotate: -2deg; }
+[data-subst="tk-small"] .hero .sub, [data-subst="pin-plain"] .hero .sub { color: rgba(42, 49, 64, 0.85); filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3)); }
+[data-subst="tk-quiet"] .hero .sub { color: rgba(237, 240, 248, 0.8); }
+[data-subst="pin-vellum"] .hero .sub { color: rgba(237, 240, 248, 0.85); }
+
+/* ---------- Play with the sky (option): released lanterns ride their own layer beside the sky lanterns. ---------- */
+.my-lanterns { position: absolute; inset: -7rem 0 0; overflow: hidden; pointer-events: none; z-index: 7; }
+.my-lanterns.page { position: absolute; inset: auto; top: 0; left: 0; right: 0; z-index: 2; }
+.my-lnt { position: absolute; height: auto; }
+
+/* Phones: the Auto Tour card's title and pill sit centred over the route (the card is one column wide there). */
+@media (max-width: 699px) {
+  .c-auto .cap { margin-inline: auto; text-align: center; }
+  .c-auto .viz { text-align: center; }
+  .c-auto .trail { text-align: initial; }
+}
+/* Subtitle "tagtype": no tag, just the vellum tag's lettering (Inter Medium, a little larger than on the tag, paper white
+   at 85%); "tagtype-g" is the same in the live subtitle's grey-blue. */
+[data-subst^="tagtype"] .hero .sub { font-family: var(--body); font-weight: 500; font-size: clamp(0.94rem, 1.25vw, 1.08rem); color: rgba(237, 240, 248, 0.85); }
+[data-subst="tagtype-g"] .hero .sub { color: var(--sub-colour); }
+
+/* Play with the sky: where a click releases a lantern, the cursor is a small lantern drawn by motion.js (a browser cursor
+   image fell back to a crosshair over parts of the page in Safari). The system cursor hides only while it shows. */
+.lnt-cursor { position: fixed; left: 0; top: 0; z-index: 2147483000; width: 24px; height: auto; pointer-events: none; display: none; filter: drop-shadow(0 0 6px rgba(255, 190, 110, 0.55)); will-change: transform; }
+.lnt-cursoring, .lnt-cursoring * { cursor: none !important; }
 
 </style>
 </head>
@@ -1521,6 +1588,155 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
       im.setAttribute("src", document.documentElement.dataset.bstk === "sticker" ? plain.replace(/\.webp$/, "-w.webp") : plain);
     });
     window.__blimpStyle();
+    // Featured cities, sticker setting: each diorama swaps to its white-rimmed file (city-<k>-s-w.webp).
+    window.__cityStyle = () => document.querySelectorAll(".cities .dio img").forEach((im) => {
+      const plain = im.getAttribute("src").replace(/-s-w\.webp$/, "-s.webp");
+      im.setAttribute("src", document.documentElement.dataset.cstk === "sticker" ? plain.replace(/-s\.webp$/, "-s-w.webp") : plain);
+    });
+    window.__cityStyle();
+    // Hero subtitle in the onboarding's paper-tag styles: the tag outline (FCKickerTagShape) and the push pin (FCKickerPin),
+    // drawn to the subtitle's own size in comp units (unit = type size / the comp's type size x the style's cut scale).
+    const TAGS = { "tk-small": { cut: "ticket", font: 10.5, cutScale: 0.85, paper: "#F6F1E6" }, "tk-quiet": { cut: "ticket", font: 10.5, cutScale: 0.85, paper: "rgb(43,47,60)" },
+      "pin-vellum": { cut: "pinned", font: 11.5, cutScale: 1, paper: "rgba(255,255,255,0.12)", edge: "rgba(255,255,255,0.22)" }, "pin-plain": { cut: "pinned", font: 11.5, cutScale: 1, paper: "#F6F1E6" } };
+    window.__subTag = () => {
+      const sub = document.querySelector(".hero .sub"); if (!sub) return;
+      let svg = sub.querySelector(".tag-bg"); const t = TAGS[document.documentElement.dataset.subst];
+      if (!t) { if (svg) svg.remove(); return; }
+      if (!svg) { svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "tag-bg"); svg.setAttribute("aria-hidden", "true"); sub.prepend(svg); }
+      const w = sub.offsetWidth, h = sub.offsetHeight, u = parseFloat(getComputedStyle(sub).fontSize) / t.font * t.cutScale, f = (n) => n.toFixed(2);
+      let d, pin = "";
+      if (t.cut === "ticket") {
+        const c = 3.5 * u, b = 4.6 * u, m = h / 2;
+        d = `M${f(c)} 0H${f(w - c)}A${f(c)} ${f(c)} 0 0 1 ${f(w)} ${f(c)}V${f(m - b)}A${f(b)} ${f(b)} 0 0 0 ${f(w)} ${f(m + b)}V${f(h - c)}A${f(c)} ${f(c)} 0 0 1 ${f(w - c)} ${f(h)}`
+          + `H${f(c)}A${f(c)} ${f(c)} 0 0 1 0 ${f(h - c)}V${f(m + b)}A${f(b)} ${f(b)} 0 0 0 0 ${f(m - b)}V${f(c)}A${f(c)} ${f(c)} 0 0 1 ${f(c)} 0Z`;
+      } else {
+        const k = 8.5 * u, r = 2.5 * u, px = 9.5 * u, hole = 2.4 * u, pts = [[k, 0], [w, 0], [w, h], [k, h], [0, h - k], [0, k]];
+        const toward = (a, b2, dist) => { const dx = b2[0] - a[0], dy = b2[1] - a[1], l = Math.hypot(dx, dy); return [a[0] + dx / l * dist, a[1] + dy / l * dist]; };
+        d = "";
+        pts.forEach((p, i) => { const prev = pts[(i + pts.length - 1) % pts.length], next = pts[(i + 1) % pts.length], a = toward(p, prev, r), b2 = toward(p, next, r);
+          d += (i ? "L" : "M") + f(a[0]) + " " + f(a[1]) + "Q" + f(p[0]) + " " + f(p[1]) + " " + f(b2[0]) + " " + f(b2[1]); });
+        d += `ZM${f(px + hole)} ${f(h / 2)}A${f(hole)} ${f(hole)} 0 1 0 ${f(px - hole)} ${f(h / 2)}A${f(hole)} ${f(hole)} 0 1 0 ${f(px + hole)} ${f(h / 2)}Z`;
+        const pd = 8 * u, cx = px, cy = h / 2;
+        pin = `<circle cx="${f(cx + 0.6 * u)}" cy="${f(cy + 1.4 * u)}" r="${f(pd / 2)}" fill="rgba(42,49,64,0.3)" style="filter:blur(${f(1.2 * u * 0.5)}px)"/>`
+          + `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(pd / 2)}" fill="rgb(229,144,110)"/><circle cx="${f(cx - 0.07 * pd)}" cy="${f(cy - 0.08 * pd)}" r="${f(pd / 4)}" fill="rgb(246,193,168)"/>`;
+      }
+      svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+      svg.innerHTML = `<path d="${d}" fill="${t.paper}" fill-rule="evenodd"/>` + pin + (t.edge ? `<path d="${d}" fill="none" stroke="${t.edge}" stroke-width="0.75"/>` : "");
+    };
+    window.__subTag();
+    if (document.fonts) document.fonts.ready.then(window.__subTag);
+    addEventListener("resize", window.__subTag);
+    // ---------- Play with the sky (option). The floating pieces lean away from the pointer like a breeze: from the cursor
+    // as it passes (mouse), and from a finger where it touches (phones have no hover; the lean eases off after a moment).
+    // Nothing can be grabbed, and the pieces never take the pointer, so scrolling and the page's text are untouched.
+    // Click or tap the empty hero sky to release a lantern there (three at most). The lean rides the pictures' own
+    // translate and rotate (their crossings move the track or the lantern, their bob uses transform), and one frame loop
+    // runs only while something leans.
+    (() => {
+      const root = document.documentElement, still = matchMedia("(prefers-reduced-motion: reduce)");
+      const on = () => (root.dataset.play === "on" || root.dataset.play === "anywhere") && !still.matches;
+      const PIECES = ".fl-track img, .lnt img";
+      const S = new Map();
+      const state = (img) => {
+        let s = S.get(img); if (s) return s;
+        const t = getComputedStyle(img).translate, p = t === "none" ? ["0px", "0px"] : t.split(" ");
+        s = { img, bx: p[0], by: p[1] || "0px", lx: 0, ly: 0, lr: 0 }; S.set(img, s); return s;
+      };
+      let raf = 0, mx = -1e9, my = -1e9, until = 0, reach = 170;
+      const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+      function tick() {
+        raf = 0; const breeze = performance.now() < until; let busy = breeze;
+        if (breeze) document.querySelectorAll(PIECES).forEach((img) => { if (img.offsetParent) state(img); });
+        S.forEach((s) => {
+          let tx = 0, ty = 0, tr = 0;
+          if (breeze) {
+            const q = s.img.getBoundingClientRect(), dx = q.left + q.width / 2 - mx, dy = q.top + q.height / 2 - my, dd = Math.hypot(dx, dy);
+            if (dd < reach && dd > 0.1) { const f = 1 - dd / reach; tx = dx / dd * 12 * f; ty = dy / dd * 7 * f; tr = dx / dd * 9 * f; }
+          }
+          s.lx += (tx - s.lx) * 0.12; s.ly += (ty - s.ly) * 0.12; s.lr += (tr - s.lr) * 0.12;
+          if (Math.abs(s.lx) + Math.abs(s.ly) + Math.abs(s.lr) > 0.05) {
+            s.img.style.translate = `calc(${s.bx} + ${s.lx.toFixed(2)}px) calc(${s.by} + ${s.ly.toFixed(2)}px)`; s.img.style.rotate = s.lr.toFixed(2) + "deg"; busy = true;
+          } else { s.img.style.translate = ""; s.img.style.rotate = ""; S.delete(s.img); }
+        });
+        if (busy) kick();
+      }
+      const blow = (e, ms, r) => { if (!on()) return; mx = e.clientX; my = e.clientY; reach = r; until = performance.now() + ms; kick(); };
+      addEventListener("pointermove", (e) => { if (e.pointerType === "mouse") blow(e, 1200, 170); else if (e.buttons) blow(e, 900, 190); }, { passive: true });
+      addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") blow(e, 900, 190); }, { passive: true });
+      // Release your own lantern: in the hero (its sky, the phones and the panorama; not the headline or the buttons), or,
+      // with "anywhere", from a click anywhere on the page. Hero lanterns rise in a layer over everything in the hero that
+      // reaches 7rem above it (past the header, as the sky lanterns' does). Page lanterns rise in a layer as tall as the
+      // page, so they scroll with it and keep climbing towards its top. A fourth lantern retires the oldest.
+      const hero = document.querySelector(".hero"); let heroLayer = null, pageLayer = null;
+      const layerFor = (anywhere) => {
+        if (anywhere) { if (!pageLayer) { pageLayer = document.createElement("div"); pageLayer.className = "my-lanterns page"; pageLayer.setAttribute("aria-hidden", "true"); document.body.appendChild(pageLayer); } return pageLayer; }
+        if (!heroLayer) { heroLayer = document.createElement("div"); heroLayer.className = "my-lanterns"; heroLayer.setAttribute("aria-hidden", "true"); hero.appendChild(heroLayer); }
+        return heroLayer;
+      };
+      // where a click releases a lantern: not on anything that does something, and in the hero setting only in the hero
+      // (not its headline or subtitle)
+      const releasable = (t) => {
+        if (!on() || !t || !t.closest) return false;
+        if (t.closest("a, button, input, select, textarea, label, summary, [role=button], .pv-opts, .mini")) return false;
+        return root.dataset.play === "anywhere" || (!!hero && !!t.closest(".hero") && !t.closest("h1, .sub"));
+      };
+      // the lantern cursor, drawn where a click releases one (hotspot 70% down it, where a released lantern centres)
+      const cur = document.createElement("img"); cur.className = "lnt-cursor"; cur.alt = ""; cur.setAttribute("aria-hidden", "true");
+      cur.src = lsrc(LANTERN_IMGS[0]); document.body.appendChild(cur);
+      const hideCursor = () => { cur.style.display = "none"; root.classList.remove("lnt-cursoring"); };
+      addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse" || !releasable(e.target)) { hideCursor(); return; }
+        cur.style.display = "block"; cur.style.transform = `translate(${(e.clientX - 12).toFixed(1)}px, ${(e.clientY - 22).toFixed(1)}px)`;
+        root.classList.add("lnt-cursoring");
+      }, { passive: true });
+      document.addEventListener("pointerleave", hideCursor); addEventListener("blur", hideCursor);
+      document.documentElement.addEventListener("mouseleave", hideCursor);
+      document.addEventListener("click", (e) => {
+        if (e.button > 0 || !releasable(e.target)) return;
+        const sel = getSelection && String(getSelection()); if (sel) return;   // a click that ends a text selection releases nothing
+        const anywhere = root.dataset.play === "anywhere";
+        const layer = layerFor(anywhere);
+        if (anywhere) layer.style.height = document.documentElement.scrollHeight + "px";
+        const live = [...layer.children].filter((c) => !c.dataset.leaving);
+        if (live.length >= 3) { const old = live[0]; old.dataset.leaving = "1"; old.animate([{ opacity: getComputedStyle(old).opacity }, { opacity: 0 }], { duration: 600, fill: "forwards" }).onfinish = () => old.remove(); }
+        const r = layer.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, w = Math.max(22, Math.min(38, innerWidth * 0.024));
+        if (x < 0 || y < 0 || x > r.width || y > r.height) return;   // only from inside its own layer
+        const im = document.createElement("img"); im.className = "my-lnt"; im.alt = ""; im.src = lsrc(LANTERN_IMGS[Math.floor(Math.random() * LANTERN_IMGS.length)]);
+        im.style.cssText = `left:${(x - w / 2).toFixed(1)}px;top:${(y - w * 0.7).toFixed(1)}px;width:${w.toFixed(1)}px`;
+        layer.appendChild(im);
+        // it stays lit the whole way and is clipped as it leaves the top edge
+        const rise = y + w * 2.2, a = im.animate([{ translate: "0 0", opacity: 0, scale: 0.6 }, { opacity: 0.95, scale: 1, offset: Math.min(0.06, 60 / rise) }, { translate: `0 ${-rise}px`, opacity: 0.95, scale: 1 }], { duration: rise / 0.05, easing: "linear" });
+        im.animate([{ rotate: "-4deg" }, { rotate: "3deg" }], { duration: 3400, direction: "alternate", iterations: Infinity, easing: "ease-in-out" });
+        a.onfinish = () => im.remove();
+      });
+    })();
+    // The closing blimp answers the cursor (a mouse; it is a link): it rises a little and tips toward the side under the
+    // pointer, as if the pointer had weight, then settles when the pointer leaves. On a touch it dips toward the finger
+    // for the moment before the link opens.
+    (() => {
+      const bl = document.querySelector(".closing .blimp"); if (!bl) return;
+      // the wrapper moves: the blimp inside it bobs on its own translate and rotate (an animation, which would win)
+      const inner = () => (root.dataset.bmove === "fly" ? null : bl.querySelector(".bf-track")), still = matchMedia("(prefers-reduced-motion: reduce)"), root = document.documentElement;
+      let tx = 0, ty = 0, tr = 0, x = 0, y = 0, r = 0, raf = 0;
+      const step = () => {
+        raf = 0; x += (tx - x) * 0.1; y += (ty - y) * 0.1; r += (tr - r) * 0.1; const el = inner(); if (!el) return;
+        if (Math.abs(x - tx) + Math.abs(y - ty) + Math.abs(r - tr) > 0.02 || Math.abs(x) + Math.abs(y) + Math.abs(r) > 0.02) {
+          el.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`; el.style.rotate = r.toFixed(3) + "deg"; raf = requestAnimationFrame(step);
+        } else { el.style.translate = ""; el.style.rotate = ""; }
+      };
+      const go = () => { if (!raf) raf = requestAnimationFrame(step); };
+      bl.addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse" || still.matches) return;
+        const q = bl.getBoundingClientRect(), rel = Math.max(-1, Math.min(1, (e.clientX - (q.left + q.width / 2)) / (q.width / 2)));
+        tx = rel * 5; ty = -7; tr = rel * 1.4; go();
+      });
+      bl.addEventListener("pointerleave", () => { tx = ty = tr = 0; go(); });
+      bl.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "mouse" || still.matches) return;
+        const q = bl.getBoundingClientRect(), rel = Math.max(-1, Math.min(1, (e.clientX - (q.left + q.width / 2)) / (q.width / 2)));
+        tx = rel * 4; ty = 5; tr = rel * 1.2; go(); setTimeout(() => { tx = ty = tr = 0; go(); }, 350);
+      }, { passive: true });
+    })();
     window.__lanternStyle = () => document.querySelectorAll(".lnt img").forEach((im) => im.setAttribute("src", lsrc(im.getAttribute("src"))));
     const parkAtEdge = (tr) => {
       const a = tr.getAnimations().find((x) => x.animationName === "flFly"); if (!a) return;
@@ -1720,6 +1936,8 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
         if (key === "hl" && window.__replayHeads) window.__replayHeads();
         if (key === "lant" && window.__lanternStyle) window.__lanternStyle();
         if (key === "bstk" && window.__blimpStyle) window.__blimpStyle();
+        if (key === "cstk" && window.__cityStyle) window.__cityStyle();
+        if (key === "subst" && window.__subTag) requestAnimationFrame(window.__subTag);
         if (key === "csky" && window.__parkCity) requestAnimationFrame(window.__parkCity);
         if (key === "hsize" && window.__parkHero) requestAnimationFrame(window.__parkHero);
         try { localStorage.setItem("argo.opt." + key, v); } catch (e) {}
