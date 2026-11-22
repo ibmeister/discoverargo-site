@@ -8,7 +8,7 @@
 <script>
   // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
   // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
-  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); if ("scrollRestoration" in history) history.scrollRestoration = "manual"; /* a refresh opens at the top, not where the reader was */ document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girlw"; document.documentElement.dataset.csky = "airshipw"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "plus"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "lines"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.lph = "off"; document.documentElement.dataset.drings = "ringpulse"; document.documentElement.dataset.store = "live"; document.documentElement.dataset.navbtn = "pill"; document.documentElement.dataset.bstk = "plain"; document.documentElement.dataset.cstk = "art"; document.documentElement.dataset.subst = "tagtype"; document.documentElement.dataset.autolay = "right"; document.documentElement.dataset.play = "on"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.subc = "grey"; })();
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); if ("scrollRestoration" in history) history.scrollRestoration = "manual"; /* a refresh opens at the top, not where the reader was */ document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girlw"; document.documentElement.dataset.csky = "airshipw"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "plus"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "lines"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.lph = "off"; document.documentElement.dataset.drings = "ringpulse"; document.documentElement.dataset.store = "live"; document.documentElement.dataset.navbtn = "pill"; document.documentElement.dataset.bstk = "plain"; document.documentElement.dataset.cstk = "art"; document.documentElement.dataset.subst = "tagtype"; document.documentElement.dataset.autolay = "right"; document.documentElement.dataset.play = "on"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.bodyw = "regular"; document.documentElement.dataset.subc = "grey"; })();
 </script>
 <meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta name="apple-itunes-app" content="app-id=6823674049">
@@ -1130,7 +1130,7 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
 .pic-c { display: contents; }
 
 /* ---------- Discover, "ringpulse", as layers the browser animates off the main thread (the SVG-animated version kept
-   the main thread busy every frame). Each ring is its own layer that swells 4% about the dot and back, inner to outer
+   the main thread busy every frame). Each inner ring is its own layer that swells 4% about the dot and back, inner to outer
    0.35 s apart over 3.2 s; its fill brightens by 0.09 through a white disc fading in to 0.1 over it (0.16 + 0.1 x 0.84
    = 0.25, as before). At rest, or with motion reduced, the layers are the still rings. ---------- */
 .rph { display: none; position: absolute; inset: 0; z-index: 0; pointer-events: none; transform-origin: 48.5714% 79.7774%; }
@@ -1142,9 +1142,22 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
   [data-drings="ringpulse"] .rph { animation: rphSwell 3.2s var(--d) infinite; }
   [data-drings="ringpulse"] .rph-glow { animation: rphGlow 3.2s var(--d) infinite; }
 }
+/* The outer, dotted ring keeps its SVG animation: its radius grows, which re-lays the dots along the longer edge, so they
+   slide round the ring and back each breath. Scaled as a layer its dots would hold still. With motion reduced, its still
+   layer (.rph-outer) shows instead. */
+.rph-smil { display: none; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-drings="ringpulse"] .rph-smil { display: block; }
+  [data-drings="ringpulse"] .rph-outer { display: none; }
+}
 @keyframes rphSwell { 0% { scale: 1; animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1); } 32% { scale: 1.04; animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); } 100% { scale: 1; } }
 @keyframes rphGlow { 0% { opacity: 0; animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1); } 32% { opacity: 0.1; animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); } 100% { opacity: 0; } }
 .walker, .chip { will-change: transform; }
+
+/* Body text weight "medium": running text takes the hero subtitle's lettering (Inter Medium). Headings, buttons and
+   anything else with its own weight keep it; the phone-screen mockups stay at the app's weights. */
+[data-bodyw="medium"] body { font-weight: 500; }
+[data-bodyw="medium"] .screen, [data-bodyw="medium"] .lk-np { font-weight: 400; }
 
 </style>
 </head>
@@ -1252,7 +1265,7 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
 
   <section class="band sky" id="nearby" aria-labelledby="nearby-h">
     <div class="wrap split">
-      <div class="art sonar-host"><span class="rph" style="--d:0.00s" aria-hidden="true"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="243" fill="#FFFFFF" fill-opacity="0.16" stroke="#FFFFFF" stroke-width="7.9"/></svg><span class="rph-glow"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="243" fill="#FFFFFF"/></svg></span></span><span class="rph" style="--d:0.35s" aria-hidden="true"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="465" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-width="7.9"/></svg><span class="rph-glow"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="465" fill="#FFFFFF"/></svg></span></span><span class="rph" style="--d:0.70s" aria-hidden="true"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="681" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-width="7.9" stroke-dasharray="5.3 26.4" stroke-linecap="round"/></svg><span class="rph-glow"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="681" fill="#FFFFFF"/></svg></span></span><span class="halo" aria-hidden="true"></span><span class="sonar" aria-hidden="true"><i></i><i></i><i></i></span><img decoding="async" class="nb-w" src="assets/img/nearby-w-1400.webp" srcset="assets/img/nearby-w-800.webp 800w, assets/img/nearby-w-1400.webp 1400w" sizes="(min-width: 900px) 600px, 100vw" alt="Landmarks around you in Kyoto: Jishu Shrine 30 m away, Kiyomizu-dera 89 m, Higashiyama 674 m" width="1400" height="1078" loading="lazy"></div>
+      <div class="art sonar-host"><span class="rph" style="--d:0.00s" aria-hidden="true"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="243" fill="#FFFFFF" fill-opacity="0.16" stroke="#FFFFFF" stroke-width="7.9"/></svg><span class="rph-glow"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="243" fill="#FFFFFF"/></svg></span></span><span class="rph" style="--d:0.35s" aria-hidden="true"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="465" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-width="7.9"/></svg><span class="rph-glow"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="465" fill="#FFFFFF"/></svg></span></span><span class="rph rph-outer" style="--d:0.70s" aria-hidden="true"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="681" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-width="7.9" stroke-dasharray="5.3 26.4" stroke-linecap="round"/></svg><span class="rph-glow"><svg viewBox="0 0 1400 1078"><circle cx="680" cy="860" r="681" fill="#FFFFFF"/></svg></span></span><svg class="rph-smil" viewBox="0 0 1400 1078" aria-hidden="true"><circle cx="680" cy="860" r="681" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-width="7.9" stroke-dasharray="5.3 26.4" stroke-linecap="round"><animate attributeName="r" values="681;708.2;681" calcMode="spline" keyTimes="0;0.32;1" keySplines="0.3 0 0.2 1;0.4 0 0.6 1" dur="3.2s" repeatCount="indefinite" begin="0.70s"/><animate attributeName="fill-opacity" values="0.08;0.17;0.08" calcMode="spline" keyTimes="0;0.32;1" keySplines="0.3 0 0.2 1;0.4 0 0.6 1" dur="3.2s" repeatCount="indefinite" begin="0.70s"/></circle></svg><span class="halo" aria-hidden="true"></span><span class="sonar" aria-hidden="true"><i></i><i></i><i></i></span><img decoding="async" class="nb-w" src="assets/img/nearby-w-1400.webp" srcset="assets/img/nearby-w-800.webp 800w, assets/img/nearby-w-1400.webp 1400w" sizes="(min-width: 900px) 600px, 100vw" alt="Landmarks around you in Kyoto: Jishu Shrine 30 m away, Kiyomizu-dera 89 m, Higashiyama 674 m" width="1400" height="1078" loading="lazy"></div>
       <div>
         <h2 class="hl" id="nearby-h">Discover monuments, culture, and history <em>nearby.</em></h2>
         <ol class="steps">
@@ -1577,10 +1590,20 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
   document.documentElement.classList.add("js");
   // Off screen, a section's animations wait: its CSS animations pause (.anim-off) and so do its SVG animations; they run
   // again half a screen before the section comes back, from where they stopped.
+  // The outer Discover ring runs on its SVG clock and the two inner rings on CSS animations. When they run again the SVG
+  // clock is set to the CSS one, so the three keep their 0.35 s stagger (the two clocks start apart and drift a frame at
+  // each pause).
+  const syncRings = () => {
+    const smil = document.querySelector(".rph-smil"), ring = document.querySelector(".rph"), a = ring && ring.getAnimations()[0];
+    if (!smil || !smil.setCurrentTime || !a) return;
+    const set = () => { if (a.currentTime != null) smil.setCurrentTime(a.currentTime / 1000); };
+    set(); a.ready.then(set, () => {});   // again once the CSS animation has actually started (a frame or more later)
+  };
   if ("IntersectionObserver" in window) {
     const offIO = new IntersectionObserver((es) => es.forEach((e) => {
       e.target.classList.toggle("anim-off", !e.isIntersecting);
       e.target.querySelectorAll("svg").forEach((s) => { if (s.pauseAnimations && s.querySelector("animate")) { if (e.isIntersecting) s.unpauseAnimations(); else s.pauseAnimations(); } });
+      if (e.isIntersecting && e.target.querySelector(".rph-smil")) syncRings();
     }), { rootMargin: "50% 0px" });
     document.querySelectorAll("section").forEach((s) => offIO.observe(s));
   }
@@ -1973,6 +1996,8 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
         if (key === "subst" && window.__subTag) requestAnimationFrame(window.__subTag);
         if (key === "csky" && window.__parkCity) requestAnimationFrame(window.__parkCity);
         if (key === "hsize" && window.__parkHero) requestAnimationFrame(window.__parkHero);
+        // a new text weight changes widths: the Auto Tour pill and the pace card measure again on resize
+        if (key === "bodyw") requestAnimationFrame(() => dispatchEvent(new Event("resize")));
         try { localStorage.setItem("argo.opt." + key, v); } catch (e) {}
       };
       let sv = null; try { sv = localStorage.getItem("argo.opt." + key); } catch (e) {}
