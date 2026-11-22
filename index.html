@@ -8,7 +8,7 @@
 <script>
   // Keep until the paywall (Superwall) and the App Store description link to /privacy/ and /terms/ directly:
   // the old links were discoverargo.com/#privacy and /#terms. Without JavaScript they land on the footer links.
-  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); if ("scrollRestoration" in history) history.scrollRestoration = "manual"; /* a refresh opens at the top, not where the reader was */ document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girlw"; document.documentElement.dataset.csky = "airshipw"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "plus"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "lines"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.lph = "off"; document.documentElement.dataset.drings = "ringpulse"; document.documentElement.dataset.store = "live"; document.documentElement.dataset.navbtn = "pill"; document.documentElement.dataset.bstk = "plain"; document.documentElement.dataset.cstk = "art"; document.documentElement.dataset.subst = "tagtype"; document.documentElement.dataset.autolay = "right"; document.documentElement.dataset.play = "on"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.bodyw = "regular"; document.documentElement.dataset.subc = "grey"; })();
+  (function () { var h = location.hash; if (h === "#privacy" || h === "#terms") location.replace(h.slice(1) + "/"); if ("scrollRestoration" in history) history.scrollRestoration = "manual"; /* a refresh opens at the top, not where the reader was */ document.documentElement.classList.add("js"); document.documentElement.dataset.edges = "open"; document.documentElement.dataset.autoloop = "back"; document.documentElement.dataset.stars = "pin"; document.documentElement.dataset.hball = "girlw"; document.documentElement.dataset.csky = "airshipw"; document.documentElement.dataset.hfar = "off"; document.documentElement.dataset.hsize = "plus"; document.documentElement.dataset.hpos = "lift"; document.documentElement.dataset.cpos = "behind"; document.documentElement.dataset.hl = "lines"; document.documentElement.dataset.closing = "ad-navy"; document.documentElement.dataset.disc = "center"; document.documentElement.dataset.bmove = "stay"; document.documentElement.dataset.lift = "off"; document.documentElement.dataset.hit = "landmarks"; document.documentElement.dataset.hbp = "mid"; document.documentElement.dataset.lph = "off"; document.documentElement.dataset.drings = "ringpulse"; document.documentElement.dataset.store = "live"; document.documentElement.dataset.navbtn = "pill"; document.documentElement.dataset.bstk = "plain"; document.documentElement.dataset.cstk = "art"; document.documentElement.dataset.subst = "tagtype"; document.documentElement.dataset.subtint = "grey"; document.documentElement.dataset.suba = "90"; document.documentElement.dataset.hdiv = "mid"; document.documentElement.dataset.autolay = "right"; document.documentElement.dataset.play = "on"; document.documentElement.dataset.ywl = "headphones"; document.documentElement.dataset.lant = "two"; document.documentElement.dataset.fball = "girl"; document.documentElement.dataset.chover = "tilt"; document.documentElement.dataset.more = "3"; document.documentElement.dataset.bodyw = "regular"; document.documentElement.dataset.subc = "grey"; })();
 </script>
 <meta name="description" content="Tour over 1 million landmarks and cities worldwide. Explore Featured Cities like Rome, Paris, Tokyo and Rio, or move the map anywhere and discover the area.">
 <meta name="apple-itunes-app" content="app-id=6823674049">
@@ -877,6 +877,11 @@ button:not(:disabled) { cursor: pointer; }
 /* Without the logo above it the blimp sat low (a wide gap above, a tight one to the badge): lift it, and give the badge a
    little more room below it. */
 [data-closing]:not([data-closing="headline"]) .blimp { margin-top: calc(-1 * clamp(1.25rem, 4.5vw, 4.1rem)); margin-bottom: clamp(0.5rem, 1.4vw, 1.25rem); }
+/* Blimp and badge drop together by --cl-drop to sit centred in the sky between the last cards and the skyline; the art
+   below takes the same amount off its top margin, so it and everything after it keep their place. */
+[data-closing]:not([data-closing="headline"]) .closing { --cl-drop: clamp(1rem, 2vw, 1.75rem); }
+[data-closing]:not([data-closing="headline"]) .closing .blimp { margin-top: calc(-1 * clamp(1.25rem, 4.5vw, 4.1rem) + var(--cl-drop)); }
+[data-closing]:not([data-closing="headline"]) .closing .scene { margin-top: calc(clamp(2rem, 5vw, 3.5rem) - var(--cl-drop)); }
 /* Flying: the blimp keeps its place in the page (same size, empty) while a track one screen plus one blimp wide carries
    it across, in fully from the left, out fully at the right, a second off screen; only the track's own size is used.
    The track is placed against the closing section itself (the screen's edges), at the placeholder's height (its static
@@ -1117,6 +1122,43 @@ a.blimp:focus-visible { outline: 2px solid var(--navy); outline-offset: 8px; bor
    at 85%); "tagtype-g" is the same in the live subtitle's grey-blue. */
 [data-subst^="tagtype"] .hero .sub { font-family: var(--body); font-weight: 500; font-size: clamp(0.94rem, 1.25vw, 1.08rem); color: rgba(237, 240, 248, 0.85); }
 [data-subst="tagtype-g"] .hero .sub { color: var(--sub-colour); }
+/* The tagtype subtitle's colour and its strength are set apart: a hue (--sub-rgb, paper white by default) at an opacity
+   (--sub-a, 85% by default), so the line can be made secondary to the headline's paper white and blue "Earth.". The
+   defaults give the same colour as before, rgba(237, 240, 248, 0.85). Coloured hues fall under 4.5:1 on the night ground
+   at 65% and below (slate already at 75%); paper white stays above it at every step. */
+:root[data-subst="tagtype"] .hero .sub { color: rgb(var(--sub-rgb, 237 240 248) / var(--sub-a, 0.85)); }
+:root[data-subtint="grey"] { --sub-rgb: 166 177 207; }
+:root[data-subtint="slate"] { --sub-rgb: 142 153 184; }
+:root[data-subtint="mist"] { --sub-rgb: 143 176 214; }
+:root[data-subtint="lavender"] { --sub-rgb: 165 161 198; }
+:root[data-subtint="warm"] { --sub-rgb: 185 177 163; }
+:root[data-subtint="gold"] { --sub-rgb: 191 166 126; }
+:root[data-suba="100"] { --sub-a: 1; }
+:root[data-suba="90"] { --sub-a: 0.9; }
+:root[data-suba="75"] { --sub-a: 0.75; }
+:root[data-suba="65"] { --sub-a: 0.65; }
+:root[data-suba="55"] { --sub-a: 0.55; }
+
+/* "Hear a tour": what parts the waveform from "▶ Hear a tour". "line" (the 1px rule on .wave above) needs no rule. The
+   button is a block, so its flex gap never applies and that line touches the triangle; the other marks sit midway, the
+   label taking the waveform's own padding as its left margin. "perf" is the Auto Tour ticket's perforation (1.2px dashes,
+   2.5 on 4.5) running the button's full height, as on the ticket. */
+[data-hdiv="even"] .hear .lbl, [data-hdiv="short"] .hear .lbl, [data-hdiv="perf"] .hear .lbl, [data-hdiv="dot"] .hear .lbl { margin-left: calc(var(--btn-h) * 0.22); }
+[data-hdiv="none"] .hear .wave, [data-hdiv="short"] .hear .wave, [data-hdiv="perf"] .hear .wave, [data-hdiv="dot"] .hear .wave { position: relative; border-right: 0; }
+[data-hdiv="short"] .hear .wave::after, [data-hdiv="perf"] .hear .wave::after, [data-hdiv="dot"] .hear .wave::after { content: ""; position: absolute; pointer-events: none; }
+[data-hdiv="short"] .hear .wave::after { right: -0.5px; top: 25%; bottom: 25%; width: 1px; border-radius: 1px; background: rgba(14, 22, 48, 0.12); }
+[data-hdiv="perf"] .hear .wave::after { right: -0.6px; top: calc(var(--btn-h) * -0.29); bottom: calc(var(--btn-h) * -0.29); width: 1.2px;
+  background: repeating-linear-gradient(to bottom, rgba(14, 22, 48, 0.3) 0 2.5px, transparent 2.5px 7px); }
+[data-hdiv="dot"] .hear .wave::after { right: -2px; top: 50%; width: 4px; height: 4px; margin-top: -2px; border-radius: 50%; background: rgba(14, 22, 48, 0.28); }
+/* "mid": the "short" mark (half the waveform's height, 12% navy), drawn midway between the waveform and the triangle (the waveform's padding alone), out of the layout, so the
+   button keeps the "none" width. */
+[data-hdiv="mid"] .hear .wave { position: relative; border-right: 0; }
+[data-hdiv="mid"] .hear .wave::after { content: ""; position: absolute; top: 25%; bottom: 25%; right: calc(var(--btn-h) * 0.1667 - 0.5px); width: 1px; border-radius: 1px; background: rgba(14, 22, 48, 0.12); pointer-events: none; }
+/* Spread out at the same width: the side padding (0.32 + 0.42 of the height) is shared out evenly, 0.2925 each side, and
+   what it gives up opens the gaps inside, 8px either side of the line and 10px from the triangle to the words (at 48px). */
+[data-hdiv="mid"] .hear { padding: 0 calc(var(--btn-h) * 0.2925); }
+[data-hdiv="mid"] .hear .wave { padding-right: calc(var(--btn-h) * 0.3333); }
+[data-hdiv="mid"] .hear .lbl { gap: calc(var(--btn-h) * 0.2083); }
 
 /* Play with the sky: where a click releases a lantern, the cursor is a small lantern drawn by motion.js (a browser cursor
    image fell back to a crosshair over parts of the page in Safari). The system cursor hides only while it shows. */
